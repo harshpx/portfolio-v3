@@ -6,10 +6,10 @@
 <button
 	onclick={toggleTheme}
 	class="
-		h-9 p-2 flex items-center justify-center aspect-square 
-		cursor-pointer rounded-2xl
-		bg-neutral-900 dark:bg-[#d2eefa]
-		text-white dark:text-black
+		flex aspect-square h-9 cursor-pointer items-center justify-center
+		rounded-2xl bg-neutral-900
+		p-2 text-white
+		dark:bg-[#d2eefa] dark:text-black
 	"
 >
 	{#if $theme === "light"}

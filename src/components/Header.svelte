@@ -38,7 +38,7 @@
 <div class="flex h-full w-full items-center justify-between px-6">
 	<Logo onclick={() => scrollToDiv("home")} />
 	<div class="flex items-center gap-4 text-black dark:text-white">
-		{#each sections as section}
+		{#each sections as section, index (index)}
 			<button
 				onclick={() => scrollToDiv(section)}
 				class={`

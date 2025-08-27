@@ -3,15 +3,15 @@ import { get, writable, type Writable } from "svelte/store";
 export type Themes = "light" | "dark";
 
 const getInitialTheme = (): Themes => {
-  // SSR default
+	// SSR default
 	if (typeof window === "undefined") return "dark";
 
-  // check local storage
+	// check local storage
 	const lastUsedTheme = localStorage.getItem("theme");
 	if (lastUsedTheme && (lastUsedTheme === "dark" || lastUsedTheme === "light")) {
 		return lastUsedTheme;
 	}
-  // check system preference
+	// check system preference
 	const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 	return userPrefersDark ? "dark" : "light";
 };

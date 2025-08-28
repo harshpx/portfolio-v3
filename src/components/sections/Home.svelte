@@ -4,6 +4,8 @@
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { onMount } from "svelte";
 	import { readable } from "svelte/store";
+	import githubIconSvg from "$/assets/github.svg";
+	import linkedinIconSvg from "$/assets/linkedin.svg";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -56,7 +58,7 @@
 				class="flex items-center gap-2"
 			>
 				<svg
-					use:inlineSvg={"src/assets/github.svg"}
+					use:inlineSvg={githubIconSvg}
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}
@@ -76,7 +78,7 @@
 				class="flex items-center gap-2"
 			>
 				<svg
-					use:inlineSvg={"src/assets/linkedin.svg"}
+					use:inlineSvg={linkedinIconSvg}
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}

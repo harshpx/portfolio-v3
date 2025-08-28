@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { theme, toggleTheme } from "$/contexts/theme";
+	import sun from "$/assets/sun.svg";
+	import moon from "$/assets/moon.svg";
 </script>
 
 <button
@@ -13,14 +15,10 @@
 	"
 >
 	{#if $theme === "light"}
-		<svg
-			use:inlineSvg={"src/assets/sun.svg"}
-			class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
+		<svg use:inlineSvg={sun} class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
 		></svg>
 	{:else}
-		<svg
-			use:inlineSvg={"src/assets/moon.svg"}
-			class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
+		<svg use:inlineSvg={moon} class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
 		></svg>
 	{/if}
 </button>

@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { onMount } from "svelte";
 	let x = 0;
 	let y = 0;
+
+	let isMobile = useMediaQuery("(max-width: 640px)");
 
 	onMount(() => {
 		const handleMousePosition = (event: MouseEvent) => {
@@ -13,7 +16,7 @@
 	});
 </script>
 
-<div class="cursor-spotlight" style={`--x:${x}px; --y:${y}px`}></div>
+<div class={`${!$isMobile ? "cursor-spotlight" : ""}`} style={`--x:${x}px; --y:${y}px`}></div>
 
 <style>
 	.cursor-spotlight {

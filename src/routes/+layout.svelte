@@ -1,6 +1,6 @@
 <script lang="ts">
 	import "../app.css";
-	import logoIcon from "$/assets/favicon.svg";
+	import logoIcon from "$/assets/logo-light.png";
 	import CursorSpotlight from "$/components/CursorSpotlight.svelte";
 	let { children } = $props();
 </script>

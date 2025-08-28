@@ -2,7 +2,15 @@
 	import ThemeSwitch from "./ThemeSwitch.svelte";
 	import Logo from "./Logo.svelte";
 	import { onMount } from "svelte";
-	import { capitalizeFirstLetter, scrollToDiv, sections } from "$/utils/commons";
+	import { capitalizeFirstLetter, sections } from "$/utils/commons";
+
+	const scrollToDiv = (id: string) => {
+		document.getElementById(id)?.scrollIntoView({
+			behavior: "smooth",
+			block: "nearest",
+			inline: "center",
+		});
+	};
 
 	export let rootId: string | null = "homepage";
 	const sectionIds = sections;
@@ -42,8 +50,8 @@
 			<button
 				onclick={() => scrollToDiv(section)}
 				class={`
-        relative cursor-pointer font-poppins text-lg
-        font-light hover:opacity-60
+        relative cursor-pointer font-poppins text-sm font-light
+        hover:opacity-60 sm:text-lg 
         ${activeSection === section ? "text-black dark:text-[#86cae7]" : ""} 
       `}
 			>

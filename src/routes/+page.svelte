@@ -1,5 +1,11 @@
 <script lang="ts">
 	import Header from "$/components/Header.svelte";
+	import About from "$/components/sections/About.svelte";
+	import Home from "$/components/sections/Home.svelte";
+	import Projects from "$/components/sections/Projects.svelte";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
+
+	const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
 	let container: HTMLDivElement | null = null;
 	const handleScroll = (event: WheelEvent) => {
@@ -15,20 +21,39 @@
 </div>
 <div
 	bind:this={container}
-	onwheel={handleScroll}
+	onwheel={$isSmallScreen ? undefined : handleScroll}
 	id="homepage"
-	class="flex h-[calc(100vh-60px)] w-full gap-2 overflow-x-auto overflow-y-hidden px-4 pb-2"
+	class="
+		flex h-[calc(100vh-60px)] w-full flex-col
+		gap-2 overflow-x-hidden overflow-y-auto px-2 pb-2
+		sm:flex-row sm:overflow-x-auto sm:overflow-y-hidden
+	"
 >
 	<div
 		id="home"
-		class="h-full min-w-5xl shrink-0 rounded-2xl border-2 border-neutral-900 dark:border-[#d2eefa]"
-	></div>
+		class="
+			min-h-[60%] min-w-full shrink-0 rounded-2xl border-2 border-neutral-900
+    	sm:min-h-0 sm:min-w-full dark:border-[#d2eefa]
+		"
+	>
+		<Home />
+	</div>
 	<div
 		id="about"
-		class="h-full min-w-5xl shrink-0 rounded-2xl border-2 border-neutral-900 dark:border-[#d2eefa]"
-	></div>
+		class="
+			min-h-full min-w-full shrink-0 rounded-2xl border-2 border-neutral-900
+    	sm:min-h-0 sm:min-w-[90%] dark:border-[#d2eefa]
+		"
+	>
+		<About />
+	</div>
 	<div
 		id="projects"
-		class="h-full min-w-5xl shrink-0 rounded-2xl border-2 border-neutral-900 dark:border-[#d2eefa]"
-	></div>
+		class="
+			min-h-full min-w-full shrink-0 rounded-2xl border-2 border-neutral-900
+    	sm:min-h-0 sm:min-w-[90%] dark:border-[#d2eefa]
+		"
+	>
+		<Projects />
+	</div>
 </div>

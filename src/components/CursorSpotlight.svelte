@@ -24,7 +24,6 @@
 		position: fixed;
 		inset: 0;
 		z-index: 9999;
-
 		background: radial-gradient(
 			circle 400px at var(--x) var(--y),
 			rgba(0, 140, 255, 0.08),
@@ -34,7 +33,6 @@
 			rgba(0, 140, 255, 0.001) 120%,
 			transparent 100%
 		);
-
 		mix-blend-mode: screen;
 		transition: background 0.35s ease;
 	}

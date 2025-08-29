@@ -19,12 +19,12 @@
 	class={`
     flex w-full flex-col items-center
     justify-center gap-10 p-10 text-neutral-900 sm:h-[calc(100vh-70px)] sm:flex-row 
-    sm:justify-between sm:gap-2 sm:p-20 dark:text-[#d2eefa]
+    sm:justify-between sm:gap-4 sm:p-20 lg:justify-center lg:p-40 dark:text-[#d2eefa]
   `}
 >
 	<div
 		class={`
-			flex flex-col items-center justify-center transition-all duration-500 sm:mb-40 sm:w-[45%] sm:items-start 
+			flex flex-col items-center justify-center transition-all duration-500 sm:mb-40 sm:w-[40%] sm:items-start 
 			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translete-y-20 opacity-0 sm:-translate-x-20"}
 		`}
 	>
@@ -35,16 +35,21 @@
 			Full Stack Developer
 		</div>
 		<div
-			class="mt-4 text-center font-poppins text-sm font-extralight text-neutral-600 sm:mt-10 sm:text-left dark:text-[#d2eefab7]"
+			class="mt-4 text-center font-poppins text-sm font-extralight text-nowrap text-neutral-600 sm:mt-10 sm:text-left dark:text-[#d2eefab7]"
 		>
 			I build scalable, resiliant and beautiful apps
 		</div>
 		<div
 			class="mt-2 text-center font-poppins text-sm font-extralight text-neutral-600 sm:text-left dark:text-[#d2eefab7]"
 		>
-			Based in New Delhi, India
+			Based in <span class="underline">New Delhi, India</span>
 		</div>
-		<div class="mt-4 flex items-center justify-center gap-4 sm:mt-10">
+		<div
+			class={`
+			mt-4 flex items-center justify-center gap-4 transition-all duration-500 sm:mt-10
+			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
+		`}
+		>
 			<a
 				use:githubHoveredAction
 				href="https://www.github.com/harshpx"
@@ -98,19 +103,24 @@
 	{/if}
 	<div
 		class={`
-			flex justify-center transition-all duration-500 sm:mt-60 sm:w-[45%] sm:justify-end
+			flex justify-center transition-all duration-500 sm:mt-60 sm:w-[50%] sm:justify-end
 			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : " translate-y-20 opacity-0 sm:translate-x-20"}
 		`}
 	>
 		<p
-			class="w-9/10 text-center font-poppins text-sm leading-8 font-extralight sm:w-full sm:text-left lg:w-5/6 xl:w-3/4"
+			class="f
+				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-8 font-extralight sm:w-full
+				sm:text-justify lg:w-5/6 xl:w-3/4
+			"
 		>
-			I&apos;m a software developer who builds modern, scalable and reliable applications that merge
-			clean design with efficient engineering.
-			<br />
-			<br />
-			My work lies at the intersection of performance & design, creating experiences that are not only
-			performant but also visually appealing.
+			<span>
+				I&apos;m a software developer who builds modern, scalable and reliable applications that
+				merge clean design with efficient engineering.
+			</span>
+			<span class={$isMobile ? "hidden" : ""}>
+				My work lies at the intersection of performance & design, creating experiences that are not
+				only performant but also visually appealing.
+			</span>
 		</p>
 	</div>
 </div>

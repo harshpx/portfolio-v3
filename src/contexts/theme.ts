@@ -11,9 +11,11 @@ const getInitialTheme = (): Themes => {
 	if (lastUsedTheme && (lastUsedTheme === "dark" || lastUsedTheme === "light")) {
 		return lastUsedTheme;
 	}
-	// check system preference
-	const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-	return userPrefersDark ? "dark" : "light";
+	// // check system preference
+	// const userPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	// return userPrefersDark ? "dark" : "light";
+	// default to dark
+	return "dark";
 };
 
 export const theme: Writable<Themes> = writable(getInitialTheme());

@@ -8,9 +8,9 @@
 <button
 	onclick={toggleTheme}
 	class="
-		flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl bg-neutral-900
+		flex h-9 w-9 cursor-pointer items-center justify-center
+		rounded-xl bg-neutral-900
 		p-2 text-white
-		sm:h-9 sm:w-9
 		dark:bg-[#d2eefa] dark:text-black
 	"
 >

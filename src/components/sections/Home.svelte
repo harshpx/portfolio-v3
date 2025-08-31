@@ -19,7 +19,7 @@
 	class={`
     flex w-full flex-col items-center
     justify-center gap-10 p-10 text-neutral-900 sm:h-[calc(100vh-70px)] sm:flex-row 
-    sm:justify-between sm:gap-4 sm:p-20 lg:justify-center lg:p-40 dark:text-[#d2eefa]
+    sm:justify-between sm:gap-4 sm:p-20 lg:justify-center lg:p-32 xl:p-44 dark:text-[#d2eefa]
   `}
 >
 	<div
@@ -35,12 +35,20 @@
 			Full Stack Developer
 		</div>
 		<div
-			class="mt-4 text-center font-poppins text-sm font-extralight text-nowrap text-neutral-600 sm:mt-10 sm:text-left dark:text-[#d2eefab7]"
+			class={`
+				mt-4 text-center font-poppins text-sm font-extralight text-nowrap text-neutral-600 transition-all 
+				duration-500 sm:mt-10 sm:text-left sm:text-wrap dark:text-[#d2eefab7]
+				${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
+			`}
 		>
 			I build scalable, resiliant and beautiful apps
 		</div>
 		<div
-			class="mt-2 text-center font-poppins text-sm font-extralight text-neutral-600 sm:text-left dark:text-[#d2eefab7]"
+			class={`
+				mt-2 text-center font-poppins text-sm font-extralight text-neutral-600 
+				transition-all duration-500 sm:text-left dark:text-[#d2eefab7]
+				${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
+			`}
 		>
 			Based in <span class="underline">New Delhi, India</span>
 		</div>
@@ -60,7 +68,7 @@
 			>
 				<svg
 					use:inlineSvg={githubIconSvg}
-					class="h-5 w-5 stroke-2 text-neutral-900 dark:text-[#d2eefa]"
+					class="h-5 w-5 stroke-2 text-neutral-900 sm:stroke-1 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}
 					<span
@@ -80,7 +88,7 @@
 			>
 				<svg
 					use:inlineSvg={linkedinIconSvg}
-					class="h-5 w-5 stroke-2 text-neutral-900 dark:text-[#d2eefa]"
+					class="h-5 w-5 stroke-2 text-neutral-900 sm:stroke-1 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}
 					<span
@@ -117,7 +125,12 @@
 				I&apos;m a software developer who builds modern, scalable and reliable applications that
 				merge clean design with efficient engineering.
 			</span>
-			<span class={$isMobile ? "hidden" : ""}>
+			<span
+				class={`
+					hidden transition-all duration-500 sm:block
+					${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : " translate-y-20 opacity-0 sm:translate-x-20"}
+				`}
+			>
 				My work lies at the intersection of performance & design, creating experiences that are not
 				only performant but also visually appealing.
 			</span>

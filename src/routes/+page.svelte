@@ -10,7 +10,7 @@
 </div>
 <div
 	id="homepage"
-	class="flex h-[calc(100vh-60px)] w-full snap-y flex-col gap-2 overflow-y-auto px-2 pb-2"
+	class="flex h-[calc(100vh-60px)] w-full snap-y snap-proximity flex-col gap-2 overflow-y-auto scroll-smooth px-2 pb-2"
 >
 	<div id="home" class="flex h-full w-full shrink-0 snap-center items-center justify-center">
 		<Home />

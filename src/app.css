@@ -6,3 +6,8 @@
 @theme {
 	--font-poppins: "Poppins", sans-serif;
 }
+
+.overflow-y-auto {
+	-webkit-overflow-scrolling: touch;
+	overflow-y: auto;
+}

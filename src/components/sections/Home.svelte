@@ -123,7 +123,7 @@
 	>
 		<p
 			class="f
-				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-8 font-extralight sm:w-full
+				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-7 font-extralight sm:w-full
 				sm:text-justify lg:w-5/6 xl:w-3/4
 			"
 		>

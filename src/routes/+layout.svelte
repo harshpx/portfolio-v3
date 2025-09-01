@@ -9,7 +9,7 @@
 	<link rel="icon" href={logoIcon} />
 </svelte:head>
 
-<div class="flex h-screen w-full flex-col overflow-hidden">
+<div class="flex h-screen w-screen flex-col overflow-hidden">
 	{@render children?.()}
 </div>
 <CursorSpotlight />

@@ -15,10 +15,8 @@
 	"
 >
 	{#if $theme === "light"}
-		<svg use:inlineSvg={sun} class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
-		></svg>
+		<svg use:inlineSvg={sun} class="stroke-3 text-[#d2eefa] dark:text-neutral-900"></svg>
 	{:else}
-		<svg use:inlineSvg={moon} class="stroke-3 text-[#d2eefa] sm:stroke-2 dark:text-neutral-900"
-		></svg>
+		<svg use:inlineSvg={moon} class="stroke-3 text-[#d2eefa] dark:text-neutral-900"></svg>
 	{/if}
 </button>

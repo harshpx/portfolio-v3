@@ -7,7 +7,7 @@
 	const scrollToDiv = (id: string) => {
 		document.getElementById(id)?.scrollIntoView({
 			behavior: "smooth",
-			block: "nearest",
+			block: "start",
 			inline: "center",
 		});
 	};
@@ -36,7 +36,7 @@
 			},
 			{
 				root,
-				threshold: [0.7],
+				threshold: [0.3],
 			},
 		);
 		targets.forEach((t) => observer.observe(t));

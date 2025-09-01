@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { theme, toggleTheme } from "$/contexts/theme";
-	import sun from "$/assets/sun.svg";
-	import moon from "$/assets/moon.svg";
+	import sun from "$/assets/icons/sun.svg";
+	import moon from "$/assets/icons/moon.svg";
 </script>
 
 <button

@@ -10,15 +10,15 @@
 </div>
 <div
 	id="homepage"
-	class="flex h-[calc(100vh-60px)] w-full flex-col gap-2 overflow-y-auto px-2 pb-2 sm:snap-y sm:snap-proximity sm:scroll-smooth"
+	class="flex h-[calc(100vh-60px)] w-full flex-col gap-2 overflow-x-auto overflow-y-auto px-2 pb-2"
 >
-	<div id="home" class="flex h-full w-full shrink-0 items-center justify-center sm:snap-center">
+	<div id="home" class="flex h-full w-full shrink-0 items-center justify-center">
 		<Home />
 	</div>
-	<div id="about" class="min-h-full w-full shrink-0 sm:snap-center">
+	<div id="about" class="min-h-full w-full shrink-0">
 		<About />
 	</div>
-	<div id="projects" class="min-h-full w-full shrink-0 sm:snap-center">
+	<div id="projects" class="min-h-full w-full shrink-0">
 		<Projects />
 	</div>
 </div>

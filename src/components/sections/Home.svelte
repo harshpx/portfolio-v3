@@ -2,8 +2,8 @@
 	import { useHover } from "$/reactive-methods/useHover";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { inlineSvg } from "@svelte-put/inline-svg";
-	import githubIconSvg from "$/assets/github.svg";
-	import linkedinIconSvg from "$/assets/linkedin.svg";
+	import githubIconSvg from "$/assets/icons/github.svg";
+	import linkedinIconSvg from "$/assets/icons/linkedin.svg";
 	import { useInView } from "$/reactive-methods/useInView";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
@@ -11,7 +11,7 @@
 	const [gitHubHovered, githubHoveredAction] = useHover();
 	const [linkedinHovered, linkedinHoveredAction] = useHover();
 
-	const [inView, inViewAction] = useInView({ threshold: 1 });
+	const [inView, inViewAction] = useInView({ entry: 0.6, exit: 0.2 });
 </script>
 
 <div
@@ -64,11 +64,14 @@
 				aria-label="github"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="flex items-center gap-2"
+				class={`
+					flex items-center ${$gitHubHovered ? "gap-2" : "gap-0"} 
+					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
+				`}
 			>
 				<svg
 					use:inlineSvg={githubIconSvg}
-					class="h-5 w-5 stroke-2 text-neutral-900 sm:stroke-1 dark:text-[#d2eefa]"
+					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}
 					<span
@@ -84,11 +87,14 @@
 				aria-label="linkedin"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="flex items-center gap-2"
+				class={`
+					flex items-center ${$linkedinHovered ? "gap-2" : "gap-0"} 
+					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
+				`}
 			>
 				<svg
 					use:inlineSvg={linkedinIconSvg}
-					class="h-5 w-5 stroke-2 text-neutral-900 sm:stroke-1 dark:text-[#d2eefa]"
+					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				{#if !$isMobile}
 					<span
@@ -127,7 +133,7 @@
 			</span>
 			<span
 				class={`
-					hidden transition-all duration-500 sm:block
+					hidden transition-transform duration-500 sm:block
 					${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : " translate-y-20 opacity-0 sm:translate-x-20"}
 				`}
 			>

@@ -56,7 +56,7 @@
 		</div>
 		<div
 			class={`
-			mt-10 flex items-center justify-center gap-2 transition-all duration-500 sm:mt-10 sm:gap-4
+			mt-10 flex items-center justify-center gap-1 transition-all duration-500 sm:mt-10 sm:gap-4
 			${$inView ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
 		`}
 		>
@@ -76,7 +76,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight transition-transform duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
+					class={`overflow-hidden text-sm font-extralight sm:transition-transform sm:duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
 				>
 					GitHub
 				</span>
@@ -97,7 +97,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight transition-transform duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+					class={`overflow-hidden text-sm font-extralight sm:transition-transform sm:duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
 				>
 					Linkedin
 				</span>
@@ -118,7 +118,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$resumeHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+					class={`overflow-hidden text-sm font-extralight sm:transition-transform sm:duration-200 ${$resumeHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
 				>
 					Resume
 				</span>

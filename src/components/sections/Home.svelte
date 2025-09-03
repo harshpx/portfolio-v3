@@ -4,14 +4,16 @@
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import githubIconSvg from "$/assets/icons/github.svg";
 	import linkedinIconSvg from "$/assets/icons/linkedin.svg";
+	import fileIconSvg from "$/assets/icons/file.svg";
 	import { useInView } from "$/reactive-methods/useInView";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
 	const [gitHubHovered, githubHoveredAction] = useHover();
 	const [linkedinHovered, linkedinHoveredAction] = useHover();
+	const [resumeHovered, resumeHoveredAction] = useHover();
 
-	const [inView, inViewAction] = useInView({ entry: 0.6, exit: 0.2 });
+	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });
 </script>
 
 <div
@@ -25,7 +27,7 @@
 	<div
 		class={`
 			flex flex-col items-center justify-center transition-all duration-500 sm:mb-40 sm:w-[40%] sm:items-start 
-			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translete-y-20 opacity-0 sm:-translate-x-20"}
+			${$inView ? "translate-x-0 translate-y-0 opacity-100" : "-translate-y-40 opacity-0 sm:-translate-x-40"}
 		`}
 	>
 		<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">
@@ -54,8 +56,8 @@
 		</div>
 		<div
 			class={`
-			mt-4 flex items-center justify-center gap-4 transition-all duration-500 sm:mt-10
-			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
+			mt-10 flex items-center justify-center gap-2 transition-all duration-500 sm:mt-10 sm:gap-4
+			${$inView ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
 		`}
 		>
 			<a
@@ -65,7 +67,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class={`
-					flex items-center ${$gitHubHovered ? "gap-2" : "gap-0"} 
+					flex items-center ${$gitHubHovered || $isMobile ? "gap-2" : "gap-0"} 
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
 				`}
 			>
@@ -73,13 +75,11 @@
 					use:inlineSvg={githubIconSvg}
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
-				{#if !$isMobile}
-					<span
-						class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$gitHubHovered ? "w-[45px]" : "w-[0px]"}`}
-					>
-						GitHub
-					</span>
-				{/if}
+				<span
+					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
+				>
+					GitHub
+				</span>
 			</a>
 			<a
 				use:linkedinHoveredAction
@@ -88,7 +88,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				class={`
-					flex items-center ${$linkedinHovered ? "gap-2" : "gap-0"} 
+					flex items-center ${$linkedinHovered || $isMobile ? "gap-2" : "gap-0"} 
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
 				`}
 			>
@@ -96,13 +96,32 @@
 					use:inlineSvg={linkedinIconSvg}
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
-				{#if !$isMobile}
-					<span
-						class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$linkedinHovered ? "w-[55px]" : "w-[0px]"}`}
-					>
-						Linkedin
-					</span>
-				{/if}
+				<span
+					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+				>
+					Linkedin
+				</span>
+			</a>
+			<a
+				use:resumeHoveredAction
+				href="/resume.pdf"
+				target="_self"
+				aria-label="github"
+				rel="noopener noreferrer"
+				class={`
+					flex items-center ${$resumeHovered || $isMobile ? "gap-2" : "gap-0"} 
+					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
+				`}
+			>
+				<svg
+					use:inlineSvg={fileIconSvg}
+					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
+				></svg>
+				<span
+					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$resumeHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+				>
+					Resume
+				</span>
 			</a>
 		</div>
 	</div>
@@ -118,7 +137,7 @@
 	<div
 		class={`
 			flex justify-center transition-all duration-500 sm:mt-60 sm:w-[50%] sm:justify-end
-			${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : " translate-y-20 opacity-0 sm:translate-x-20"}
+			${$inView ? "translate-x-0 translate-y-0 opacity-100" : "translate-y-40 opacity-0 sm:translate-x-40"}
 		`}
 	>
 		<p
@@ -134,7 +153,7 @@
 			<span
 				class={`
 					hidden transition-transform duration-500 sm:block
-					${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : " translate-y-20 opacity-0 sm:translate-x-20"}
+					${$inView ? "translate-x-0 translate-y-0 opacity-100" : "translate-x-40 translate-y-40 opacity-0"}
 				`}
 			>
 				My work lies at the intersection of performance & design, creating experiences that are not

@@ -26,7 +26,7 @@
 		z-index: 9999;
 		background: radial-gradient(
 			circle 600px at var(--x) var(--y),
-			rgba(0, 140, 255, 0.15),
+			rgba(0, 140, 255, 0.1),
 			rgba(0, 140, 255, 0.02) 60%,
 			rgba(0, 140, 255, 0.005) 90%,
 			rgba(0, 140, 255, 0.002) 95%,

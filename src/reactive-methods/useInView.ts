@@ -1,7 +1,13 @@
-import { writable } from "svelte/store";
+import { writable, type Writable } from "svelte/store";
 
-export const useInView = ({ entry = 0.5, exit = 0.1 }: { entry?: number; exit?: number } = {}) => {
-	const inView = writable(false);
+export type InViewAction = (node: HTMLElement) => { destroy: () => void } | void;
+type InputParams = { entry?: number; exit?: number };
+
+export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
+	Writable<boolean>,
+	InViewAction,
+] => {
+	const inView: Writable<boolean> = writable(false);
 
 	const inViewAction = (node: HTMLElement) => {
 		if (typeof IntersectionObserver === "undefined") {
@@ -35,7 +41,7 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: { entry?: number; exit?: 
 		};
 	};
 
-	return [inView, inViewAction] as const;
+	return [inView, inViewAction];
 };
 
 const buildThresholdList = (entry: number, exit: number) => {

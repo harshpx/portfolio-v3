@@ -76,7 +76,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
+					class={`overflow-hidden text-sm font-extralight transition-transform duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
 				>
 					GitHub
 				</span>
@@ -97,7 +97,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight transition-all duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+					class={`overflow-hidden text-sm font-extralight transition-transform duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
 				>
 					Linkedin
 				</span>

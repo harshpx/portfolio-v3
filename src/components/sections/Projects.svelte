@@ -51,7 +51,7 @@
 			platforms: ["Web"],
 			description: `
 				Codeboxes is an online code editor with a Next.js + Tailwind CSS frontend 
-				and a Spring Boot REST API (Maturity level 2), secured with JWT authentication. 
+				and a Spring-Boot REST API (Maturity level 2), secured with JWT authentication. 
 				Code execution is handled by a Docker-based microservice, 
 				with Eureka providing service discovery and an API Gateway managing routing and load balancing for reliable performance.
 			`,
@@ -59,7 +59,7 @@
 			lightImageUrl: codeboxesLight,
 			techLabels: [
 				"Java",
-				"Spring Boot",
+				"Spring-Boot",
 				"JWT",
 				"MongoDB",
 				"Microservices",

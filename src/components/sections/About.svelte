@@ -7,18 +7,33 @@
 
 	const [aboutInView, aboutInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
-	const [expLabelInView, expLabelInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [expLineInView, expLineInViewAction] = useInView({ entry: 0.2, exit: 0.1 });
+	const [expLabelInView, expLabelInViewAction] = useInView({
+		entry: 0.4,
+		exit: 0.1,
+	});
+	const [expLineInView, expLineInViewAction] = useInView({
+		entry: 0.2,
+		exit: 0.1,
+	});
 	const [exp1InView, exp1InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [exp2InView, exp2InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
-	const [edLabelInView, edLabelInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [edLineInView, edLineInViewAction] = useInView({ entry: 0.1, exit: 0.1 });
+	const [edLabelInView, edLabelInViewAction] = useInView({
+		entry: 0.4,
+		exit: 0.1,
+	});
+	const [edLineInView, edLineInViewAction] = useInView({
+		entry: 0.1,
+		exit: 0.1,
+	});
 	const [ed1InView, ed1InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [ed2InView, ed2InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
 	const [resumeHovered, resumeHoveredAction] = useHover();
-	const [resumeInView, resumeInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [resumeInView, resumeInViewAction] = useInView({
+		entry: 0.4,
+		exit: 0.1,
+	});
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
@@ -32,10 +47,11 @@
 	>
 		<div class="text-left text-4xl font-[300] transition-transform duration-500">About me</div>
 		<div class="text-justify text-[14px] font-extralight opacity-75">
-			Currently, I'm a Software Engineer at Tata Consultancy services, specializing in Full-Stack. I
-			contribute to the creation and maintenance of payment applications, ensuring security,
-			availability and ease of use of web applications. Following industry standards and best
-			practices to deliver an inclusive user experience.
+			Currently, I'm a Software Engineer at <span class="text-cyan-800 underline dark:text-cyan-400"
+				>Tata Consultancy services &lpar;TCS&rpar;</span
+			>, specializing in Full-Stack. I contribute to the creation and maintenance of payment
+			applications, ensuring security, availability and ease of use of web applications. Following
+			industry standards and best practices to deliver an inclusive user experience.
 		</div>
 	</div>
 	<!-- Experience & education div -->
@@ -115,7 +131,7 @@
 							<p class="text-2xl">Frontend Developer</p>
 							<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
 								<p class="text-md font-extralight">Aulacube Technologies</p>
-								<p class="text-sm font-extralight">&lpar;Mar 2024 - Jul 2024&rpar;</p>
+								<p class="text-sm font-extralight">&lpar;March 2024 - July 2024&rpar;</p>
 							</div>
 							<p class="mt-1 text-sm font-extralight italic">Internship</p>
 						</div>
@@ -239,7 +255,7 @@
 			use:inlineSvg={arrowUpRight}
 			class={`
 				h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa]
-				${$resumeHovered ? "translate-x-1 -translate-y-1 stroke-3" : "stroke-2"}
+				${$resumeHovered ? "stroke-3 sm:translate-x-1 sm:-translate-y-1" : "stroke-3 sm:stroke-2"}
 			`}
 		/>
 	</a>

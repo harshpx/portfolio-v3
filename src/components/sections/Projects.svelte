@@ -11,6 +11,7 @@
 	import type { ProjectDataType } from "../Project.svelte";
 
 	const [stackInView, stackInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [projectsInView, projectsInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
 	const techLabels = [
 		"Java",
@@ -187,7 +188,15 @@
 	</div>
 	<!-- projects -->
 	<div class="flex flex-col gap-4">
-		<div class="text-left text-4xl font-[300] transition-transform duration-500">Projects</div>
+		<div
+			use:projectsInViewAction
+			class={`
+			text-left text-4xl font-[300] transition-transform duration-500
+			${$projectsInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+		`}
+		>
+			Projects
+		</div>
 		<div class="flex flex-col gap-4">
 			{#each projectData as project, i (project.title)}
 				<Project key={i} data={project} />

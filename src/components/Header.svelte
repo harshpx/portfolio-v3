@@ -3,6 +3,7 @@
 	import Logo from "./Logo.svelte";
 	import { onMount } from "svelte";
 	import { capitalizeFirstLetter } from "$/utils/commons";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
 	const scrollToDiv = (id: string) => {
 		document.getElementById(id)?.scrollIntoView({
@@ -11,6 +12,8 @@
 			inline: "center",
 		});
 	};
+
+	const isMobile = useMediaQuery("(max-width: 640px)");
 
 	export const sections: string[] = ["home", "about", "projects"];
 	export let rootId: string | null = "homepage";
@@ -32,11 +35,12 @@
 
 				if (visible) {
 					activeSection = (visible.target as HTMLElement).id;
+					console.log("Active section:", activeSection);
 				}
 			},
 			{
 				root,
-				threshold: [0.3],
+				threshold: [$isMobile ? 0.2 : 0.3],
 			},
 		);
 		targets.forEach((t) => observer.observe(t));

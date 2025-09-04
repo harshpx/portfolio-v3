@@ -52,7 +52,7 @@
 				${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
 			`}
 		>
-			Based in <span class="text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
+			Based in <span class="font-[400] text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 		</div>
 		<div
 			class={`
@@ -175,7 +175,7 @@
 	{#if $isMobile}
 		<div
 			class={`
-				mt-20 w-full text-center font-poppins text-[13px] font-extralight text-neutral-900/70 
+				w-9/10 text-center font-poppins text-[12px] font-extralight text-neutral-900/70 
 				transition-transform duration-500 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70
 				${$inView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 			`}

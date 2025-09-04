@@ -47,9 +47,14 @@
 	>
 		<div class="text-left text-4xl font-[300] transition-transform duration-500">About me</div>
 		<div class="text-justify text-[14px] font-extralight opacity-75">
-			Currently, I'm a Software Engineer at <span class="text-cyan-800 underline dark:text-cyan-400"
-				>Tata Consultancy services &lpar;TCS&rpar;</span
-			>, specializing in Full-Stack. I contribute to the creation and maintenance of payment
+			Currently, I'm a Software Engineer at <a
+				href="https://www.tcs.com/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="text-cyan-800 underline underline-offset-2 dark:text-cyan-400"
+			>
+				Tata Consultancy services &lpar;TCS&rpar;
+			</a>, specializing in Full-Stack. I contribute to the creation and maintenance of payment
 			applications, ensuring security, availability and ease of use of web applications. Following
 			industry standards and best practices to deliver an inclusive user experience.
 		</div>

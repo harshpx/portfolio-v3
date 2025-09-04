@@ -19,7 +19,7 @@
 <div
 	use:inViewAction
 	class={`
-    flex w-full flex-col items-center
+    flex w-full grow flex-col items-center
     justify-center gap-10 p-10 text-neutral-900 sm:h-[calc(100vh-70px)] sm:flex-row 
     sm:justify-between sm:gap-4 sm:p-20 lg:justify-center lg:p-32 xl:p-44 dark:text-[#d2eefa]
   `}
@@ -52,7 +52,7 @@
 				${$inView ? "translate-y-0 opacity-100 sm:translate-x-0" : "-translate-y-10 opacity-0 sm:-translate-x-10"}
 			`}
 		>
-			Based in <span class="underline">New Delhi, India</span>
+			Based in <span class="text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 		</div>
 		<div
 			class={`
@@ -124,6 +124,17 @@
 				</span>
 			</a>
 		</div>
+		{#if !$isMobile}
+			<div
+				class="mt-10 w-full text-center text-[14px] font-extralight text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
+			>
+				This website is built with
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
+				and
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind CSS</span>, by yours
+				truly.
+			</div>
+		{/if}
 	</div>
 	{#if !$isMobile}
 		<div
@@ -141,7 +152,7 @@
 		`}
 	>
 		<p
-			class="f
+			class="
 				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-7 font-extralight sm:w-full
 				sm:text-justify lg:w-5/6 xl:w-3/4
 			"
@@ -161,4 +172,18 @@
 			</span>
 		</p>
 	</div>
+	{#if $isMobile}
+		<div
+			class={`
+				mt-20 w-full text-center font-poppins text-[13px] font-extralight text-neutral-900/70 
+				transition-transform duration-500 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70
+				${$inView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
+			`}
+		>
+			This website is built with
+			<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
+			and
+			<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>, by yours truly.
+		</div>
+	{/if}
 </div>

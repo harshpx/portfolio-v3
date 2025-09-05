@@ -35,7 +35,6 @@
 
 				if (visible) {
 					activeSection = (visible.target as HTMLElement).id;
-					console.log("Active section:", activeSection);
 				}
 			},
 			{

@@ -6,6 +6,7 @@
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useInView } from "$/reactive-methods/useInView";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
 	export type ProjectDataType = {
 		title: string;
@@ -26,15 +27,21 @@
 	};
 
 	let { key, data }: ProjectProps = $props();
+
+	const isMobile = useMediaQuery("(max-width: 640px)");
+
+	const [cardInView, cardInViewAction] = useInView({ entry: $isMobile ? 0.06 : 0.1, exit: 0.1 });
 	const [titleInView, titleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [contentInView, contentInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [linksInView, linksInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 </script>
 
 <div
+	use:cardInViewAction
 	class={`
     flex flex-col overflow-hidden rounded-2xl bg-neutral-900/10 shadow-lg transition-transform duration-500 dark:bg-white/5 dark:shadow-2xl
     ${key % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+		${$cardInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
   `}
 >
 	<!-- image -->
@@ -66,7 +73,7 @@
 		`}
 		>
 			<p class="text-[32px] leading-8 font-light">{data.title}</p>
-			<p class="text-lg leading-7 font-extralight italic">{data.subtitle ?? ""}</p>
+			<p class="text-lg leading-5 font-extralight italic">{data.subtitle ?? ""}</p>
 			<div class="mt-1 flex items-center gap-1">
 				{#each data.platforms as platform (platform)}
 					<div

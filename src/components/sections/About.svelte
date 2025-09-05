@@ -4,19 +4,22 @@
 	import TechLabel from "../TechLabel.svelte";
 	import arrowUpRight from "$/assets/icons/arrow-up-right.svg";
 	import { useHover } from "$/reactive-methods/useHover";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
-	const [aboutInView, aboutInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const isMobile = useMediaQuery("(max-width: 640px)");
+
+	const [aboutInView, aboutInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
 
 	const [expLabelInView, expLabelInViewAction] = useInView({
 		entry: 0.4,
 		exit: 0.1,
 	});
 	const [expLineInView, expLineInViewAction] = useInView({
-		entry: 0.2,
+		entry: 0.1,
 		exit: 0.1,
 	});
-	const [exp1InView, exp1InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [exp2InView, exp2InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [exp1InView, exp1InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [exp2InView, exp2InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
 
 	const [edLabelInView, edLabelInViewAction] = useInView({
 		entry: 0.4,
@@ -26,8 +29,8 @@
 		entry: 0.1,
 		exit: 0.1,
 	});
-	const [ed1InView, ed1InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [ed2InView, ed2InViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
 
 	const [resumeHovered, resumeHoveredAction] = useHover();
 	const [resumeInView, resumeInViewAction] = useInView({

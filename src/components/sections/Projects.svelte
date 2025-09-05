@@ -9,8 +9,10 @@
 	import weatherLight from "$/assets/images/weather-light.png";
 	import Project from "../Project.svelte";
 	import type { ProjectDataType } from "../Project.svelte";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
-	const [stackInView, stackInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const isMobile = useMediaQuery("(max-width: 640px)");
+	const [stackInView, stackInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 	const [projectsInView, projectsInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
 	const techLabels = [

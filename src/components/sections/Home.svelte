@@ -13,7 +13,7 @@
 	const [linkedinHovered, linkedinHoveredAction] = useHover();
 	const [resumeHovered, resumeHoveredAction] = useHover();
 
-	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });
+	const [inView, inViewAction] = useInView({ entry: 0.2, exit: 0.4 });
 </script>
 
 <div
@@ -173,17 +173,21 @@
 		</p>
 	</div>
 	{#if $isMobile}
-		<div
-			class={`
-				w-9/10 text-center font-poppins text-[12px] font-extralight text-neutral-900/70 
+		<div class="absolute bottom-5 left-0 flex w-full items-center justify-center">
+			<div
+				class={`
+				w-2/3 text-center font-poppins text-[10px] font-extralight text-neutral-900/70 
 				transition-transform duration-500 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70
 				${$inView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 			`}
-		>
-			This website is built with
-			<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
-			and
-			<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>, by yours truly.
+			>
+				This website is built with
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
+				and
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>,
+				<br /> hosted with
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
+			</div>
 		</div>
 	{/if}
 </div>

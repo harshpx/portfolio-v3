@@ -39,7 +39,7 @@
 			},
 			{
 				root,
-				threshold: [$isMobile ? 0.1 : 0.3],
+				threshold: [$isMobile ? 0.1 : 0.2],
 			},
 		);
 		targets.forEach((t) => observer.observe(t));

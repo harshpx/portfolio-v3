@@ -24,9 +24,10 @@
 	type ProjectProps = {
 		key: number;
 		data: ProjectDataType;
+		asListItem?: boolean;
 	};
 
-	let { key, data }: ProjectProps = $props();
+	let { key, data, asListItem = false }: ProjectProps = $props();
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -40,12 +41,17 @@
 	use:cardInViewAction
 	class={`
     flex flex-col overflow-hidden rounded-2xl bg-neutral-900/10 shadow-lg transition-transform duration-500 dark:bg-white/5 dark:shadow-2xl
-    ${key % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+    ${asListItem ? "" : key % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
 		${$cardInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
   `}
 >
 	<!-- image -->
-	<div class="h-[260px] w-full overflow-hidden sm:h-[500px] md:w-[60%] lg:h-[550px]">
+	<div
+		class={`
+			h-[260px] w-full overflow-hidden sm:h-[500px] lg:h-[550px] 
+			${asListItem ? "md:w-full" : "md:w-[60%]"}
+		`}
+	>
 		{#if $theme === "dark"}
 			<img
 				src={data.darkImageUrl}
@@ -62,7 +68,10 @@
 	</div>
 	<!-- content -->
 	<div
-		class="flex w-full flex-col justify-center gap-2 p-5 text-neutral-900 md:w-[40%] dark:text-[#d2eefa]"
+		class={`
+			flex w-full flex-col justify-center gap-2 p-5 text-neutral-900 dark:text-[#d2eefa]
+			${asListItem ? "md:w-full" : "md:w-[40%]"}
+		`}
 	>
 		<!-- title, subtitle, platforms -->
 		<div
@@ -106,7 +115,7 @@
 			{data.description}
 		</p>
 		<!-- tech stack -->
-		<div class="mt-0 flex flex-wrap gap-1">
+		<div class="mt-2 flex flex-wrap gap-1">
 			{#if data.techLabels}
 				{#each data.techLabels as label (label)}
 					<div>

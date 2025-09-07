@@ -129,10 +129,9 @@
 				class="mt-10 w-full text-center text-[14px] font-extralight text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
 			>
 				This website is built with
-				<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
-				and
-				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind CSS</span>, by yours
-				truly.
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span> &
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>, hosted with
+				<span class="font-[400] text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
 			</div>
 		{/if}
 	</div>

@@ -252,7 +252,7 @@
 		use:resumeInViewAction
 		class={`
 			flex w-fit cursor-pointer items-center gap-0.5
-			rounded-full bg-neutral-900/10 py-1.5 pr-2 pl-3 font-poppins
+			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
 			font-light transition-transform duration-500 dark:bg-[#d2eefa]/10
 			${$resumeInView ? "translate-x-0 opacity-100" : " translate-x-40 opacity-0"}
 		`}

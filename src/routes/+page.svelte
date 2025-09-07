@@ -1,17 +1,13 @@
 <script lang="ts">
 	import Footer from "$/components/Footer.svelte";
-	import Header from "$/components/Header.svelte";
 	import About from "$/components/sections/About.svelte";
 	import Home from "$/components/sections/Home.svelte";
 	import Projects from "$/components/sections/Projects.svelte";
 </script>
 
-<div class="h-[60px] w-full">
-	<Header />
-</div>
 <div
 	id="homepage"
-	class="flex h-[calc(100vh-60px)] w-full flex-col gap-2 overflow-x-hidden overflow-y-auto px-2 pb-2"
+	class="flex h-full w-full flex-col gap-2 overflow-x-hidden overflow-y-auto px-2 pb-2"
 >
 	<div id="home" class="relative flex h-full w-full shrink-0 flex-col items-center justify-center">
 		<Home />

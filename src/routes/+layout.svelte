@@ -12,10 +12,10 @@
 </svelte:head>
 
 <div class="flex h-screen w-screen flex-col overflow-hidden">
-	<div id="header" class="min-h-[60px] w-full border-white">
+	<div id="header" class="min-h-[60px] w-full">
 		<Header />
 	</div>
-	<div id="content" class="max-h-[calc(100vh-60px)] w-full border-white">
+	<div id="content" class="flex max-h-[calc(100vh-60px)] w-full flex-col">
 		{@render children?.()}
 	</div>
 </div>

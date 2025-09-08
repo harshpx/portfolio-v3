@@ -44,14 +44,7 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
 	return [inView, inViewAction];
 };
 
-const buildThresholdList = (entry: number, exit: number) => {
-	// ensure both entry & exit are included
-	const steps = 20; // granularity
-	const thresholds = [];
-	for (let i = 0; i <= steps; i++) {
-		thresholds.push(i / steps);
-	}
-	if (!thresholds.includes(entry)) thresholds.push(entry);
-	if (!thresholds.includes(exit)) thresholds.push(exit);
-	return thresholds.sort((a, b) => a - b);
+const buildThresholdList = (entry: number, exit: number): number[] => {
+	const thresholds = [0, exit, entry, 1];
+	return Array.from(new Set(thresholds)).sort((a, b) => a - b);
 };

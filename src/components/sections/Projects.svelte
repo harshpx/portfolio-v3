@@ -64,7 +64,7 @@
 		<div class="flex flex-wrap gap-1">
 			{#each techLabels as label (label)}
 				<div>
-					<TechLabel animate className="text-[14px] px-3 py-2" name={label} />
+					<TechLabel className="text-[14px] px-3 py-2" name={label} />
 				</div>
 			{/each}
 		</div>

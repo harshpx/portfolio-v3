@@ -15,7 +15,7 @@
 		description: string;
 		darkImageUrl: string;
 		lightImageUrl?: string;
-		techLabels?: string[];
+		techLabels: string[];
 		repoUrls?: string[];
 		liveUrl?: string;
 		downloadUrl?: string;
@@ -34,6 +34,7 @@
 	const [cardInView, cardInViewAction] = useInView({ entry: $isMobile ? 0.06 : 0.1, exit: 0.1 });
 	const [titleInView, titleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [contentInView, contentInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [techInView, techInViewAction] = useInView({ entry: 0.1, exit: 0.1 });
 	const [linksInView, linksInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 </script>
 
@@ -115,14 +116,15 @@
 			{data.description}
 		</p>
 		<!-- tech stack -->
-		<div class="mt-2 flex flex-wrap gap-1">
-			{#if data.techLabels}
-				{#each data.techLabels as label (label)}
-					<div>
-						<TechLabel animate className="sm:text-[13px]" name={label} />
-					</div>
-				{/each}
-			{/if}
+		<div
+			use:techInViewAction
+			class={`mt-2 flex flex-wrap gap-1 transition-transform duration-500 ${$techInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}`}
+		>
+			{#each data.techLabels as label (label)}
+				<div>
+					<TechLabel className="sm:text-[13px]" name={label} />
+				</div>
+			{/each}
 		</div>
 		<!-- links -->
 		<div

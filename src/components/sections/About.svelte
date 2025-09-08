@@ -112,16 +112,16 @@
 							performance by lazy loading, caching and efficient state handling.
 						</p>
 						<div class="flex flex-wrap gap-1">
-							<TechLabel animate name="Java" />
-							<TechLabel animate name="Spring Boot" />
-							<TechLabel animate name="REST APIs" />
-							<TechLabel animate name="JPA" />
-							<TechLabel animate name="SQL" />
-							<TechLabel animate name="Microservices" />
-							<TechLabel animate name="JavaScript" />
-							<TechLabel animate name="React.js" />
-							<TechLabel animate name="Lit-Element" />
-							<TechLabel animate name="Git" />
+							<TechLabel name="Java" />
+							<TechLabel name="Spring Boot" />
+							<TechLabel name="REST APIs" />
+							<TechLabel name="JPA" />
+							<TechLabel name="SQL" />
+							<TechLabel name="Microservices" />
+							<TechLabel name="JavaScript" />
+							<TechLabel name="React.js" />
+							<TechLabel name="Lit-Element" />
+							<TechLabel name="Git" />
 						</div>
 					</div>
 				</div>
@@ -150,14 +150,14 @@
 							experience across devices.
 						</p>
 						<div class="flex flex-wrap gap-1">
-							<TechLabel animate name="JavaScript" />
-							<TechLabel animate name="React.js" />
-							<TechLabel animate name="React Native" />
-							<TechLabel animate name="Zustand" />
-							<TechLabel animate name="Context" />
-							<TechLabel animate name="Tailwind CSS" />
-							<TechLabel animate name="Ant Design" />
-							<TechLabel animate name="Git" />
+							<TechLabel name="JavaScript" />
+							<TechLabel name="React.js" />
+							<TechLabel name="React Native" />
+							<TechLabel name="Zustand" />
+							<TechLabel name="Context" />
+							<TechLabel name="Tailwind CSS" />
+							<TechLabel name="Ant Design" />
+							<TechLabel name="Git" />
 						</div>
 					</div>
 				</div>
@@ -207,15 +207,15 @@
 							<p class="mt-4 text-[13px] font-extralight">&lpar;2020 - 2024&rpar;</p>
 						</div>
 						<div class="mt-1 flex flex-wrap gap-1">
-							<TechLabel animate name="Data Structures" />
-							<TechLabel animate name="Algorithms" />
-							<TechLabel animate name="DBMS" />
-							<TechLabel animate name="Operating Systems" />
-							<TechLabel animate name="Machine Learning" />
-							<TechLabel animate name="Web Development" />
-							<TechLabel animate name="C++" />
-							<TechLabel animate name="Java" />
-							<TechLabel animate name="JavaScript" />
+							<TechLabel name="Data Structures" />
+							<TechLabel name="Algorithms" />
+							<TechLabel name="DBMS" />
+							<TechLabel name="Operating Systems" />
+							<TechLabel name="Machine Learning" />
+							<TechLabel name="Web Development" />
+							<TechLabel name="C++" />
+							<TechLabel name="Java" />
+							<TechLabel name="JavaScript" />
 						</div>
 					</div>
 				</div>
@@ -237,10 +237,10 @@
 							<p class="mt-4 text-[13px] font-extralight">&lpar;2018 - 2019&rpar;</p>
 						</div>
 						<div class="mt-1 flex flex-wrap gap-1">
-							<TechLabel animate name="Physics" />
-							<TechLabel animate name="Chemistry" />
-							<TechLabel animate name="Mathematics" />
-							<TechLabel animate name="English" />
+							<TechLabel name="Physics" />
+							<TechLabel name="Chemistry" />
+							<TechLabel name="Mathematics" />
+							<TechLabel name="English" />
 						</div>
 					</div>
 				</div>

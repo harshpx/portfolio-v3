@@ -45,6 +45,6 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
 };
 
 const buildThresholdList = (entry: number, exit: number): number[] => {
-	const thresholds = [0, exit, entry, 1];
+	const thresholds = [exit, entry];
 	return Array.from(new Set(thresholds)).sort((a, b) => a - b);
 };

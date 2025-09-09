@@ -5,6 +5,7 @@
 	import { useHover } from "$/reactive-methods/useHover";
 
 	const [resumeHovered, resumeHoveredAction] = useHover();
+	// added comment
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">

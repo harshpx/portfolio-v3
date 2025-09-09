@@ -6,6 +6,7 @@
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useInView } from "$/reactive-methods/useInView";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
 	export type ProjectDataType = {
 		title: string;
@@ -28,11 +29,12 @@
 
 	let { key, data, asListItem = false }: ProjectProps = $props();
 
-	const [cardInView, cardInViewAction] = useInView({ entry: 0.1, exit: 0.1 });
-	const [titleInView, titleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [contentInView, contentInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [techInView, techInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [linksInView, linksInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const isMobile = useMediaQuery("(max-width: 640px)");
+
+	const [cardInView, cardInViewAction] = useInView({
+		entry: $isMobile ? 0.1 : 0.2,
+		exit: $isMobile ? 0.05 : 0.1,
+	});
 </script>
 
 <div
@@ -73,10 +75,9 @@
 	>
 		<!-- title, subtitle, platforms -->
 		<div
-			use:titleInViewAction
 			class={`
-			flex flex-col gap-0 transition-transform duration-500
-			${$titleInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
+			flex flex-col gap-0 transition-transform duration-[550ms]
+			${$cardInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			<p class="text-[32px] leading-8 font-light">{data.title}</p>
@@ -104,18 +105,16 @@
 		</div>
 		<!-- description -->
 		<p
-			use:contentInViewAction
 			class={`
-			mt-2 text-justify text-[12px] font-extralight transition-transform duration-500 sm:text-[13px]
-			${$contentInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
+			mt-2 text-justify text-[12px] font-extralight transition-transform duration-[600ms] sm:text-[13px]
+			${$cardInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			{data.description}
 		</p>
 		<!-- tech stack -->
 		<div
-			use:techInViewAction
-			class={`mt-2 flex flex-wrap gap-1 transition-transform duration-500 ${$techInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}`}
+			class={`mt-2 flex flex-wrap gap-1 transition-transform duration-[650ms] ${$cardInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}`}
 		>
 			{#each data.techLabels as label (label)}
 				<div>
@@ -125,10 +124,9 @@
 		</div>
 		<!-- links -->
 		<div
-			use:linksInViewAction
 			class={`
-			mt-3 flex flex-col gap-1 text-[13px] font-extralight transition-transform duration-500
-			${$linksInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
+			mt-3 flex flex-col gap-1 text-[13px] font-extralight transition-transform duration-[700ms]
+			${$cardInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			<!-- live url -->

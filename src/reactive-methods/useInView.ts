@@ -47,11 +47,11 @@ const createObserver = () => {
 				}
 			});
 		},
-		{ threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] },
+		{ threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 1] },
 	);
 };
 
-export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
+export const useInView = ({ entry = 0.2, exit = 0.1 }: InputParams = {}): [
 	Writable<boolean>,
 	InViewAction,
 ] => {

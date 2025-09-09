@@ -7,7 +7,7 @@
 	import { useInView } from "$/reactive-methods/useInView";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
-	const [inView, inViewAction] = useInView({ entry: 0.2, exit: 0.2 });
+	const [inView, inViewAction] = useInView({ entry: 0.2, exit: 0.1 });
 </script>
 
 <div

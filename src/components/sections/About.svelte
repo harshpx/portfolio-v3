@@ -9,26 +9,15 @@
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
 	const [aboutInView, aboutInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-
-	const [expLabelInView, expLabelInViewAction] = useInView({
-		entry: 0.4,
-		exit: 0.1,
+	const [expInView, expInViewAction] = useInView({
+		entry: $isMobile ? 0.1 : 0.2,
+		exit: $isMobile ? 0.05 : 0.1,
 	});
-	const [exp1InView, exp1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-	const [exp2InView, exp2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-
-	const [edLabelInView, edLabelInViewAction] = useInView({
-		entry: 0.4,
-		exit: 0.1,
+	const [edInView, edInViewAction] = useInView({
+		entry: $isMobile ? 0.1 : 0.2,
+		exit: $isMobile ? 0.01 : 0.05,
 	});
-	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-
 	const [resumeHovered, resumeHoveredAction] = useHover();
-	const [resumeInView, resumeInViewAction] = useInView({
-		entry: 0.4,
-		exit: 0.1,
-	});
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
@@ -59,19 +48,18 @@
 		<!-- Experience section -->
 		<div class="flex w-full shrink-0 flex-col gap-4 sm:w-[48%]">
 			<div
-				use:expLabelInViewAction
 				class={`
-					text-left text-4xl font-[300] transition-transform duration-500 
-					${$expLabelInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+					text-left text-4xl font-[300] transition-transform duration-[450ms] 
+					${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 				`}
 			>
 				Experience
 			</div>
-			<div class="relative flex flex-col gap-4">
+			<div use:expInViewAction class="relative flex flex-col gap-4">
 				<div
 					class={`
 						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500 
-						${$exp1InView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
+						${$expInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 					`}
 				>
 					<div
@@ -80,10 +68,9 @@
 				</div>
 				<!-- TCS -->
 				<div
-					use:exp1InViewAction
 					class={`
 						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$exp1InView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+						${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 					`}
 				>
 					<div class="text-3xl leading-7">&bull;</div>
@@ -118,10 +105,9 @@
 				</div>
 				<!-- Aulacube -->
 				<div
-					use:exp2InViewAction
 					class={`
-						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$exp2InView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5
+						${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 					`}
 				>
 					<div class="text-3xl leading-7">&bull;</div>
@@ -157,19 +143,18 @@
 		<!-- Education -->
 		<div class="flex w-full shrink-0 flex-col gap-4 sm:w-[48%]">
 			<div
-				use:edLabelInViewAction
 				class={`
-					text-left text-4xl font-[300] transition-transform duration-500
-					${$edLabelInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+					text-left text-4xl font-[300] transition-transform duration-[450ms]
+					${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 				`}
 			>
 				Education
 			</div>
-			<div class="relative flex flex-col gap-4">
+			<div use:edInViewAction class="relative flex flex-col gap-4">
 				<div
 					class={`
 						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500
-						${$ed1InView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
+						${$edInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 					`}
 				>
 					<div
@@ -178,10 +163,9 @@
 				</div>
 				<!-- NSUT -->
 				<div
-					use:ed1InViewAction
 					class={`
 						trnsition-transform flex gap-4 rounded-2xl px-4 py-2 duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$ed1InView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+						${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 					`}
 				>
 					<div class="text-3xl leading-7">&bull;</div>
@@ -211,10 +195,9 @@
 				</div>
 				<!-- 12th -->
 				<div
-					use:ed2InViewAction
 					class={`
-						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$ed2InView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5
+						${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 					`}
 				>
 					<div class="text-3xl leading-7">&bull;</div>
@@ -239,12 +222,11 @@
 	</div>
 	<a
 		use:resumeHoveredAction
-		use:resumeInViewAction
 		class={`
 			flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
-			font-light transition-transform duration-500 dark:bg-[#d2eefa]/10
-			${$resumeInView ? "translate-x-0 opacity-100" : " translate-x-40 opacity-0"}
+			font-light transition-transform duration-700 dark:bg-[#d2eefa]/10
+			${$edInView ? "translate-x-0 opacity-100" : " translate-x-40 opacity-0"}
 		`}
 		href="/resume.pdf"
 	>

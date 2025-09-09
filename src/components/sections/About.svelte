@@ -1,33 +1,16 @@
 <script lang="ts">
-	import { useInView } from "$/reactive-methods/useInView";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import TechLabel from "../TechLabel.svelte";
 	import arrowUpRight from "$/assets/icons/arrow-up-right.svg";
 	import { useHover } from "$/reactive-methods/useHover";
-	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
-	const isMobile = useMediaQuery("(max-width: 640px)");
-
-	const [aboutInView, aboutInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-	const [expInView, expInViewAction] = useInView({
-		entry: $isMobile ? 0.1 : 0.2,
-		exit: $isMobile ? 0.05 : 0.1,
-	});
-	const [edInView, edInViewAction] = useInView({
-		entry: $isMobile ? 0.1 : 0.2,
-		exit: $isMobile ? 0.01 : 0.05,
-	});
 	const [resumeHovered, resumeHoveredAction] = useHover();
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
 	<!-- About me div -->
 	<div
-		use:aboutInViewAction
-		class={`
-			flex w-full flex-col gap-2 transition-transform duration-500 sm:w-5/6 lg:w-2/3 xl:w-1/2 
-			${$aboutInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-		`}
+		class="flex w-full flex-col gap-2 transition-transform duration-500 sm:w-5/6 lg:w-2/3 xl:w-1/2"
 	>
 		<div class="text-left text-4xl font-[300] transition-transform duration-500">About me</div>
 		<div class="text-justify text-[14px] font-extralight opacity-75">
@@ -47,31 +30,18 @@
 	<div class="flex w-full flex-col gap-6 sm:flex-row">
 		<!-- Experience section -->
 		<div class="flex w-full shrink-0 flex-col gap-4 sm:w-[48%]">
-			<div
-				class={`
-					text-left text-4xl font-[300] transition-transform duration-[450ms] 
-					${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-				`}
-			>
+			<div class="text-left text-4xl font-[300] transition-transform duration-[450ms]">
 				Experience
 			</div>
-			<div use:expInViewAction class="relative flex flex-col gap-4">
-				<div
-					class={`
-						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500 
-						${$expInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
-					`}
-				>
+			<div class="relative flex flex-col gap-4">
+				<div class="absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500">
 					<div
 						class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"
 					></div>
 				</div>
 				<!-- TCS -->
 				<div
-					class={`
-						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-					`}
+					class="flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 				>
 					<div class="text-3xl leading-7">&bull;</div>
 					<div class="flex flex-col gap-2">
@@ -105,10 +75,7 @@
 				</div>
 				<!-- Aulacube -->
 				<div
-					class={`
-						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$expInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-					`}
+					class="flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 				>
 					<div class="text-3xl leading-7">&bull;</div>
 					<div class="flex flex-col gap-2">
@@ -142,31 +109,18 @@
 		</div>
 		<!-- Education -->
 		<div class="flex w-full shrink-0 flex-col gap-4 sm:w-[48%]">
-			<div
-				class={`
-					text-left text-4xl font-[300] transition-transform duration-[450ms]
-					${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-				`}
-			>
+			<div class="text-left text-4xl font-[300] transition-transform duration-[450ms]">
 				Education
 			</div>
-			<div use:edInViewAction class="relative flex flex-col gap-4">
-				<div
-					class={`
-						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500
-						${$edInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
-					`}
-				>
+			<div class="relative flex flex-col gap-4">
+				<div class="absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500">
 					<div
 						class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"
 					></div>
 				</div>
 				<!-- NSUT -->
 				<div
-					class={`
-						trnsition-transform flex gap-4 rounded-2xl px-4 py-2 duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-					`}
+					class="flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-500 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 				>
 					<div class="text-3xl leading-7">&bull;</div>
 					<div class="flex flex-col gap-1">
@@ -195,10 +149,7 @@
 				</div>
 				<!-- 12th -->
 				<div
-					class={`
-						flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5
-						${$edInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
-					`}
+					class="flex gap-4 rounded-2xl px-4 py-2 transition-transform duration-700 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 				>
 					<div class="text-3xl leading-7">&bull;</div>
 					<div class="flex flex-col gap-1">
@@ -222,12 +173,9 @@
 	</div>
 	<a
 		use:resumeHoveredAction
-		class={`
-			flex w-fit cursor-pointer items-center gap-0.5
+		class="flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
-			font-light transition-transform duration-700 dark:bg-[#d2eefa]/10
-			${$edInView ? "translate-x-0 opacity-100" : " translate-x-20 opacity-0"}
-		`}
+			font-light transition-transform duration-700 dark:bg-[#d2eefa]/10"
 		href="/resume.pdf"
 	>
 		<span class="text-[14px]">View full resume</span>

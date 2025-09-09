@@ -1,69 +1,43 @@
-// src/reactive-methods/useInView.ts
 import { writable, type Writable } from "svelte/store";
 import { browser } from "$app/environment";
 
 export type InViewAction = (node: HTMLElement) => { destroy: () => void } | void;
 type InputParams = { entry?: number; exit?: number };
 
-type Item = {
+type ObserverEntry = {
+	node: HTMLElement;
 	store: Writable<boolean>;
 	entry: number;
 	exit: number;
-	visible: boolean;
 };
-
-const registry = new Map<HTMLElement, Item>();
-
-// Keep a superset of thresholds required by all registered nodes
-let thresholds = new Set<number>([0, 1]);
 
 let observer: IntersectionObserver | null = null;
+const entries: ObserverEntry[] = [];
 
-const handle = (entries: IntersectionObserverEntry[]) => {
-	for (const e of entries) {
-		const node = e.target as HTMLElement;
-		const item = registry.get(node);
-		if (!item) continue;
-
-		const ratio = e.intersectionRatio;
-
-		if (!item.visible && ratio >= item.entry) {
-			item.visible = true;
-			item.store.set(true);
-		} else if (item.visible && ratio <= item.exit) {
-			item.visible = false;
-			item.store.set(false);
-		}
-	}
-};
+// Use a broad set of thresholds so all entry/exit combos are covered
+// (0, 1, plus some granularity in between).
+const thresholds = Array.from({ length: 20 }, (_, i) => i / 20);
+thresholds.push(0, 1);
 
 const createObserver = () => {
-	if (!browser) return null;
-	observer = new IntersectionObserver(handle, {
-		threshold: Array.from(thresholds).sort((a, b) => a - b),
-	});
-	// (Re)observe everything currently registered
-	registry.forEach((_, node) => observer!.observe(node));
-	return observer;
-};
+	if (!browser || observer) return;
+	observer = new IntersectionObserver(
+		(ioEntries) => {
+			ioEntries.forEach(({ target, intersectionRatio }) => {
+				const item = entries.find((e) => e.node === target);
+				if (!item) return;
 
-// If a new entry/exit is introduced, rebuild the observer with the larger threshold set
-const ensureThresholds = (entry: number, exit: number) => {
-	if (!browser) return;
-	const sizeBefore = thresholds.size;
-	thresholds.add(entry);
-	thresholds.add(exit);
-	const changed = thresholds.size !== sizeBefore;
+				const { store, entry, exit } = item;
 
-	if (!observer) {
-		createObserver();
-		return;
-	}
-	if (changed) {
-		const prev = observer;
-		createObserver(); // creates a new observer with updated thresholds and re-observes nodes
-		prev.disconnect();
-	}
+				if (intersectionRatio >= entry) {
+					store.set(true);
+				} else if (intersectionRatio <= exit) {
+					store.set(false);
+				}
+			});
+		},
+		{ threshold: thresholds },
+	);
 };
 
 export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
@@ -72,38 +46,25 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
 ] => {
 	const inView: Writable<boolean> = writable(false);
 
-	const action = (node: HTMLElement) => {
-		if (!browser) {
-			// On the server: do nothing (avoids ReferenceError). The client will take over on hydrate.
+	const inViewAction = (node: HTMLElement) => {
+		if (typeof IntersectionObserver === "undefined") {
+			inView.set(true);
 			return;
 		}
 
-		// Make sure our global observer thresholds include this element's entry/exit
-		ensureThresholds(entry, exit);
-
-		// Register and observe
-		registry.set(node, { store: inView, entry, exit, visible: false });
-		if (!observer) {
-			observer = createObserver();
-		}
-
+		entries.push({ node, store: inView, entry, exit });
+		if (!observer) createObserver();
 		observer!.observe(node);
 
 		return {
 			destroy() {
-				if (!browser) return;
-				if (observer) observer.unobserve(node);
-				registry.delete(node);
-
-				// Optional cleanup: if nothing is observed, reset to free memory and allow a fresh threshold set later
-				if (registry.size === 0 && observer) {
-					observer.disconnect();
-					observer = null;
-					thresholds = new Set<number>([0, 1]);
-				}
+				if (!observer) return;
+				observer.unobserve(node);
+				const i = entries.findIndex((e) => e.node === node);
+				if (i !== -1) entries.splice(i, 1);
 			},
 		};
 	};
 
-	return [inView, action];
+	return [inView, inViewAction];
 };

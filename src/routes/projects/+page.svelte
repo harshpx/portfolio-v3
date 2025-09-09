@@ -38,7 +38,7 @@
 				<Project key={i} data={project} asListItem />
 			{/each}
 		</div>
-		<div class="mt-10 w-full text-center font-poppins text-lg font-extralight italic">
+		<div class="mt-10 w-full text-center font-poppins text-base font-extralight italic">
 			This page is under development. More projects will be added soon ... :&rpar;
 		</div>
 	</div>

@@ -226,7 +226,7 @@
 			flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
 			font-light transition-transform duration-700 dark:bg-[#d2eefa]/10
-			${$edInView ? "translate-x-0 opacity-100" : " translate-x-40 opacity-0"}
+			${$edInView ? "translate-x-0 opacity-100" : " translate-x-20 opacity-0"}
 		`}
 		href="/resume.pdf"
 	>

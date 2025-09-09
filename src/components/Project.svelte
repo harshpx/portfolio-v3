@@ -34,7 +34,7 @@
 	const [cardInView, cardInViewAction] = useInView({ entry: $isMobile ? 0.06 : 0.1, exit: 0.1 });
 	const [titleInView, titleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [contentInView, contentInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [techInView, techInViewAction] = useInView({ entry: 0.1, exit: 0.1 });
+	const [techInView, techInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [linksInView, linksInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 </script>
 
@@ -79,7 +79,7 @@
 			use:titleInViewAction
 			class={`
 			flex flex-col gap-0 transition-transform duration-500
-			${$titleInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+			${$titleInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			<p class="text-[32px] leading-8 font-light">{data.title}</p>
@@ -110,7 +110,7 @@
 			use:contentInViewAction
 			class={`
 			mt-2 text-justify text-[12px] font-extralight transition-transform duration-500 sm:text-[13px]
-			${$contentInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+			${$contentInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			{data.description}
@@ -118,7 +118,7 @@
 		<!-- tech stack -->
 		<div
 			use:techInViewAction
-			class={`mt-2 flex flex-wrap gap-1 transition-transform duration-500 ${$techInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}`}
+			class={`mt-2 flex flex-wrap gap-1 transition-transform duration-500 ${$techInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}`}
 		>
 			{#each data.techLabels as label (label)}
 				<div>
@@ -131,7 +131,7 @@
 			use:linksInViewAction
 			class={`
 			mt-3 flex flex-col gap-1 text-[13px] font-extralight transition-transform duration-500
-			${$linksInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+			${$linksInView ? "translate-x-0 opacity-100" : "translate-x-20 opacity-0"}
 		`}
 		>
 			<!-- live url -->

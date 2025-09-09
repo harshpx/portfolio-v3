@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { useHover } from "$/reactive-methods/useHover";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import githubIconSvg from "$/assets/icons/github.svg";
@@ -8,12 +7,7 @@
 	import { useInView } from "$/reactive-methods/useInView";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
-
-	const [gitHubHovered, githubHoveredAction] = useHover();
-	const [linkedinHovered, linkedinHoveredAction] = useHover();
-	const [resumeHovered, resumeHoveredAction] = useHover();
-
-	const [inView, inViewAction] = useInView({ entry: 0.2, exit: 0.4 });
+	const [inView, inViewAction] = useInView({ entry: 0.2, exit: 0.2 });
 </script>
 
 <div
@@ -56,18 +50,17 @@
 		</div>
 		<div
 			class={`
-			mt-10 flex items-center justify-center gap-1 transition-transform duration-500 sm:mt-10 sm:gap-4
+			mt-10 flex items-center justify-center gap-1 transition-transform duration-500 sm:mt-10 sm:gap-2
 			${$inView ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
 		`}
 		>
 			<a
-				use:githubHoveredAction
 				href="https://www.github.com/harshpx"
 				aria-label="github"
 				target="_blank"
 				rel="noopener noreferrer"
 				class={`
-					flex items-center ${$gitHubHovered || $isMobile ? "gap-2" : "gap-0"} 
+					flex items-center gap-2
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
 				`}
 			>
@@ -76,19 +69,18 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200 ${$gitHubHovered || $isMobile ? "w-[45px]" : "w-[0px]"}`}
+					class="w-[45px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
 				>
 					GitHub
 				</span>
 			</a>
 			<a
-				use:linkedinHoveredAction
 				href="https://www.linkedin.com/in/harshpx"
 				aria-label="linkedin"
 				target="_blank"
 				rel="noopener noreferrer"
 				class={`
-					flex items-center ${$linkedinHovered || $isMobile ? "gap-2" : "gap-0"} 
+					flex items-center gap-2
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
 				`}
 			>
@@ -97,19 +89,18 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200 ${$linkedinHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+					class="w-[55px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
 				>
 					Linkedin
 				</span>
 			</a>
 			<a
-				use:resumeHoveredAction
 				href="/resume.pdf"
 				target="_self"
 				aria-label="github"
 				rel="noopener noreferrer"
 				class={`
-					flex items-center ${$resumeHovered || $isMobile ? "gap-2" : "gap-0"} 
+					flex items-center gap-2
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
 				`}
 			>
@@ -118,7 +109,7 @@
 					class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
 				></svg>
 				<span
-					class={`overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200 ${$resumeHovered || $isMobile ? "w-[55px]" : "w-[0px]"}`}
+					class="w-[55px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
 				>
 					Resume
 				</span>

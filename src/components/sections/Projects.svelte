@@ -10,7 +10,7 @@
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [stackInView, stackInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-	const [projectsInView, projectsInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [projectLabelInView, projectLabelInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 
 	const techLabels = [
 		"Java",
@@ -72,10 +72,10 @@
 	<!-- projects -->
 	<div class="flex flex-col gap-4">
 		<div
-			use:projectsInViewAction
+			use:projectLabelInViewAction
 			class={`
 			text-left text-4xl font-[300] transition-transform duration-500
-			${$projectsInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+			${$projectLabelInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
 		`}
 		>
 			Projects

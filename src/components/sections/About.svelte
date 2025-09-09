@@ -14,23 +14,15 @@
 		entry: 0.4,
 		exit: 0.1,
 	});
-	const [expLineInView, expLineInViewAction] = useInView({
-		entry: 0.1,
-		exit: 0.1,
-	});
-	const [exp1InView, exp1InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-	const [exp2InView, exp2InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [exp1InView, exp1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [exp2InView, exp2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 
 	const [edLabelInView, edLabelInViewAction] = useInView({
 		entry: 0.4,
 		exit: 0.1,
 	});
-	const [edLineInView, edLineInViewAction] = useInView({
-		entry: 0.1,
-		exit: 0.1,
-	});
-	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 
 	const [resumeHovered, resumeHoveredAction] = useHover();
 	const [resumeInView, resumeInViewAction] = useInView({
@@ -77,10 +69,9 @@
 			</div>
 			<div class="relative flex flex-col gap-4">
 				<div
-					use:expLineInViewAction
 					class={`
 						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500 
-						${$expLineInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
+						${$exp1InView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 					`}
 				>
 					<div
@@ -176,10 +167,9 @@
 			</div>
 			<div class="relative flex flex-col gap-4">
 				<div
-					use:edLineInViewAction
 					class={`
 						absolute top-5 left-[22px] h-[80%] w-[10px] transition-transform duration-500
-						${$edLineInView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
+						${$ed1InView ? "translate-y-0 opacity-100" : "translate-y-40 opacity-0"}
 					`}
 				>
 					<div

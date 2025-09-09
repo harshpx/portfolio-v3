@@ -75,7 +75,7 @@
 			use:projectLabelInViewAction
 			class={`
 			text-left text-4xl font-[300] transition-transform duration-500
-			${$projectLabelInView ? "translate-x-0 opacity-100" : "translate-x-40 opacity-0"}
+			${$projectLabelInView ? "translate-x-0 opacity-100" : "translate-x-10 opacity-0"}
 		`}
 		>
 			Projects

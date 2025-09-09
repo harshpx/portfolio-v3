@@ -48,21 +48,16 @@
 		>
 			Based in <span class="font-[400] text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 		</div>
-		<div
-			class={`
-			mt-10 flex items-center justify-center gap-1 transition-transform duration-500 sm:mt-10 sm:gap-2
-			${$inView ? "translate-y-0 opacity-100" : "-translate-y-10 opacity-0"}
-		`}
-		>
+		<div class="mt-10 flex items-center justify-center gap-1 sm:mt-10 sm:gap-2">
 			<a
 				href="https://www.github.com/harshpx"
 				aria-label="github"
 				target="_blank"
 				rel="noopener noreferrer"
-				class={`
+				class="
 					flex items-center gap-2
 					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
-				`}
+				"
 			>
 				<svg
 					use:inlineSvg={githubIconSvg}

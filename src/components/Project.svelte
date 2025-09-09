@@ -6,7 +6,6 @@
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useInView } from "$/reactive-methods/useInView";
-	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
 	export type ProjectDataType = {
 		title: string;
@@ -29,9 +28,7 @@
 
 	let { key, data, asListItem = false }: ProjectProps = $props();
 
-	const isMobile = useMediaQuery("(max-width: 640px)");
-
-	const [cardInView, cardInViewAction] = useInView({ entry: $isMobile ? 0.06 : 0.1, exit: 0.1 });
+	const [cardInView, cardInViewAction] = useInView({ entry: 0.1, exit: 0.1 });
 	const [titleInView, titleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [contentInView, contentInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [techInView, techInViewAction] = useInView({ entry: 0.4, exit: 0.1 });

@@ -12,31 +12,42 @@ type ObserverEntry = {
 };
 
 let observer: IntersectionObserver | null = null;
-const entries: ObserverEntry[] = [];
+// for O(1) lookup
+const entries = new Map<HTMLElement, ObserverEntry>();
 
-// Use a broad set of thresholds so all entry/exit combos are covered
-// (0, 1, plus some granularity in between).
-const thresholds = Array.from({ length: 20 }, (_, i) => i / 20);
-thresholds.push(0, 1);
+// Batch updates per animation frame
+let pendingUpdates: (() => void)[] = [];
+let rafScheduled = false;
+const scheduleUpdate = (fn: () => void) => {
+	pendingUpdates.push(fn);
+	if (!rafScheduled) {
+		rafScheduled = true;
+		requestAnimationFrame(() => {
+			pendingUpdates.forEach((f) => f());
+			pendingUpdates = [];
+			rafScheduled = false;
+		});
+	}
+};
 
 const createObserver = () => {
 	if (!browser || observer) return;
 	observer = new IntersectionObserver(
 		(ioEntries) => {
 			ioEntries.forEach(({ target, intersectionRatio }) => {
-				const item = entries.find((e) => e.node === target);
+				const item = entries.get(target as HTMLElement);
 				if (!item) return;
 
 				const { store, entry, exit } = item;
 
 				if (intersectionRatio >= entry) {
-					store.set(true);
+					scheduleUpdate(() => store.set(true));
 				} else if (intersectionRatio <= exit) {
-					store.set(false);
+					scheduleUpdate(() => store.set(false));
 				}
 			});
 		},
-		{ threshold: thresholds },
+		{ threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] },
 	);
 };
 
@@ -52,7 +63,7 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
 			return;
 		}
 
-		entries.push({ node, store: inView, entry, exit });
+		entries.set(node, { node, store: inView, entry, exit });
 		if (!observer) createObserver();
 		observer!.observe(node);
 
@@ -60,8 +71,7 @@ export const useInView = ({ entry = 0.5, exit = 0.1 }: InputParams = {}): [
 			destroy() {
 				if (!observer) return;
 				observer.unobserve(node);
-				const i = entries.findIndex((e) => e.node === node);
-				if (i !== -1) entries.splice(i, 1);
+				entries.delete(node);
 			},
 		};
 	};

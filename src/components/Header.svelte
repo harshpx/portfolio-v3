@@ -107,11 +107,16 @@
 					</div>
 				{/each}
 			</div>
-		{/if}
-		{#if page.url.pathname === "/projects"}
+		{:else if page.url.pathname === "/projects"}
 			<div class="flex items-center gap-2 text-black dark:text-white">
 				<span class="font-poppins text-base font-light text-nowrap text-black sm:text-lg dark:text-[#97cce3]">
 					Projects Archive
+				</span>
+			</div>
+		{:else if page.url.pathname === "/resume"}
+			<div class="flex items-center gap-2 text-black dark:text-white">
+				<span class="font-poppins text-base font-light text-nowrap text-black sm:text-lg dark:text-[#97cce3]">
+					Resume
 				</span>
 			</div>
 		{/if}

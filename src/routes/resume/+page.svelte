@@ -1,10 +1,13 @@
 <script lang="ts">
 	import arrowLeft from "$/assets/icons/arrow-left.svg";
+	import downloadSvg from "$/assets/icons/download.svg";
 	import { useHover } from "$/reactive-methods/useHover";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { goto } from "$app/navigation";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { Motion } from "svelte-motion";
 
+	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [backButtonHovered, backButtonHoverAction] = useHover();
 </script>
 
@@ -35,9 +38,24 @@
 				/>
 				<span> Harsh Priye</span>
 			</button>
-			<div class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</div>
-			<div class="mt-8 flex w-full grow border">
-				<iframe src="/harsh-resume.pdf" title="resume" class=" w-full"></iframe>
+			<div class="flex w-full items-end justify-between">
+				<span class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</span>
+				<a
+					href="/resume.pdf"
+					download="harsh-resume.pdf"
+					aria-label="download"
+					class="flex items-center gap-2 rounded-full
+          bg-neutral-900/10 p-3 font-extralight sm:px-3
+          sm:py-2 dark:bg-[#d2eefa]/10"
+				>
+					<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
+					{#if !$isMobile}
+						<span>Download</span>
+					{/if}
+				</a>
+			</div>
+			<div class="mt-4 flex w-full grow lg:mt-8">
+				<iframe src="/resume.pdf" title="resume" class=" w-full"></iframe>
 			</div>
 		</div>
 	</div>

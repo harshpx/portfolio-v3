@@ -260,7 +260,7 @@
 			class="flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
 			font-light dark:bg-[#d2eefa]/10"
-			href="/resume.pdf"
+			href="/resume"
 		>
 			<span class="text-[14px]">View full resume</span>
 			<svg

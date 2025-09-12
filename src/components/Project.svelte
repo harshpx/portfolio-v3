@@ -85,9 +85,9 @@
 				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<div use:motion use:titleInViewAction class="flex flex-col gap-0">
+				<div use:motion use:titleInViewAction class="flex flex-col gap-1">
 					<p class="text-[32px] leading-8 font-light">{data.title}</p>
-					<p class="text-lg leading-5 font-extralight italic">{data.subtitle ?? ""}</p>
+					<p class="text-lg leading-6 font-extralight italic">{data.subtitle ?? ""}</p>
 					<div class="mt-1 flex items-center gap-1">
 						{#each data.platforms as platform (platform)}
 							<div

@@ -36,5 +36,8 @@
 		"typescript-eslint": "^8.20.0",
 		"vite": "^7.0.4"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"svelte-motion": "^0.12.2",
+		"svelte-inview": "^4.0.4"
+	}
 }

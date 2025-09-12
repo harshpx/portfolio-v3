@@ -8,12 +8,12 @@
 	import { inview } from "svelte-inview";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
-	let inView: boolean;
+	let inView: boolean = $state(false);
 </script>
 
 <div
 	use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-	on:inview_change={(e) => (inView = e.detail.inView)}
+	oninview_change={(e) => (inView = e.detail.inView)}
 	class="
     flex w-full grow flex-col items-center
     justify-center gap-10 p-10 text-neutral-900 sm:h-[calc(100vh-70px)] sm:flex-row

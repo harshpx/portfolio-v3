@@ -5,17 +5,20 @@
 	import { inview } from "svelte-inview";
 	import { Motion } from "svelte-motion";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
+	import { useHover } from "$/reactive-methods/useHover";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
-	let aboutInView: boolean = false;
-	let experienceTitleInView: boolean = false;
-	let experience1InView: boolean = false;
-	let experience2InView: boolean = false;
-	let educationTitleInView: boolean = false;
-	let education1InView: boolean = false;
-	let education2InView: boolean = false;
-	let resumeButtonInView: boolean = false;
+	let aboutInView: boolean = $state(false);
+	let experienceTitleInView: boolean = $state(false);
+	let experience1InView: boolean = $state(false);
+	let experience2InView: boolean = $state(false);
+	let educationTitleInView: boolean = $state(false);
+	let education1InView: boolean = $state(false);
+	let education2InView: boolean = $state(false);
+	let resumeButtonInView: boolean = $state(false);
+
+	const [resumeButtonHovered, resumeButtonHoveredAction] = useHover();
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
@@ -28,7 +31,7 @@
 	>
 		<div
 			use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-			on:inview_change={(e) => (aboutInView = e.detail.inView)}
+			oninview_change={(e) => (aboutInView = e.detail.inView)}
 			use:motion
 			class="flex w-full flex-col gap-2 sm:w-5/6 lg:w-2/3 xl:w-1/2"
 		>
@@ -61,7 +64,7 @@
 				<div
 					use:motion
 					use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-					on:inview_change={(e) => (experienceTitleInView = e.detail.inView)}
+					oninview_change={(e) => (experienceTitleInView = e.detail.inView)}
 					class="text-left text-4xl font-[300]"
 				>
 					Experience
@@ -90,7 +93,7 @@
 				>
 					<div
 						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						on:inview_change={(e) => (experience1InView = e.detail.inView)}
+						oninview_change={(e) => (experience1InView = e.detail.inView)}
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -135,7 +138,7 @@
 				>
 					<div
 						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						on:inview_change={(e) => (experience2InView = e.detail.inView)}
+						oninview_change={(e) => (experience2InView = e.detail.inView)}
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -182,7 +185,7 @@
 				<div
 					use:motion
 					use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-					on:inview_change={(e) => (educationTitleInView = e.detail.inView)}
+					oninview_change={(e) => (educationTitleInView = e.detail.inView)}
 					class="text-left text-4xl font-[300]"
 				>
 					Education
@@ -211,7 +214,7 @@
 				>
 					<div
 						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						on:inview_change={(e) => (education1InView = e.detail.inView)}
+						oninview_change={(e) => (education1InView = e.detail.inView)}
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -250,7 +253,7 @@
 				>
 					<div
 						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						on:inview_change={(e) => (education2InView = e.detail.inView)}
+						oninview_change={(e) => (education2InView = e.detail.inView)}
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -282,8 +285,9 @@
 		let:motion
 	>
 		<a
+			use:resumeButtonHoveredAction
 			use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-			on:inview_change={(e) => (resumeButtonInView = e.detail.inView)}
+			oninview_change={(e) => (resumeButtonInView = e.detail.inView)}
 			use:motion
 			class="flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
@@ -291,7 +295,12 @@
 			href="/resume.pdf"
 		>
 			<span class="text-[14px]">View full resume</span>
-			<svg use:inlineSvg={arrowUpRight} class="h-4 w-4 text-neutral-900 dark:text-[#d2eefa]" />
+			<svg
+				use:inlineSvg={arrowUpRight}
+				class={`h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa] ${
+					$resumeButtonHovered ? "translate-x-1 -translate-y-1" : "translate-x-0 translate-y-0"
+				} transition-transform duration-300 ease-in-out`}
+			/>
 		</a>
 	</Motion>
 </div>

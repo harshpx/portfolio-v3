@@ -91,7 +91,7 @@
 					<div class="mt-1 flex items-center gap-1">
 						{#each data.platforms as platform (platform)}
 							<div
-								class="flex items-center gap-1 rounded-2xl bg-neutral-900/10 px-2 py-0.5 text-[12px] font-extralight dark:bg-[#d2eefa]/10"
+								class="flex items-center gap-1 rounded-2xl bg-neutral-900/10 px-1.5 py-1 text-[12px] font-extralight dark:bg-[#d2eefa]/10"
 							>
 								{#if platform === "Web"}
 									<svg

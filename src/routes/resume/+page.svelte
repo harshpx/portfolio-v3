@@ -40,21 +40,31 @@
 			</button>
 			<div class="flex w-full items-end justify-between">
 				<span class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</span>
-				<a
-					href="/resume.pdf"
-					download="harsh-resume.pdf"
-					aria-label="download"
-					class="flex items-center gap-2 rounded-full
-          bg-neutral-900/10 p-3 font-extralight sm:px-3
-          sm:py-2 dark:bg-[#d2eefa]/10"
-				>
-					<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
-					{#if !$isMobile}
+				{#if !$isMobile}
+					<a
+						href="/resume.pdf"
+						download="harsh-resume.pdf"
+						aria-label="download"
+						class="flex items-center gap-2 rounded-full
+						bg-neutral-900/10 px-3 py-2
+						font-extralight dark:bg-[#d2eefa]/10"
+					>
+						<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
 						<span>Download</span>
-					{/if}
-				</a>
+					</a>
+				{:else}
+					<a
+						href="/resume.pdf"
+						aria-label="download"
+						class="flex items-center gap-2 rounded-full
+						bg-neutral-900/10 p-3 font-extralight
+						dark:bg-[#d2eefa]/10"
+					>
+						<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
+					</a>
+				{/if}
 			</div>
-			<div class="mt-4 flex w-full grow lg:mt-8">
+			<div class="mt-4 flex w-full grow overflow-hidden rounded-2xl lg:mt-8">
 				<iframe src="/resume.pdf" title="resume" class=" w-full"></iframe>
 			</div>
 		</div>

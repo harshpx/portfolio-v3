@@ -30,6 +30,7 @@ const scheduleUpdate = (fn: () => void) => {
 	}
 };
 
+// intersection observer
 const createObserver = () => {
 	if (!browser || observer) return;
 	observer = new IntersectionObserver(
@@ -47,23 +48,25 @@ const createObserver = () => {
 				}
 			});
 		},
-		{ threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 1] },
+		{ threshold: [0, 0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 1] },
 	);
 };
 
-export const useInView = ({ entry = 0.2, exit = 0.1 }: InputParams = {}): [
-	Writable<boolean>,
-	InViewAction,
-] => {
+// useInView method
+export const useInView = ({ entry = 0.2, exit = 0.1 }: InputParams = {}): [Writable<boolean>, InViewAction] => {
+	// boolean store
 	const inView: Writable<boolean> = writable(false);
 
+	// action
 	const inViewAction = (node: HTMLElement) => {
 		if (typeof IntersectionObserver === "undefined") {
 			inView.set(true);
 			return;
 		}
-
+		// add node to entries (avoid creating separate observers for each node, use a single observer)
 		entries.set(node, { node, store: inView, entry, exit });
+
+		// create observer if not created
 		if (!observer) createObserver();
 		observer!.observe(node);
 

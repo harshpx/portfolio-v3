@@ -6,8 +6,8 @@
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { inview } from "svelte-inview";
 	import { Motion } from "svelte-motion";
+	import { useInView } from "$/reactive-methods/useInView";
 
 	export type ProjectDataType = {
 		title: string;
@@ -32,24 +32,23 @@
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
-	let cardInView: boolean = $state(false);
-	let titleInView: boolean = $state(false);
-	let descInView: boolean = $state(false);
-	let techInView: boolean = $state(false);
-	let linksInView: boolean = $state(false);
+	const [cardInView, cardInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.2, exit: $isMobile ? 0.05 : 0.1 });
+	const [titleInView, titleInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [descInView, descInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [techInView, techInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [linksInView, linksInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 </script>
 
 <!-- Card -->
 <Motion
 	initial={{ opacity: 0, x: 200 }}
-	animate={cardInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-	transition={{ duration: 0.4, ease: "easeIn" }}
+	animate={$cardInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+	transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 	let:motion
 >
 	<div
 		use:motion
-		use:inview={{ threshold: $isMobile ? 0.1 : 0.2, unobserveOnEnter: false }}
-		oninview_change={(e) => (cardInView = e.detail.inView)}
+		use:cardInViewAction
 		class={`
     flex flex-col overflow-hidden rounded-2xl bg-neutral-900/10 shadow-lg dark:bg-white/5 dark:shadow-2xl
     ${asListItem ? "" : key % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
@@ -63,11 +62,7 @@
 		`}
 		>
 			{#if $theme === "dark"}
-				<img
-					src={data.darkImageUrl}
-					alt="Codeboxes"
-					class="h-full w-full object-cover object-left-top"
-				/>
+				<img src={data.darkImageUrl} alt="Codeboxes" class="h-full w-full object-cover object-left-top" />
 			{:else}
 				<img
 					src={data.lightImageUrl ?? data.darkImageUrl}
@@ -86,16 +81,11 @@
 			<!-- title, subtitle, platforms -->
 			<Motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={titleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-				transition={{ duration: 0.4, ease: "easeIn" }}
+				animate={$titleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<div
-					use:motion
-					use:inview
-					oninview_change={(e) => (titleInView = e.detail.inView)}
-					class="flex flex-col gap-0"
-				>
+				<div use:motion use:titleInViewAction class="flex flex-col gap-0">
 					<p class="text-[32px] leading-8 font-light">{data.title}</p>
 					<p class="text-lg leading-5 font-extralight italic">{data.subtitle ?? ""}</p>
 					<div class="mt-1 flex items-center gap-1">
@@ -123,32 +113,22 @@
 			<!-- description -->
 			<Motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={descInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-				transition={{ duration: 0.4, ease: "easeIn" }}
+				animate={$descInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<p
-					use:motion
-					use:inview
-					oninview_change={(e) => (descInView = e.detail.inView)}
-					class="mt-2 text-justify text-[12px] font-extralight sm:text-[13px]"
-				>
+				<p use:motion use:descInViewAction class="mt-2 text-justify text-[12px] font-extralight sm:text-[13px]">
 					{data.description}
 				</p>
 			</Motion>
 			<!-- tech stack -->
 			<Motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={techInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-				transition={{ duration: 0.4, ease: "easeIn" }}
+				animate={$techInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<div
-					use:motion
-					use:inview
-					oninview_change={(e) => (techInView = e.detail.inView)}
-					class="mt-2 flex flex-wrap gap-1"
-				>
+				<div use:motion use:techInViewAction class="mt-2 flex flex-wrap gap-1">
 					{#each data.techLabels as label (label)}
 						<div>
 							<TechLabel className="sm:text-[13px]" name={label} />
@@ -159,25 +139,15 @@
 			<!-- links -->
 			<Motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={linksInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-				transition={{ duration: 0.4, ease: "easeIn" }}
+				animate={$linksInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<div
-					use:motion
-					use:inview
-					oninview_change={(e) => (linksInView = e.detail.inView)}
-					class="mt-3 flex flex-col gap-1 text-[13px] font-extralight"
-				>
+				<div use:motion use:linksInViewAction class="mt-3 flex flex-col gap-1 text-[13px] font-extralight">
 					<!-- live url -->
 					{#if data.liveUrl}
-						<div
-							class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10"
-						>
-							<svg
-								use:inlineSvg={webSvg}
-								class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-							/>
+						<div class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10">
+							<svg use:inlineSvg={webSvg} class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]" />
 							<a
 								href={data.liveUrl}
 								target="_blank"
@@ -190,13 +160,8 @@
 					{/if}
 					<!-- download url -->
 					{#if data.downloadUrl}
-						<div
-							class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10"
-						>
-							<svg
-								use:inlineSvg={mobileSvg}
-								class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-							/>
+						<div class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10">
+							<svg use:inlineSvg={mobileSvg} class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]" />
 							<a
 								href={data.downloadUrl}
 								target="_blank"
@@ -209,13 +174,8 @@
 					{/if}
 					<!-- repo links -->
 					{#if data.repoUrls}
-						<div
-							class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10"
-						>
-							<svg
-								use:inlineSvg={githubSvg}
-								class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-							/>
+						<div class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10">
+							<svg use:inlineSvg={githubSvg} class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]" />
 							<div class="flex flex-col gap-0">
 								{#each data.repoUrls as url (url)}
 									<a

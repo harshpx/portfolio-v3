@@ -1,19 +1,16 @@
 <script lang="ts">
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { inlineSvg } from "@svelte-put/inline-svg";
-	import githubIconSvg from "$/assets/icons/github.svg";
-	import linkedinIconSvg from "$/assets/icons/linkedin.svg";
-	import fileIconSvg from "$/assets/icons/file.svg";
 	import { Motion } from "svelte-motion";
-	import { inview } from "svelte-inview";
+	import { useInView } from "$/reactive-methods/useInView";
+	import { linksData } from "$/utils/contents";
+	import LinkButton from "../LinkButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
-	let inView: boolean = $state(false);
+	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });
 </script>
 
 <div
-	use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-	oninview_change={(e) => (inView = e.detail.inView)}
+	use:inViewAction
 	class="
     flex w-full grow flex-col items-center
     justify-center gap-10 p-10 text-neutral-900 sm:h-[calc(100vh-70px)] sm:flex-row
@@ -23,19 +20,18 @@
 	<!-- left div -->
 	<Motion
 		initial={{ opacity: 0, x: $isMobile ? 0 : -200, y: $isMobile ? -200 : 0 }}
-		animate={inView
-			? { opacity: 1, x: 0, y: 0 }
-			: { opacity: 0, x: $isMobile ? 0 : -200, y: $isMobile ? -200 : 0 }}
-		transition={{ duration: 0.3, type: "spring", stiffness: 200, damping: 10, ease: "easeIn" }}
+		animate={$inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: $isMobile ? 0 : -200, y: $isMobile ? -200 : 0 }}
+		transition={{
+			duration: 0.3,
+			type: "spring",
+			stiffness: 200,
+			damping: $isMobile ? 12 : 10,
+			ease: "easeIn",
+		}}
 		let:motion
 	>
-		<div
-			use:motion
-			class="flex flex-col items-center justify-center sm:mb-40 sm:w-[40%] sm:items-start"
-		>
-			<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">
-				Harsh Priye
-			</div>
+		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[40%] sm:items-start">
+			<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">Harsh Priye</div>
 			<div class="mt-2 text-center font-poppins text-lg font-extralight sm:text-left sm:text-xl">
 				Full Stack Developer
 			</div>
@@ -51,67 +47,10 @@
 			>
 				Based in <span class="font-[400] text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 			</div>
-			<div class="mt-10 flex flex-wrap items-center justify-start gap-1 sm:mt-10 sm:gap-2">
-				<a
-					href="https://www.github.com/harshpx"
-					aria-label="github"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="
-					flex items-center gap-2
-					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
-				"
-				>
-					<svg
-						use:inlineSvg={githubIconSvg}
-						class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
-					></svg>
-					<span
-						class="w-[45px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
-					>
-						GitHub
-					</span>
-				</a>
-				<a
-					href="https://www.linkedin.com/in/harshpx"
-					aria-label="linkedin"
-					target="_blank"
-					rel="noopener noreferrer"
-					class={`
-					flex items-center gap-2
-					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
-				`}
-				>
-					<svg
-						use:inlineSvg={linkedinIconSvg}
-						class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
-					></svg>
-					<span
-						class="w-[55px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
-					>
-						Linkedin
-					</span>
-				</a>
-				<a
-					href="/resume.pdf"
-					target="_self"
-					aria-label="github"
-					rel="noopener noreferrer"
-					class={`
-					flex items-center gap-2
-					rounded-full bg-neutral-900/10 px-2 py-1.5 dark:bg-[#d2eefa]/10
-				`}
-				>
-					<svg
-						use:inlineSvg={fileIconSvg}
-						class="h-5 w-5 stroke-1 text-neutral-900 dark:text-[#d2eefa]"
-					></svg>
-					<span
-						class="w-[55px] overflow-hidden text-sm font-extralight sm:transition-all sm:duration-200"
-					>
-						Resume
-					</span>
-				</a>
+			<div class="mt-10 flex items-center justify-center gap-1 sm:mt-10 sm:flex-wrap sm:justify-start sm:gap-2">
+				{#each linksData as linkData (linkData.label)}
+					<LinkButton {linkData} />
+				{/each}
 			</div>
 			{#if !$isMobile}
 				<div
@@ -129,7 +68,7 @@
 	{#if !$isMobile}
 		<Motion
 			initial={{ opacity: 0, rotate: 0 }}
-			animate={inView ? { opacity: 1, rotate: 10 } : { opacity: 0, rotate: 0 }}
+			animate={$inView ? { opacity: 1, rotate: 10 } : { opacity: 0, rotate: 0 }}
 			transition={{ duration: 0.4, type: "spring", stiffness: 300, damping: 10, ease: "easeInOut" }}
 			let:motion
 		>
@@ -143,9 +82,7 @@
 	<!-- right div -->
 	<Motion
 		initial={{ opacity: 0, x: $isMobile ? 0 : 200, y: $isMobile ? 200 : 0 }}
-		animate={inView
-			? { opacity: 1, x: 0, y: 0 }
-			: { opacity: 0, x: $isMobile ? 0 : 200, y: $isMobile ? 200 : 0 }}
+		animate={$inView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: $isMobile ? 0 : 200, y: $isMobile ? -200 : 0 }}
 		transition={{ duration: 0.3, type: "spring", stiffness: 200, damping: 10, ease: "easeIn" }}
 		let:motion
 	>
@@ -157,19 +94,19 @@
 			"
 			>
 				<span>
-					I&apos;m a software developer who builds modern, scalable and reliable applications that
-					merge clean design with efficient engineering.
+					I&apos;m a software developer who builds modern, scalable and reliable applications that merge clean design
+					with efficient engineering.
 				</span>
 				<span class="hidden sm:block">
-					My work lies at the intersection of performance & design, creating experiences that are
-					not only performant but also visually appealing.
+					My work lies at the intersection of performance & design, creating experiences that are not only performant
+					but also visually appealing.
 				</span>
 			</p>
 		</div>
 	</Motion>
 	{#if $isMobile}
 		<Motion
-			animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+			animate={$inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
 			transition={{ duration: 0.3, type: "spring", stiffness: 300, damping: 10, ease: "easeInOut" }}
 			let:motion
 		>

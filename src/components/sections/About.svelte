@@ -2,39 +2,33 @@
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import TechLabel from "../TechLabel.svelte";
 	import arrowUpRight from "$/assets/icons/arrow-up-right.svg";
-	import { inview } from "svelte-inview";
 	import { Motion } from "svelte-motion";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { useHover } from "$/reactive-methods/useHover";
+	import { useInView } from "$/reactive-methods/useInView";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
-	let aboutInView: boolean = $state(false);
-	let experienceTitleInView: boolean = $state(false);
-	let experience1InView: boolean = $state(false);
-	let experience2InView: boolean = $state(false);
-	let educationTitleInView: boolean = $state(false);
-	let education1InView: boolean = $state(false);
-	let education2InView: boolean = $state(false);
-	let resumeButtonInView: boolean = $state(false);
-
-	const [resumeButtonHovered, resumeButtonHoveredAction] = useHover();
+	const [aboutInView, aboutInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [expTitleInView, expTitleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [exp1InView, exp1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [exp2InView, exp2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [edTitleInView, edTitleInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [resBtnInView, resBtnInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
+	const [resBtnHovered, resBtnHoveredAction] = useHover();
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
 	<!-- About me div -->
 	<Motion
 		initial={{ opacity: 0, x: 200 }}
-		animate={aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-		transition={{ duration: 0.4, ease: "easeIn" }}
+		animate={$aboutInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+		transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 		let:motion
 	>
-		<div
-			use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-			oninview_change={(e) => (aboutInView = e.detail.inView)}
-			use:motion
-			class="flex w-full flex-col gap-2 sm:w-5/6 lg:w-2/3 xl:w-1/2"
-		>
+		<div use:aboutInViewAction use:motion class="flex w-full flex-col gap-2 sm:w-5/6 lg:w-2/3 xl:w-1/2">
 			<div class="text-left text-4xl font-[300]">About me</div>
 			<div class="text-justify text-[14px] font-extralight opacity-75">
 				Currently, I'm a Software Engineer at <a
@@ -44,9 +38,9 @@
 					class="text-cyan-800 underline underline-offset-2 dark:text-cyan-400"
 				>
 					Tata Consultancy services &lpar;TCS&rpar;
-				</a>, specializing in Full-Stack. I contribute to the creation and maintenance of payment
-				applications, ensuring security, availability and ease of use of web applications. Following
-				industry standards and best practices to deliver an inclusive user experience.
+				</a>, specializing in Full-Stack. I contribute to the creation and maintenance of payment applications, ensuring
+				security, availability and ease of use of web applications. Following industry standards and best practices to
+				deliver an inclusive user experience.
 			</div>
 		</div>
 	</Motion>
@@ -58,42 +52,33 @@
 			<Motion
 				let:motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={experienceTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				animate={$expTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 				transition={{ duration: 0.4, ease: "easeIn" }}
 			>
-				<div
-					use:motion
-					use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-					oninview_change={(e) => (experienceTitleInView = e.detail.inView)}
-					class="text-left text-4xl font-[300]"
-				>
-					Experience
-				</div>
+				<div use:motion use:expTitleInViewAction class="text-left text-4xl font-[300]">Experience</div>
 			</Motion>
 			<div class="relative flex flex-col gap-4">
 				<!-- Vertical line -->
 				<Motion
 					initial={{ opacity: 0, y: 400 }}
-					animate={experience1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 400 }}
+					animate={$exp1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 400 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div use:motion class="absolute top-5 left-[22px] h-[80%] w-[10px]">
-						<div
-							class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"
-						></div>
+						<div class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
 					</div>
 				</Motion>
+
 				<!-- TCS -->
 				<Motion
 					initial={{ opacity: 0, x: 200 }}
-					animate={experience1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+					animate={$exp1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div
-						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						oninview_change={(e) => (experience1InView = e.detail.inView)}
+						use:exp1InViewAction
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -108,11 +93,10 @@
 								<p class="mt-1 text-sm font-extralight italic">Full Time</p>
 							</div>
 							<p class="text-justify text-[13px] font-extralight opacity-75">
-								Contributing to the development of secure and scalable RESTful APIs for Forex
-								payments app. Developed the frontend of a Forex payment application as part of a
-								6-member team. Focused on user-centric design and seamless user experience.
-								Optimized frontend performance by lazy loading, caching and efficient state
-								handling.
+								Contributing to the development of secure and scalable RESTful APIs for Forex payments app. Developed
+								the frontend of a Forex payment application as part of a 6-member team. Focused on user-centric design
+								and seamless user experience. Optimized frontend performance by lazy loading, caching and efficient
+								state handling.
 							</p>
 							<div class="flex flex-wrap gap-1">
 								<TechLabel name="Java" />
@@ -132,13 +116,12 @@
 				<!-- Aulacube -->
 				<Motion
 					initial={{ opacity: 0, x: 200 }}
-					animate={experience2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+					animate={$exp2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div
-						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						oninview_change={(e) => (experience2InView = e.detail.inView)}
+						use:exp2InViewAction
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -153,10 +136,9 @@
 								<p class="mt-1 text-sm font-extralight italic">Internship</p>
 							</div>
 							<p class="text-justify text-[13px] font-extralight opacity-75">
-								Developed multiple journey pages alongwwith the admin dashboard for Aula-Edge
-								application. Introduced Tailwind CSS to the project, enhancing styling efficiency
-								and consistency. Refactored entire UI to implement mobile responsiveness, improving
-								user experience across devices.
+								Developed multiple journey pages alongwwith the admin dashboard for Aula-Edge application. Introduced
+								Tailwind CSS to the project, enhancing styling efficiency and consistency. Refactored entire UI to
+								implement mobile responsiveness, improving user experience across devices.
 							</p>
 							<div class="flex flex-wrap gap-1">
 								<TechLabel name="JavaScript" />
@@ -179,42 +161,32 @@
 			<Motion
 				let:motion
 				initial={{ opacity: 0, x: 200 }}
-				animate={educationTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+				animate={$edTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 				transition={{ duration: 0.4, ease: "easeIn" }}
 			>
-				<div
-					use:motion
-					use:inview={{ threshold: 0.4, unobserveOnEnter: false }}
-					oninview_change={(e) => (educationTitleInView = e.detail.inView)}
-					class="text-left text-4xl font-[300]"
-				>
-					Education
-				</div>
+				<div use:motion use:edTitleInViewAction class="text-left text-4xl font-[300]">Education</div>
 			</Motion>
 			<div class="relative flex flex-col gap-4">
 				<!-- Vertical line -->
 				<Motion
 					initial={{ opacity: 0, y: 400 }}
-					animate={education1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 400 }}
+					animate={$ed1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 400 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div use:motion class="absolute top-5 left-[22px] h-[80%] w-[10px]">
-						<div
-							class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"
-						></div>
+						<div class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
 					</div>
 				</Motion>
 				<!-- NSUT -->
 				<Motion
 					initial={{ opacity: 0, x: 200 }}
-					animate={education1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+					animate={$ed1InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div
-						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						oninview_change={(e) => (education1InView = e.detail.inView)}
+						use:ed1InViewAction
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -223,9 +195,7 @@
 							<div class="flex flex-col">
 								<p class="text-sm font-extralight">Bachelor of Technology &lpar;B.Tech&rpar;</p>
 								<p class="text-xl">Computer Science & Mathematics</p>
-								<p class="text-lg font-extralight">
-									Netaji Subhas University of Technology, New Delhi
-								</p>
+								<p class="text-lg font-extralight">Netaji Subhas University of Technology, New Delhi</p>
 								<p class="mt-4 text-[13px] font-extralight italic">CGPA: 7.63</p>
 								<p class="mt-0 text-[13px] font-extralight italic">JEE Mains Percentile: 98.56</p>
 								<p class="mt-4 text-[13px] font-extralight">&lpar;2020 - 2024&rpar;</p>
@@ -247,13 +217,12 @@
 				<!-- 12th -->
 				<Motion
 					initial={{ opacity: 0, x: 200 }}
-					animate={education2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+					animate={$ed2InView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
 					<div
-						use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-						oninview_change={(e) => (education2InView = e.detail.inView)}
+						use:ed2InViewAction
 						use:motion
 						class="flex gap-4 rounded-2xl px-4 py-2 hover:bg-neutral-900/10 hover:dark:bg-white/5"
 					>
@@ -280,14 +249,13 @@
 	</div>
 	<Motion
 		initial={{ opacity: 0, x: 200 }}
-		animate={resumeButtonInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
-		transition={{ duration: 0.4, ease: "easeIn" }}
+		animate={$resBtnInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
+		transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 		let:motion
 	>
 		<a
-			use:resumeButtonHoveredAction
-			use:inview={{ threshold: $isMobile ? 0.1 : 0.4, unobserveOnEnter: false }}
-			oninview_change={(e) => (resumeButtonInView = e.detail.inView)}
+			use:resBtnHoveredAction
+			use:resBtnInViewAction
 			use:motion
 			class="flex w-fit cursor-pointer items-center gap-0.5
 			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
@@ -298,7 +266,7 @@
 			<svg
 				use:inlineSvg={arrowUpRight}
 				class={`h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa] ${
-					$resumeButtonHovered ? "translate-x-1 -translate-y-1" : "translate-x-0 translate-y-0"
+					$resBtnHovered ? "translate-x-1 -translate-y-1 stroke-3" : "translate-x-0 translate-y-0 stroke-2"
 				} transition-transform duration-300 ease-in-out`}
 			/>
 		</a>

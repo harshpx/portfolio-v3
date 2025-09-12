@@ -36,9 +36,7 @@
 			observer = null;
 		}
 		const root = (rootId ? document.getElementById(rootId) : null) ?? null;
-		const targets = sectionIds
-			.map((id) => document.getElementById(id))
-			.filter((el): el is HTMLElement => !!el);
+		const targets = sectionIds.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
 
 		observer = new IntersectionObserver(
 			(entries) => {
@@ -112,9 +110,7 @@
 		{/if}
 		{#if page.url.pathname === "/projects"}
 			<div class="flex items-center gap-2 text-black dark:text-white">
-				<span
-					class="font-poppins text-base font-light text-nowrap text-black sm:text-lg dark:text-[#97cce3]"
-				>
+				<span class="font-poppins text-base font-light text-nowrap text-black sm:text-lg dark:text-[#97cce3]">
 					Projects Archive
 				</span>
 			</div>

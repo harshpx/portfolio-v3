@@ -5,6 +5,16 @@ import memoizeDark from "$/assets/images/memoize-dark.png";
 import tictactoeDark from "$/assets/images/tictactoe-dark.png";
 import weatherDark from "$/assets/images/weather-dark.png";
 import weatherLight from "$/assets/images/weather-light.png";
+import type { LinkDataType } from "$/components/LinkButton.svelte";
+import githubSvg from "$/assets/icons/github.svg";
+import linkedinSvg from "$/assets/icons/linkedin.svg";
+import resumeSvg from "$/assets/icons/file.svg";
+
+export const linksData: LinkDataType[] = [
+	{ url: "https://www.github.com/harshpx", label: "Github", iconSvg: githubSvg },
+	{ url: "https://www.linkedin.com/in/harshpx/", label: "LinkedIn", iconSvg: linkedinSvg },
+	{ url: "/resume", label: "Resume", iconSvg: resumeSvg, target: "_self" },
+];
 
 export const projectData: ProjectDataType[] = [
 	{
@@ -36,10 +46,7 @@ export const projectData: ProjectDataType[] = [
 			"DigitalOcean",
 			"Vercel",
 		],
-		repoUrls: [
-			"https://github.com/harshpx/Codeboxes",
-			"https://github.com/harshpx/codeboxes-server",
-		],
+		repoUrls: ["https://github.com/harshpx/Codeboxes", "https://github.com/harshpx/codeboxes-server"],
 		liveUrl: "https://codeboxes.in",
 	},
 	{
@@ -112,16 +119,38 @@ export const projectData: ProjectDataType[] = [
 			`,
 		darkImageUrl: weatherDark,
 		lightImageUrl: weatherLight,
-		techLabels: [
-			"JavaScript",
-			"Vite",
-			"React.js",
-			"Tailwind",
-			"OpenWeather API",
-			"Geoapify API",
-			"Vercel",
-		],
+		techLabels: ["JavaScript", "Vite", "React.js", "Tailwind", "OpenWeather API", "Geoapify API", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/weather"],
 		liveUrl: "https://weather-harshpx.vercel.app",
 	},
+];
+
+export const techLabels: string[] = [
+	"Java",
+	"JavaScript",
+	"Typescript",
+	"Bash",
+	"SQL",
+	"Spring Boot",
+	"JPA",
+	"MySQL",
+	"MongoDB",
+	"Node.js",
+	"Express.js",
+	"React.js",
+	"Next.js",
+	"Svelte",
+	"Sveltekit",
+	"React Native",
+	"Expo",
+	"Tailwind",
+	"Shadcn UI",
+	"Lit-element",
+	"HTML",
+	"CSS",
+	"Git",
+	"Docker",
+	"Linux",
+	"Github Actions",
+	"Visual Studio Code",
 ];

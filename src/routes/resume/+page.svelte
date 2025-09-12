@@ -1,11 +1,8 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
-	import { inlineSvg } from "@svelte-put/inline-svg";
 	import arrowLeft from "$/assets/icons/arrow-left.svg";
 	import { useHover } from "$/reactive-methods/useHover";
-	import Project from "$/components/Project.svelte";
-	import { projectData } from "$/utils/contents";
-	import Footer from "$/components/Footer.svelte";
+	import { goto } from "$app/navigation";
+	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { Motion } from "svelte-motion";
 
 	const [backButtonHovered, backButtonHoverAction] = useHover();
@@ -17,13 +14,12 @@
 	transition={{ duration: 0.4, ease: "easeInOut" }}
 	let:motion
 >
-	<div use:motion class="flex h-full w-full flex-col overflow-x-hidden overflow-y-auto px-2 pb-2">
+	<div use:motion class="flex h-full w-full flex-col px-2 pb-2">
 		<div
 			class="
-    flex w-full flex-col gap-1 p-6
-    font-poppins text-neutral-900
-    sm:p-10 lg:p-14 dark:text-[#d2eefa]
-  "
+    flex w-full grow flex-col gap-1
+    p-6 font-poppins
+    text-neutral-900 sm:p-10 lg:p-14 dark:text-[#d2eefa]"
 		>
 			<button
 				use:backButtonHoverAction
@@ -39,16 +35,10 @@
 				/>
 				<span> Harsh Priye</span>
 			</button>
-			<div class="text-4xl font-[300] sm:text-5xl lg:text-6xl">All Projects</div>
-			<div class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-				{#each projectData as project, i (project.title)}
-					<Project key={i} data={project} asListItem />
-				{/each}
-			</div>
-			<div class="mt-10 w-full text-center font-poppins text-base font-extralight italic">
-				This page is under development. More projects will be added soon ... :&rpar;
+			<div class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</div>
+			<div class="mt-8 flex w-full grow border">
+				<iframe src="/harsh-resume.pdf" title="resume" class=" w-full"></iframe>
 			</div>
 		</div>
-		<Footer />
 	</div>
 </Motion>

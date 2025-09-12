@@ -4,6 +4,7 @@
 	import githubSvg from "$/assets/icons/github.svg";
 	import webSvg from "$/assets/icons/web.svg";
 	import mobileSvg from "$/assets/icons/mobile.svg";
+	import paletteSvg from "$/assets/icons/palette.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { Motion } from "svelte-motion";
@@ -101,6 +102,11 @@
 								{:else if platform === "Mobile"}
 									<svg
 										use:inlineSvg={mobileSvg}
+										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+									/>
+								{:else if platform === "Customization"}
+									<svg
+										use:inlineSvg={paletteSvg}
 										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
 									/>
 								{/if}

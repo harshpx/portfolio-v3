@@ -5,6 +5,9 @@ import memoizeDark from "$/assets/images/memoize-dark.png";
 import tictactoeDark from "$/assets/images/tictactoe-dark.png";
 import weatherDark from "$/assets/images/weather-dark.png";
 import weatherLight from "$/assets/images/weather-light.png";
+import rentifyDark from "$/assets/images/rentify-dark.png";
+import rentifyLight from "$/assets/images/rentify-light.png";
+import tealfoxDark from "$/assets/images/tealfox-dark.png";
 import type { LinkDataType } from "$/components/LinkButton.svelte";
 import githubSvg from "$/assets/icons/github.svg";
 import linkedinSvg from "$/assets/icons/linkedin.svg";
@@ -19,7 +22,7 @@ export const linksData: LinkDataType[] = [
 export const projectData: ProjectDataType[] = [
 	{
 		title: "Codeboxes",
-		subtitle: "An online code editor",
+		subtitle: "Online code editor",
 		platforms: ["Web"],
 		description: `
 				Codeboxes is an online code editor with a Next.js + Tailwind CSS frontend 
@@ -109,7 +112,7 @@ export const projectData: ProjectDataType[] = [
 	},
 	{
 		title: "Weather",
-		subtitle: "A Weather app, powered by OpenWeather API",
+		subtitle: "Weather app, powered by OpenWeather API",
 		platforms: ["Web"],
 		description: `
 				A highly responsive weather app using Vite, React.js and Tailwind CSS, 
@@ -122,6 +125,34 @@ export const projectData: ProjectDataType[] = [
 		techLabels: ["JavaScript", "Vite", "React.js", "Tailwind", "OpenWeather API", "Geoapify API", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/weather"],
 		liveUrl: "https://weather-harshpx.vercel.app",
+	},
+	{
+		title: "Rentify",
+		subtitle: "Property rental marketplace",
+		platforms: ["Web"],
+		description: `
+				Rentify is a property rental marketplace for both Renters & Tenants. 
+				It features React.js, Ant Design and Tailwind CSS frontend,
+				and a Node.js + Express.js backend with MongoDB database.
+				It features property listings, user authentication, 
+				and a responsive design for an optimal user experience across devices.
+			`,
+		darkImageUrl: rentifyDark,
+		lightImageUrl: rentifyLight,
+		techLabels: ["Javascript", "React.js", "Ant Design", "Tailwind", "Node.js", "Express.js", "MongoDB", "Vercel"],
+		repoUrls: ["https://github.com/harshpx/Rentify"],
+		liveUrl: "https://rentify-harshpx.vercel.app",
+	},
+	{
+		title: "Tealfox",
+		subtitle: "Beautiful Firefox theme",
+		platforms: ["Customization"],
+		description: `
+				A clean and simple Userstyle CSS theme for Firefox, based on teal color palette.
+			`,
+		darkImageUrl: tealfoxDark,
+		techLabels: ["CSS", "Userstyles", "Firefox"],
+		repoUrls: ["https://github.com/harshpx/TealFox"],
 	},
 ];
 

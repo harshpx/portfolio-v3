@@ -8,6 +8,12 @@ import weatherLight from "$/assets/images/weather-light.png";
 import rentifyDark from "$/assets/images/rentify-dark.png";
 import rentifyLight from "$/assets/images/rentify-light.png";
 import tealfoxDark from "$/assets/images/tealfox-dark.png";
+import dbiDark from "$/assets/images/dbi-dark.png";
+import dbiLight from "$/assets/images/dbi-light.png";
+import dfDark from "$/assets/images/df-dark.png";
+import portfolioV3Dark from "$/assets/images/portfolioV3-dark.png";
+import portfolioV3Light from "$/assets/images/portfolioV3-light.png";
+import portfolioV2Dark from "$/assets/images/portfolioV2-dark.png";
 import type { LinkDataType } from "$/components/LinkButton.svelte";
 import githubSvg from "$/assets/icons/github.svg";
 import linkedinSvg from "$/assets/icons/linkedin.svg";
@@ -111,6 +117,36 @@ export const projectData: ProjectDataType[] = [
 		liveUrl: "https://mini-tic-tac-toe.vercel.app",
 	},
 	{
+		title: "Dog Breed Identifier",
+		subtitle: "Identify dog breed from image",
+		platforms: ["Web", "AI"],
+		description: `
+			A web application that identifies dog breeds from images, using a CNN Based deep learning model 
+			built with TensorFlow and Keras. The model is trained inside a Jupyter Notebook environment. 
+			It is then used inside a Java, Spring-Boot server to create a REST API for application.
+			For frontend side, I have used Svelte 5 and Tailwind CSS. 
+		`,
+		darkImageUrl: dbiDark,
+		lightImageUrl: dbiLight,
+		techLabels: [
+			"Python",
+			"Jupyter Notebook",
+			"TensorFlow",
+			"Keras",
+			"CNN",
+			"Java",
+			"Spring Boot",
+			"Typescript",
+			"Svelte",
+			"Tailwind",
+			"Github Actions",
+			"DigitalOcean",
+			"Vercel",
+		],
+		repoUrls: ["https://github.com/harshpx/dbi-server", "https://github.com/harshpx/dbi-client"],
+		liveUrl: "https://dog-breed-identifier-client.vercel.app",
+	},
+	{
 		title: "Weather",
 		subtitle: "Weather app, powered by OpenWeather API",
 		platforms: ["Web"],
@@ -142,6 +178,51 @@ export const projectData: ProjectDataType[] = [
 		techLabels: ["Javascript", "React.js", "Ant Design", "Tailwind", "Node.js", "Express.js", "MongoDB", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/Rentify"],
 		liveUrl: "https://rentify-harshpx.vercel.app",
+	},
+	{
+		title: "Portfolio V3",
+		subtitle: "My personal portfolio website",
+		platforms: ["Web"],
+		description: `
+			This is the 3rd version of my personal portfolio website, built using SvelteKit and Tailwind CSS.
+			It is written entirely in Svelte 5 and Typescript to ensure type safety and better developer experience. 
+			It features a clean and modern design, with a focus on showcasing my projects and skills.
+			It is fully responsive and works well on all devices.
+		`,
+		darkImageUrl: portfolioV3Dark,
+		lightImageUrl: portfolioV3Light,
+		techLabels: ["Typescript", "SvelteKit", "Tailwind", "Svelte-Motion", "Vercel"],
+		repoUrls: ["https://github.com/harshpx/portfolio-v3"],
+		liveUrl: "https://www.harshpriye.in",
+	},
+	{
+		title: "Portfolio V2",
+		subtitle: "My personal portfolio website (Version 2, Old)",
+		platforms: ["Web"],
+		description: `
+			This is the 2nd version of my personal portfolio website, built using Next.js and Tailwind CSS. 
+			It features a clean and modern design, with a focus on showcasing my projects and skills.
+			It is fully responsive and works well on all devices.
+		`,
+		darkImageUrl: portfolioV2Dark,
+		techLabels: ["Javascript", "Next.js", "Tailwind", "Vercel"],
+		repoUrls: ["https://github.com/harshpx/portfolio-v2"],
+		liveUrl: "v2-harshpx.vercel.app",
+	},
+	{
+		title: "Deepfake Detection",
+		subtitle: "Detect deepfake images using Deep Learning",
+		platforms: ["AI", "Web"],
+		description: `
+			This is a deep learning model trained on 22k images of real and deepfake faces from 2 widely popular datasets - 
+			'thispersondoesnotexist' for fake faces and 'flicker-faces' for real faces.
+			The model is built using TensorFlow and Keras inside a Jupyter Notebook environment. 
+			It is then used inside a FastAPI server to provide predictions through a REST API.
+		`,
+		darkImageUrl: dfDark,
+		techLabels: ["Python", "Jupyter Notebook", "TensorFlow", "Keras", "CNN", "OpenCV", "FastAPI"],
+		repoUrls: ["https://github.com/harshpx/deepfake-detection"],
+		otherLinks: ["https://kaggle.com/code/harshpriye/dbi-model"],
 	},
 	{
 		title: "Tealfox",

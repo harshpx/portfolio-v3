@@ -5,6 +5,8 @@
 	import webSvg from "$/assets/icons/web.svg";
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import paletteSvg from "$/assets/icons/palette.svg";
+	import aiSvg from "$/assets/icons/ai.svg";
+	import codeFileSvg from "$/assets/icons/code-file.svg";
 	import TechLabel from "./TechLabel.svelte";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { Motion } from "svelte-motion";
@@ -21,6 +23,7 @@
 		repoUrls?: string[];
 		liveUrl?: string;
 		downloadUrl?: string;
+		otherLinks?: string[];
 	};
 
 	type ProjectProps = {
@@ -109,6 +112,11 @@
 										use:inlineSvg={paletteSvg}
 										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
 									/>
+								{:else if platform === "AI"}
+									<svg
+										use:inlineSvg={aiSvg}
+										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+									/>
 								{/if}
 								{platform}
 							</div>
@@ -184,6 +192,24 @@
 							<svg use:inlineSvg={githubSvg} class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]" />
 							<div class="flex flex-col gap-0">
 								{#each data.repoUrls as url (url)}
+									<a
+										href={url}
+										target="_blank"
+										rel="noopener noreferrer"
+										class="underline-offset-2 hover:no-underline sm:no-underline sm:hover:underline"
+									>
+										{url.split("//")[1] || url}
+									</a>
+								{/each}
+							</div>
+						</div>
+					{/if}
+					<!-- Other links -->
+					{#if data.otherLinks}
+						<div class="flex w-fit items-start gap-1 rounded-2xl bg-neutral-900/10 px-2 py-1 dark:bg-[#d2eefa]/10">
+							<svg use:inlineSvg={codeFileSvg} class="h-5 w-5 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]" />
+							<div class="flex flex-col gap-0">
+								{#each data.otherLinks as url (url)}
 									<a
 										href={url}
 										target="_blank"

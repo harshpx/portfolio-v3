@@ -68,7 +68,7 @@
 			"
 				href="/projects"
 			>
-				<span class="text-[14px]">Open full project archive</span>
+				<span class="text-[16px]">View all projects</span>
 				<svg
 					use:inlineSvg={arrowUpRight}
 					class={`

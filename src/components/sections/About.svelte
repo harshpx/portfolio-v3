@@ -262,7 +262,7 @@
 			font-light dark:bg-[#d2eefa]/10"
 			href="/resume"
 		>
-			<span class="text-[14px]">View full resume</span>
+			<span class="text-[16px]">View full resume</span>
 			<svg
 				use:inlineSvg={arrowUpRight}
 				class={`h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa] ${

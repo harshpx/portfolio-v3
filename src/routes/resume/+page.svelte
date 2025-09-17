@@ -5,7 +5,18 @@
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { goto } from "$app/navigation";
 	import { inlineSvg } from "@svelte-put/inline-svg";
+	import { onMount } from "svelte";
 	import { Motion } from "svelte-motion";
+
+	let showResume = $state(false);
+
+	onMount(() => {
+		let cls = setTimeout(() => {
+			showResume = true;
+		}, 500);
+
+		return () => clearTimeout(cls);
+	});
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [backButtonHovered, backButtonHoverAction] = useHover();
@@ -20,9 +31,9 @@
 	<div use:motion class="flex h-full w-full flex-col px-2 pb-2">
 		<div
 			class="
-    flex w-full grow flex-col gap-1
-    p-6 font-poppins
-    text-neutral-900 sm:p-10 lg:p-14 dark:text-[#d2eefa]"
+			flex w-full grow flex-col gap-1
+			p-6 font-poppins
+			text-neutral-900 sm:p-10 lg:p-14 dark:text-[#d2eefa]"
 		>
 			<button
 				use:backButtonHoverAction
@@ -64,9 +75,11 @@
 					</a>
 				{/if}
 			</div>
-			<div class="mt-4 flex w-full grow overflow-hidden rounded-2xl lg:mt-8">
-				<iframe src="/resume.pdf" title="resume" class=" w-full"></iframe>
-			</div>
+			{#if showResume}
+				<div class="mt-4 flex w-full grow overflow-hidden rounded-2xl lg:mt-8">
+					<iframe src="/resume.pdf" title="resume" class=" w-full"></iframe>
+				</div>
+			{/if}
 		</div>
 	</div>
 </Motion>

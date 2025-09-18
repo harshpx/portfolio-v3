@@ -55,14 +55,14 @@
 		use:cardInViewAction
 		class={`
     flex flex-col overflow-hidden rounded-2xl bg-neutral-900/10 shadow-lg dark:bg-white/5 dark:shadow-2xl
-    ${asListItem ? "" : key % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}
+    ${asListItem ? "" : key % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"}
   `}
 	>
 		<!-- image -->
 		<div
 			class={`
 			h-[260px] w-full overflow-hidden sm:h-[500px] lg:h-[550px] 
-			${asListItem ? "md:w-full" : "md:w-[60%]"}
+			${asListItem ? "lg:w-full" : "lg:w-[60%]"}
 		`}
 		>
 			{#if $theme === "dark"}
@@ -79,7 +79,7 @@
 		<div
 			class={`
 			flex w-full flex-col justify-center gap-2 p-5 text-neutral-900 dark:text-[#d2eefa]
-			${asListItem ? "md:w-full" : "md:w-[40%]"}
+			${asListItem ? "lg:w-full" : "lg:w-[40%]"}
 		`}
 		>
 			<!-- title, subtitle, platforms -->

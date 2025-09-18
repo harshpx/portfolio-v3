@@ -3,7 +3,7 @@
 	import { Motion } from "svelte-motion";
 	import { useInView } from "$/reactive-methods/useInView";
 	import { linksData } from "$/utils/contents";
-	import LinkButton from "../LinkButton.svelte";
+	import LinkButton from "$/components/LinkButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });

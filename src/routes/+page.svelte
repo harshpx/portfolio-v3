@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Footer from "$/components/Footer.svelte";
 	import About from "$/components/sections/About.svelte";
+	import Contact from "$/components/sections/Contact.svelte";
 	import Home from "$/components/sections/Home.svelte";
 	import Projects from "$/components/sections/Projects.svelte";
 	import { Motion } from "svelte-motion";
@@ -22,6 +23,9 @@
 		<div id="projects" class="min-h-full w-full shrink-0">
 			<Projects />
 		</div>
-		<Footer />
+		<div id="contact" class="flex min-h-full w-full shrink-0 flex-col items-center justify-center">
+			<Contact />
+			<Footer />
+		</div>
 	</div>
 </Motion>

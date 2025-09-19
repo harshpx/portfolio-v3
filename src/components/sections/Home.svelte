@@ -3,7 +3,7 @@
 	import { Motion } from "svelte-motion";
 	import { useInView } from "$/reactive-methods/useInView";
 	import { linksData } from "$/utils/contents";
-	import LinkButton from "../LinkButton.svelte";
+	import LinkButton from "$/components/LinkButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });
@@ -30,19 +30,19 @@
 		}}
 		let:motion
 	>
-		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[40%] sm:items-start">
+		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[45%] sm:items-start lg:w-[40%]">
 			<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">Harsh Priye</div>
 			<div class="mt-2 text-center font-poppins text-lg font-extralight sm:text-left sm:text-xl">
 				Full Stack Developer
 			</div>
 			<div
-				class="mt-4 text-center font-poppins text-sm font-extralight text-nowrap text-neutral-600
+				class="mt-4 text-center font-poppins text-sm font-light text-nowrap text-neutral-600
 				sm:mt-10 sm:text-left sm:text-wrap dark:text-[#d2eefab7]"
 			>
 				I build scalable, resiliant and beautiful apps
 			</div>
 			<div
-				class="mt-2 text-center font-poppins text-sm font-extralight text-neutral-600
+				class="mt-2 text-center font-poppins text-sm font-light text-neutral-600
 				sm:text-left dark:text-[#d2eefab7]"
 			>
 				Based in <span class="font-[400] text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
@@ -54,7 +54,7 @@
 			</div>
 			{#if !$isMobile}
 				<div
-					class="mt-10 w-full text-center text-[14px] font-extralight text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
+					class="mt-10 w-full text-center text-[14px] font-light text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
 				>
 					This website is built with
 					<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span> &
@@ -86,10 +86,10 @@
 		transition={{ duration: 0.3, type: "spring", stiffness: 200, damping: 10, ease: "easeIn" }}
 		let:motion
 	>
-		<div use:motion class="flex justify-center sm:mt-60 sm:w-[50%] sm:justify-end">
+		<div use:motion class="flex justify-center sm:mt-60 sm:w-[45%] sm:justify-end lg:w-[50%]">
 			<p
 				class="
-				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-7 font-extralight sm:w-full
+				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-7 font-light sm:w-full
 				sm:text-justify lg:w-5/6 xl:w-3/4
 			"
 			>

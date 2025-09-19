@@ -1,7 +1,6 @@
 <script lang="ts">
 	import ThemeSwitch from "./ThemeSwitch.svelte";
 	import Logo from "./Logo.svelte";
-	import { capitalizeFirstLetter } from "$/utils/commons";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { goto, replaceState } from "$app/navigation";
 	import { page } from "$app/state";
@@ -23,10 +22,16 @@
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
-	export const sections: string[] = ["home", "about", "projects"];
-	export const rootId: string | null = "homepage";
-	const sectionIds = sections;
+	export const sections: Map<string, string> = new Map([
+		["home", "Home"],
+		["about", "About"],
+		["projects", "Projects"],
+		["contact", "Contact"],
+	]);
+	const sectionIds = [...sections.keys()];
 	let activeSection = $state(sectionIds[0]);
+
+	export const rootId: string | null = "homepage";
 
 	let observer: IntersectionObserver | null = null;
 	const initObserver = () => {
@@ -51,7 +56,7 @@
 			},
 			{
 				root,
-				threshold: [$isMobile ? 0.1 : 0.2],
+				threshold: [$isMobile ? 0.1 : 0.15],
 			},
 		);
 		targets.forEach((t) => observer!.observe(t));
@@ -76,16 +81,16 @@
 	});
 </script>
 
-<div class="flex h-full w-full items-center justify-between px-6">
+<div class="flex h-full w-full items-center justify-between gap-10 px-6">
 	<!-- left section -->
-	<div class="flex w-1/3 justify-start">
+	<div class="flex min-w-[10%] justify-start">
 		<Logo onclick={() => scrollToDiv("home")} />
 	</div>
 	<!-- center section -->
-	<div class="flex w-1/3 justify-center">
+	<div class="flex w-full items-center justify-center">
 		{#if page.url.pathname === "/"}
-			<div class="flex items-center gap-4 text-black dark:text-white">
-				{#each sections as section, index (index)}
+			<div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-black dark:text-white">
+				{#each sections.keys() as section, index (index)}
 					<div
 						class={`
 						relative font-poppins text-sm font-light sm:text-base
@@ -94,7 +99,7 @@
 					>
 						<!-- button -->
 						<button class="cursor-pointer hover:opacity-60" onclick={() => scrollToDiv(section)}>
-							{capitalizeFirstLetter(section)}
+							{sections.get(section)}
 						</button>
 						<!-- underline -->
 						<div
@@ -122,7 +127,7 @@
 		{/if}
 	</div>
 	<!-- right button -->
-	<div class="flex w-1/3 justify-end">
+	<div class="flex min-w-[10%] justify-end">
 		<ThemeSwitch />
 	</div>
 </div>

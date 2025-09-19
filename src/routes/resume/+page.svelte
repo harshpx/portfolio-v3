@@ -13,7 +13,7 @@
 	onMount(() => {
 		let cls = setTimeout(() => {
 			showResume = true;
-		}, 500);
+		}, 600);
 
 		return () => clearTimeout(cls);
 	});

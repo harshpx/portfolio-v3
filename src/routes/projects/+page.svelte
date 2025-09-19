@@ -20,10 +20,10 @@
 	<div use:motion class="flex h-full w-full flex-col overflow-x-hidden overflow-y-auto px-2 pb-2">
 		<div
 			class="
-    flex w-full flex-col gap-1 p-6
-    font-poppins text-neutral-900
-    sm:p-10 lg:p-14 dark:text-[#d2eefa]
-  "
+				flex w-full flex-col gap-1 p-6
+				font-poppins text-neutral-900
+				sm:p-10 lg:p-14 dark:text-[#d2eefa]
+			"
 		>
 			<button
 				use:backButtonHoverAction

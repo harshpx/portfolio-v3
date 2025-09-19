@@ -18,6 +18,8 @@ import type { LinkDataType } from "$/components/LinkButton.svelte";
 import githubSvg from "$/assets/icons/github.svg";
 import linkedinSvg from "$/assets/icons/linkedin.svg";
 import resumeSvg from "$/assets/icons/file.svg";
+import mailSvg from "$/assets/icons/mail.svg";
+import instagramSvg from "$/assets/icons/instagram.svg";
 
 export const linksData: LinkDataType[] = [
 	{ url: "https://www.github.com/harshpx", label: "Github", iconSvg: githubSvg },
@@ -25,6 +27,11 @@ export const linksData: LinkDataType[] = [
 	{ url: "/resume", label: "Resume", iconSvg: resumeSvg, target: "_self" },
 ];
 
+export const contactLinksData: LinkDataType[] = [
+	{ url: "mailto:harsh.rzf@gmail.com", label: "harsh.rzf@gmail.com", iconSvg: mailSvg },
+	{ url: "https://www.linkedin.com/in/harshpx/", label: "linkedin.com/in/harshpx", iconSvg: linkedinSvg },
+	{ url: "https://www.instagram.com/harshhh.hhhh", label: "@harshhh.hhhh", iconSvg: instagramSvg },
+];
 export const projectData: ProjectDataType[] = [
 	{
 		title: "Codeboxes",

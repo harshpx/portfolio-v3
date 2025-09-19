@@ -26,7 +26,7 @@
 		["home", "Home"],
 		["about", "About"],
 		["projects", "Projects"],
-		["contact", "Contact & More"],
+		["contact", "Contact"],
 	]);
 	const sectionIds = [...sections.keys()];
 	let activeSection = $state(sectionIds[0]);
@@ -56,7 +56,7 @@
 			},
 			{
 				root,
-				threshold: [$isMobile ? 0.1 : 0.2],
+				threshold: [$isMobile ? 0.1 : 0.15],
 			},
 		);
 		targets.forEach((t) => observer!.observe(t));

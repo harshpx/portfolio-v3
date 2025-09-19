@@ -3,18 +3,15 @@
 	import TechLabel from "../TechLabel.svelte";
 	import Project from "../Project.svelte";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { useHover } from "$/reactive-methods/useHover";
-	import { inlineSvg } from "@svelte-put/inline-svg";
-	import arrowUpRight from "$/assets/icons/arrow-up-right.svg";
 	import { projectData, techLabels } from "$/utils/contents";
 	import { Motion } from "svelte-motion";
+	import NavigationButton from "../NavigationButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
 	const [stacksInView, stacksInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 	const [projLabelInView, projLabelInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 	const [projBtnInView, projBtnInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [projBtnHovered, projBtnHoveredAction] = useHover();
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
@@ -57,26 +54,9 @@
 			transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 			let:motion
 		>
-			<a
-				use:motion
-				use:projBtnHoveredAction
-				use:projBtnInViewAction
-				class="
-				flex w-fit cursor-pointer items-center gap-0.5
-				rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
-				font-light dark:bg-[#d2eefa]/10
-			"
-				href="/projects"
-			>
-				<span class="text-[16px]">View all projects</span>
-				<svg
-					use:inlineSvg={arrowUpRight}
-					class={`
-					h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa]
-					${$projBtnHovered ? "stroke-3 sm:translate-x-1 sm:-translate-y-1" : "stroke-3 sm:stroke-2"}
-				`}
-				/>
-			</a>
+			<div use:motion use:projBtnInViewAction>
+				<NavigationButton label="View all projects" href="/projects" />
+			</div>
 		</Motion>
 	</div>
 </div>

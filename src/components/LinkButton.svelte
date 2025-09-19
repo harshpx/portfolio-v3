@@ -13,13 +13,13 @@
 
 	export type LinkProps = {
 		linkData: LinkDataType;
-		styles?: string;
+		containerStyles?: string;
 		labelStyles?: string;
 		iconStyles?: string;
 		hover?: boolean;
 		scale?: boolean;
 	};
-	const { linkData, styles, labelStyles, iconStyles, hover = true, scale = true }: LinkProps = $props();
+	const { linkData, containerStyles, labelStyles, iconStyles, hover = true, scale = true }: LinkProps = $props();
 	const [buttonHovered, buttonHoveredAction] = useHover();
 </script>
 
@@ -36,7 +36,7 @@
 		aria-label={linkData.label}
 		target={linkData.target ?? "_self"}
 		rel="noopener noreferrer"
-		class={`flex items-center gap-2 rounded-full bg-neutral-900/10 px-2.5 py-1.5 dark:bg-[#d2eefa]/10 ${styles}`}
+		class={`flex items-center gap-2 rounded-full bg-neutral-900/10 px-2.5 py-1.5 dark:bg-[#d2eefa]/10 ${containerStyles}`}
 	>
 		{#if linkData.iconSvg}
 			<svg
@@ -44,7 +44,7 @@
 				class={`h-5 w-5 text-neutral-900 dark:text-[#d2eefa] ${$buttonHovered ? "stroke-2" : "stroke-1"} ${iconStyles}`}
 			></svg>
 		{/if}
-		<span class={`text-sm ${$buttonHovered ? "font-[400]" : "font-light dark:font-extralight"} ${labelStyles}`}>
+		<span class={`text-sm ${$buttonHovered ? "font-[400]" : "font-light"} ${labelStyles}`}>
 			{linkData.label}
 		</span>
 	</a>

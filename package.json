@@ -37,6 +37,7 @@
 		"vite": "^7.0.4"
 	},
 	"dependencies": {
+		"redis": "^5.8.2",
 		"svelte-motion": "^0.12.2"
 	}
 }

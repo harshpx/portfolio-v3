@@ -30,7 +30,7 @@
 		}}
 		let:motion
 	>
-		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[40%] sm:items-start">
+		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[45%] sm:items-start lg:w-[40%]">
 			<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">Harsh Priye</div>
 			<div class="mt-2 text-center font-poppins text-lg font-extralight sm:text-left sm:text-xl">
 				Full Stack Developer
@@ -86,7 +86,7 @@
 		transition={{ duration: 0.3, type: "spring", stiffness: 200, damping: 10, ease: "easeIn" }}
 		let:motion
 	>
-		<div use:motion class="flex justify-center sm:mt-60 sm:w-[50%] sm:justify-end">
+		<div use:motion class="flex justify-center sm:mt-60 sm:w-[45%] sm:justify-end lg:w-[50%]">
 			<p
 				class="
 				flex w-9/10 flex-col gap-6 text-center font-poppins text-sm leading-7 font-extralight sm:w-full

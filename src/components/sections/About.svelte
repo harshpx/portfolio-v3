@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { inlineSvg } from "@svelte-put/inline-svg";
 	import TechLabel from "../TechLabel.svelte";
-	import arrowUpRight from "$/assets/icons/arrow-up-right.svg";
 	import { Motion } from "svelte-motion";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { useHover } from "$/reactive-methods/useHover";
 	import { useInView } from "$/reactive-methods/useInView";
+	import NavigationButton from "../NavigationButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -17,7 +15,6 @@
 	const [ed1InView, ed1InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 	const [ed2InView, ed2InViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
 	const [resBtnInView, resBtnInViewAction] = useInView({ entry: $isMobile ? 0.1 : 0.4, exit: 0.1 });
-	const [resBtnHovered, resBtnHoveredAction] = useHover();
 </script>
 
 <div class="flex flex-col gap-10 p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]">
@@ -253,22 +250,8 @@
 		transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 		let:motion
 	>
-		<a
-			use:resBtnHoveredAction
-			use:resBtnInViewAction
-			use:motion
-			class="flex w-fit cursor-pointer items-center gap-0.5
-			rounded-full bg-neutral-900/10 px-3 py-2 font-poppins
-			font-light dark:bg-[#d2eefa]/10"
-			href="/resume"
-		>
-			<span class="text-[16px]">View full resume</span>
-			<svg
-				use:inlineSvg={arrowUpRight}
-				class={`h-4 w-4 text-neutral-900 transition-transform duration-300 dark:text-[#d2eefa] ${
-					$resBtnHovered ? "translate-x-1 -translate-y-1 stroke-3" : "translate-x-0 translate-y-0 stroke-2"
-				} transition-transform duration-300 ease-in-out`}
-			/>
-		</a>
+		<div use:resBtnInViewAction use:motion>
+			<NavigationButton label="View full resume" href="/resume" />
+		</div>
 	</Motion>
 </div>

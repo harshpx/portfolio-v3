@@ -57,19 +57,20 @@
 	};
 
 	const isMobile = useMediaQuery("(max-width:640px)");
-	const [pageInView, pageInViewAction] = useInView({ entry: 0.4, exit: 0.3 });
+	const [likeInView, likeInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [navInView, navInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [connectInView, connectInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
 </script>
 
 <div
-	use:pageInViewAction
-	class="flex w-full grow flex-col items-center justify-center gap-20
-    p-6 font-poppins text-neutral-900 sm:p-10 dark:text-[#d2eefa]"
+	class="flex w-full grow flex-col items-center justify-center gap-10 p-6
+    font-poppins text-neutral-900 sm:gap-20 sm:p-10 dark:text-[#d2eefa]"
 >
 	<!-- Group 1 -->
 	<Motion
 		let:motion
 		initial={{ opacity: 0, x: -100, y: -200 }}
-		animate={$pageInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: -200 }}
+		animate={$likeInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: -200 }}
 		transition={{
 			duration: 0.8,
 			type: "spring",
@@ -78,7 +79,7 @@
 			ease: "easeInOut",
 		}}
 	>
-		<div use:motion class="flex flex-col items-center justify-start gap-5">
+		<div use:motion use:likeInViewAction class="flex flex-col items-center justify-start gap-2 sm:gap-5">
 			<div class="text-center text-2xl font-light sm:text-3xl">Liked what you saw?</div>
 			<div class="flex items-center gap-2 rounded-full bg-neutral-900/10 pl-3 dark:bg-[#d2eefa]/10">
 				<span>Drop a like:</span>
@@ -96,7 +97,7 @@
 	<Motion
 		let:motion
 		initial={{ opacity: 0, x: 100, y: 200 }}
-		animate={$pageInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 100, y: 200 }}
+		animate={$navInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 100, y: 200 }}
 		transition={{
 			duration: 2,
 			type: "spring",
@@ -105,7 +106,7 @@
 			ease: "easeInOut",
 		}}
 	>
-		<div use:motion class="flex flex-col items-center justify-start gap-5">
+		<div use:motion use:navInViewAction class="flex flex-col items-center justify-start gap-2 sm:gap-5">
 			<div class="text-center text-2xl font-light sm:text-3xl">Also checkout!</div>
 			<div class="flex flex-wrap items-center justify-center gap-2">
 				<NavigationButton
@@ -127,7 +128,7 @@
 	<Motion
 		let:motion
 		initial={{ opacity: 0, x: -100, y: 200 }}
-		animate={$pageInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: 200 }}
+		animate={$connectInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: 200 }}
 		transition={{
 			duration: 2,
 			type: "spring",
@@ -136,7 +137,7 @@
 			ease: "easeInOut",
 		}}
 	>
-		<div use:motion class="flex flex-col items-center justify-start gap-5">
+		<div use:motion use:connectInViewAction class="flex flex-col items-center justify-start gap-2 sm:gap-5">
 			<div class="text-center text-2xl font-light sm:text-3xl">Connect with me!</div>
 			<div class="flex flex-wrap items-center justify-center gap-2">
 				{#each contactLinksData as linkData (linkData.label)}

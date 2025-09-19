@@ -23,7 +23,7 @@
 		<div id="projects" class="min-h-full w-full shrink-0">
 			<Projects />
 		</div>
-		<div id="contact" class="flex min-h-full w-full shrink-0 flex-col items-center justify-center">
+		<div id="contact" class="flex h-full w-full shrink-0 flex-col items-center justify-center">
 			<Contact />
 			<Footer />
 		</div>

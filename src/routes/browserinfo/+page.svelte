@@ -12,9 +12,9 @@
 <div class="flex flex-col px-6 text-neutral-900 dark:text-[#d2eefa]">
 	{#if browserInfo}
 		{#each Object.keys(browserInfo) as key (key)}
-			<div class="flex items-start gap-2">
-				<span class="w-[60px] text-cyan-600 dark:text-cyan-500">{key}:</span>
-				<span>{browserInfo?.[key as BrowserInfoKey]}</span>
+			<div class="mb-2 flex flex-col items-start">
+				<span class="w-[100px] text-cyan-600 underline underline-offset-1 dark:text-cyan-500">{key}</span>
+				<span class="text-[14px]">{browserInfo?.[key as BrowserInfoKey]}</span>
 			</div>
 		{/each}
 	{/if}

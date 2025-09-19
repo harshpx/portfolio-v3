@@ -28,9 +28,9 @@ export const getBrowserInfo = async (): Promise<BrowserInfo> => {
 };
 
 const getOS = (userAgent: string) => {
-	if (/Windows/i.test(userAgent)) return "Windows";
-	if (/Mac/i.test(userAgent)) return "Mac OS";
 	if (/iPhone|iPad|iPod/i.test(userAgent)) return "iOS";
-	if (/Android/i.test(userAgent)) return "Android";
-	if (/Linux/i.test(userAgent)) return "Linux";
+	if (/Android/i.test(userAgent)) return "android";
+	if (/Windows/i.test(userAgent)) return "windows";
+	if (/Mac/i.test(userAgent)) return "macOS";
+	if (/Linux/i.test(userAgent)) return "linux";
 };

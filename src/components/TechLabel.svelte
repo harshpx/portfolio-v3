@@ -9,7 +9,7 @@
 
 <div
 	class={`
-		rounded-full bg-neutral-900/10 px-2 py-1 text-[12px] font-extralight transition-transform 
+		rounded-full bg-neutral-900/10 px-2 py-1 text-[12px] font-light transition-transform 
 		duration-600 dark:bg-white/10
 		${className}
 	`}

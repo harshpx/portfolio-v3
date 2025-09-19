@@ -131,7 +131,7 @@
 				transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 20, ease: "easeIn" }}
 				let:motion
 			>
-				<p use:motion use:descInViewAction class="mt-2 text-justify text-[12px] font-extralight sm:text-[13px]">
+				<p use:motion use:descInViewAction class="mt-2 text-justify text-[12px] font-light sm:text-[13px]">
 					{data.description}
 				</p>
 			</Motion>

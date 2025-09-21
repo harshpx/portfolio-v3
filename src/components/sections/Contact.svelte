@@ -57,9 +57,9 @@
 	};
 
 	const isMobile = useMediaQuery("(max-width:640px)");
-	const [likeInView, likeInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [navInView, navInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
-	const [connectInView, connectInViewAction] = useInView({ entry: 0.4, exit: 0.1 });
+	const [likeInView, likeInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [navInView, navInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	const [connectInView, connectInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
 </script>
 
 <div

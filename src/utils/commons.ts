@@ -4,10 +4,10 @@ export const capitalizeFirstLetter = (str: string) => {
 
 export type BrowserInfo = {
 	ip: string;
-	userAgent: string;
 	timeZone: string;
 	locale: string;
 	os: string;
+	userAgent: string;
 };
 
 export const getBrowserInfo = async (): Promise<BrowserInfo> => {
@@ -24,7 +24,7 @@ export const getBrowserInfo = async (): Promise<BrowserInfo> => {
 	const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 	const locale = navigator.language;
 	const os = getOS(navigator.userAgent);
-	return { ip, userAgent, timeZone, locale, os } as BrowserInfo;
+	return { ip, timeZone, locale, os, userAgent } as BrowserInfo;
 };
 
 const getOS = (userAgent: string) => {

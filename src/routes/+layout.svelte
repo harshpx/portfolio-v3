@@ -3,7 +3,19 @@
 	import logoIcon from "$/assets/icons/logo-light.png";
 	import CursorSpotlight from "$/components/CursorSpotlight.svelte";
 	import Header from "$/components/Header.svelte";
+	import { onMount } from "svelte";
+	import { browserInfo, isSessionActive, sendBrowserInfo, setSessionActive } from "$/contexts/analytics";
+	import { getBrowserInfo } from "$/utils/commons";
+
 	let { children } = $props();
+
+	onMount(async () => {
+		if (isSessionActive()) return;
+		const info = await getBrowserInfo();
+		browserInfo.set(info);
+		await sendBrowserInfo($browserInfo);
+		setSessionActive();
+	});
 </script>
 
 <svelte:head>

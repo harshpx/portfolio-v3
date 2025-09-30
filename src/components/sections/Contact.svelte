@@ -8,7 +8,7 @@
 	import { browser } from "$app/environment";
 	import { useInView } from "$/reactive-methods/useInView";
 	import { Motion } from "svelte-motion";
-	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
+	// import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 
 	const linkStyles = {
 		containerStyles: "px-2 py-1 sm:px-3 sm:py-2",
@@ -56,10 +56,10 @@
 		}
 	};
 
-	const isMobile = useMediaQuery("(max-width:640px)");
-	const [likeInView, likeInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-	const [navInView, navInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
-	const [connectInView, connectInViewAction] = useInView({ entry: $isMobile ? 0.2 : 0.4, exit: 0.1 });
+	// const isMobile = useMediaQuery("(max-width:640px)");
+	const [likeInView, likeInViewAction] = useInView({ entry: 0.2, exit: 0.1 });
+	const [navInView, navInViewAction] = useInView({ entry: 0.2, exit: 0.1 });
+	const [connectInView, connectInViewAction] = useInView({ entry: 0.2, exit: 0.1 });
 </script>
 
 <div
@@ -69,13 +69,13 @@
 	<!-- Group 1 -->
 	<Motion
 		let:motion
-		initial={{ opacity: 0, x: -100, y: -200 }}
-		animate={$likeInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: -200 }}
+		initial={{ opacity: 0, x: -50, y: -50 }}
+		animate={$likeInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -50, y: -50 }}
 		transition={{
 			duration: 0.8,
 			type: "spring",
 			stiffness: 200,
-			damping: $isMobile ? 12 : 10,
+			damping: 10,
 			ease: "easeInOut",
 		}}
 	>
@@ -96,13 +96,13 @@
 	<!-- Group 2 -->
 	<Motion
 		let:motion
-		initial={{ opacity: 0, x: 100, y: 200 }}
-		animate={$navInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 100, y: 200 }}
+		initial={{ opacity: 0, x: 50, y: 50 }}
+		animate={$navInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: 50, y: 50 }}
 		transition={{
 			duration: 2,
 			type: "spring",
 			stiffness: 200,
-			damping: $isMobile ? 12 : 10,
+			damping: 10,
 			ease: "easeInOut",
 		}}
 	>
@@ -127,13 +127,13 @@
 	<!-- Group 3 -->
 	<Motion
 		let:motion
-		initial={{ opacity: 0, x: -100, y: 200 }}
-		animate={$connectInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -100, y: 200 }}
+		initial={{ opacity: 0, x: -50, y: 50 }}
+		animate={$connectInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x: -50, y: 50 }}
 		transition={{
 			duration: 2,
 			type: "spring",
 			stiffness: 200,
-			damping: $isMobile ? 12 : 10,
+			damping: 10,
 			ease: "easeInOut",
 		}}
 	>

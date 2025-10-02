@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { goto } from "$app/navigation";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import arrowLeft from "$/assets/icons/arrow-left.svg";
 	import { useHover } from "$/reactive-methods/useHover";
@@ -7,8 +6,11 @@
 	import { projectData } from "$/utils/contents";
 	import Footer from "$/components/Footer.svelte";
 	import { Motion } from "svelte-motion";
+	import { activeSection, navigateToMainAndScroll } from "$/contexts/activeSection";
 
 	const [backButtonHovered, backButtonHoverAction] = useHover();
+
+	const currMainPageSection = JSON.parse(JSON.stringify($activeSection));
 </script>
 
 <Motion
@@ -27,7 +29,7 @@
 		>
 			<button
 				use:backButtonHoverAction
-				onclick={() => goto("/")}
+				onclick={() => navigateToMainAndScroll(currMainPageSection)}
 				class="flex w-fit cursor-pointer items-center gap-1 text-base font-light text-cyan-700 sm:text-lg lg:text-xl dark:text-cyan-400"
 			>
 				<svg

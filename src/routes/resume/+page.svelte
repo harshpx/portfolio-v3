@@ -3,10 +3,10 @@
 	import downloadSvg from "$/assets/icons/download.svg";
 	import { useHover } from "$/reactive-methods/useHover";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { goto } from "$app/navigation";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { onMount } from "svelte";
 	import { Motion } from "svelte-motion";
+	import { activeSection, navigateToMainAndScroll } from "$/contexts/activeSection";
 
 	let showResume = $state(false);
 
@@ -20,6 +20,8 @@
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [backButtonHovered, backButtonHoverAction] = useHover();
+
+	const currMainPageSection = JSON.parse(JSON.stringify($activeSection));
 </script>
 
 <Motion
@@ -37,7 +39,7 @@
 		>
 			<button
 				use:backButtonHoverAction
-				onclick={() => goto("/")}
+				onclick={() => navigateToMainAndScroll(currMainPageSection)}
 				class="flex w-fit cursor-pointer items-center gap-1 text-base font-light text-cyan-700 sm:text-lg lg:text-xl dark:text-cyan-400"
 			>
 				<svg

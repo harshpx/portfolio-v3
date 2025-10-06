@@ -1,0 +1,140 @@
+\documentclass[9.5pt,a4paper]{article}
+\usepackage{latexsym}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{changepage}
+\usepackage{fontawesome5}
+\geometry{left=0.8cm, right=0.8cm, top=0.5cm, bottom=0.5cm}
+
+\pagestyle{empty}
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{0.8em}{0.6em}  % <--- Reduced spacing
+\titlespacing*{\subsection}{0pt}{0.5em}{0.1em}
+
+\hypersetup{
+    colorlinks=false,            % Disable colored text
+    pdfborderstyle={/S/U/W 0.5},   % Underline style, width 1
+    pdfborder={0 0 0.5},           % Border width (0 horizontal, 0 vertical, 1 thickness)
+    linkbordercolor={0 0 0},     % Black border
+    urlbordercolor={0 0 0}       % Black border for URLs
+}
+
+\begin{document}
+
+\noindent
+\begin{minipage}[t]{0.4\linewidth}
+{\Huge \textbf{Harsh Priye}} \\[0.2em]
+{\Large Software Developer}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.6\linewidth}
+\raggedleft
+\faEnvelope~\href{mailto:harsh.rzf@gmail.com}{harsh.rzf@gmail.com} \quad 
+\faPhone~\underline{+91-8745946064} \\[0.2em]
+\faGlobe~\href{https://harshpriye.in}{harshpriye.in} \quad 
+\faGithub~\href{https://github.com/harshpx}{github.com/harshpx} \quad
+\faLinkedin~\href{https://linkedin.com/in/harshpx}{linkedin.com/in/harshpx}
+\end{minipage}
+
+
+\section*{Work Experience}
+\noindent \textbf{Tata Consultancy Services (TCS)} \hfill \textbf{1 year 3 months} \\
+\vspace*{-1em}
+\begin{itemize}[left=0.4cm, itemsep=0pt, topsep=0pt, partopsep=0pt]
+    \item \textbf{Software Engineer} \hfill \textbf{(Jul 2024 -- Present)}
+    \begin{itemize}[left=0cm, itemsep=0pt, topsep=-1pt, partopsep=0pt]
+      \setlength{\rightskip}{0.05\textwidth}
+      \item Developed secure, scalable APIs for a Forex payments app using Spring-Boot, enabling 1.5 times faster delivery.
+      \item Enhanced API efficiency by 40\% via aggregation, query refactoring, pagination, and caching.
+      \item Implemented frontend features for a Forex app, enhancing UX and performance in a 6-member team.
+      \item Boosted frontend performance by 20\% using lazy loading, state optimization, and improved design patterns.
+      \begin{adjustwidth}{-1.2em}{0pt}
+        \textbf{Tech Stack:} Java, Spring Boot, Microservices, JavaScript, React.js, Lit Element, Git, Azure
+      \end{adjustwidth}
+    \end{itemize}
+\end{itemize}
+\vspace*{0.6em}
+\noindent \textbf{AulaCube Technologies } \hfill \textbf{4 months} \\
+\vspace*{-1em}
+\begin{itemize}[left=0.4cm, itemsep=0pt, topsep=0pt, partopsep=0pt]
+    \item \textbf{Software Development Intern} \hfill \textbf{(Mar 2024 -- Jun 2024)}
+    \begin{itemize}[left=0cm, itemsep=0pt, topsep=-1pt, partopsep=0pt]
+      \setlength{\rightskip}{0.05\textwidth}
+      \item Built an admin dashboard for student data, improving readability, management, and client satisfaction by 40\%.
+      \item Fixed 30+ irresponsive UI issues on the AulaEdge website for small-screen devices.
+      \item Introduced Tailwind CSS to the existing code base for faster and responsive styling.
+      \begin{adjustwidth}{-1.2em}{0pt}
+        \textbf{Tech Stack:} Typescript, React.js, Ant Design, Chart.js, Git.
+      \end{adjustwidth}
+    \end{itemize}
+\end{itemize}
+
+\section*{Education}
+\textbf{B.Tech - Computer Science (Mathematics and Computing)} \hfill \textbf{CGPA: 7.63} \\
+Netaji Subhas University of Technology (NSUT), New Delhi \hfill \textbf{(2020 -- 2024)} \\ [0.4 em]
+\textbf{AISSCE (CBSE Class 12)} \hfill \textbf{Score: 87\%} \\
+Vishwa Bharati Public School, New Delhi \hfill \textbf{(2019 -- 2020)}
+
+\section*{Projects}
+\noindent \textbf{Codeboxes - Online Code Editor} \\
+\textbf(Java, SpringBoot, Microservices, IPC, MongoDB, Redis, JWT, Next.js, Tailwind CSS, Docker, Github Actions)
+\begin{itemize}[left=0.4cm, itemsep=-2pt, topsep=3pt, partopsep=0pt]
+  \setlength{\rightskip}{0.05\textwidth}
+  \item Developed a full-stack online code editor which supports 6+ major programming languages.
+  \item Create REST CRUD APIs using Spring Boot (maintaining REST Maturity Model Level 2), and Configured Spring Security for JWT based authentication and Authorization.
+  \item Built a code-execution service with Bash \& Docker, that communicates with the server via IPC (ProcessBuilder).\\Removed dependency on any 3rd party API for code execution entirely (Increased code execution limit to infinity).
+  \item Switched to microservice architecture separating User+Auth and Code execution services, improving code execution API availability by 100\% compared to monolith.
+  \item Developed frontend with Next.js \& Tailwind, integrating Shadcn UI and Aceternity UI, boosting DAU by 20\%.
+  \item Implemented CI/CD pipeline using Docker and Github Actions for 5x faster deployments, compared to manual.
+\end{itemize}
+\begin{adjustwidth}{2em}{0pt}
+\textbf{Source:} \href{https://github.com/harshpx/Codeboxes}{github.com/harshpx/Codeboxes} , \quad
+\href{https://github.com/harshpx/codeboxes-server}{github.com/harshpx/codeboxes-server} \\
+\textbf{Web url:} \href{https://www.codeboxes.in/}{https://www.codeboxes.in}
+\end{adjustwidth}
+
+\vspace*{0.6em}
+
+\noindent \textbf{Mini Tic-Tac-Toe - Online multiplayer tic-tac-toe game} \\
+\textbf(Socket.io, Express.js, Node.js, React.js, Tailwind CSS)
+\begin{itemize}[left=0.4cm, itemsep=-2pt, topsep=3pt, partopsep=0pt]
+  \setlength{\rightskip}{0.05\textwidth}
+  \item Structured a bi-directional WebSocket server using Socket.io, to achieve low-latency, real-time communication.\\(90\% faster and less bandwidth usage than constant HTTP polling)
+  \item Designed a robust lobby management and scoring system (Only 2 person per lobby, with rematch options).
+  \item Also implemented in-game chat using parallel socket connection between both players. Helped gain users by 40\%.
+\end{itemize}
+\begin{adjustwidth}{2em}{0pt}
+\textbf{Source:} \href{https://github.com/harshpx/tic-tac-toe-socket}{github.com/harshpx/tic-tac-toe-socket} \quad \textbf{Web url:} \href{https://mini-tic-tac-toe.vercel.app}{mini-tic-tac-toe.vercel.app}
+\end{adjustwidth}
+
+\vspace*{0.6em}
+
+\noindent \textbf{Dog Breed Identifier} \\
+\textbf(AI, Machine Learning, Python, Tensorflow, Java, Spring-Boot, TypeScript, Svelte, Sveltekit, Tailwind)
+\begin{itemize}[left=0.4cm, itemsep=-2pt, topsep=3pt, partopsep=0pt]
+  \setlength{\rightskip}{0.05\textwidth}
+  \item Built a CNN image classifier achieving 95\%+ accuracy in classifying dog breeds using Python and TensorFlow.
+  \item Served the trained model in a Spring-Boot server to use it as an API.
+  \item Migrated from React.js to Svelte for frontend, gaining approx 60\% faster load times and 90\% smaller bundle size. 
+\end{itemize}
+\begin{adjustwidth}{2em}{0pt}
+\textbf{Source:} \href{https://github.com/harshpx/dbi-client}{github.com/harshpx/dbi-client}, \quad \href{https://github.com/harshpx/dbi-server}{github.com/harshpx/dbi-server} \\
+\textbf{Web url:} \href{https://dog-breed-identifier-client.vercel.app}{dog-breed-identifier-client.vercel.app} 
+\end{adjustwidth}
+
+\section*{Technical Skills / Tech Stack}
+\textbf{Languages:} Java, JavaScript, Typescript, Bash, SQL, YAML, HTML, CSS \\
+\textbf{Frameworks, Libraries \& tools:} \\
+Spring-Boot, Node.js, Express.js, Redis, STOMP, Socket.io, Kafka, MongoDB, MySQL, PostgreSQL, \\
+Docker, Nginx, Github actions, Git, Linux, React.js, Next.js, Svelte, React-Native, Tailwind.
+
+% \section*{Competitive Programming}
+% \begin{itemize}[left=0.4cm, itemsep=0pt, topsep=1pt, partopsep=0pt]
+%   \item Rated 1800+ on Leetcode (Top 6\%).
+%   \item Achieved Rank 600 in Leetcode Weekly Contest 361.Backend
+% \end{itemize}
+
+\end{document}

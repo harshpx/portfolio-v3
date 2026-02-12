@@ -23,7 +23,7 @@
 		let:motion
 	>
 		<div use:stacksInViewAction use:motion class="flex w-full flex-col gap-2 sm:gap-4 lg:w-[60%]">
-			<div class="text-left text-4xl font-[300]">My Stack & Tools</div>
+			<div class="text-left text-4xl font-light">My Stack & Tools</div>
 			<div class="flex flex-wrap gap-1">
 				{#each techLabels as label (label)}
 					<div>
@@ -41,7 +41,7 @@
 			transition={{ duration: 0.4, type: "spring", stiffness: 200, damping: 15, ease: "easeIn" }}
 			let:motion
 		>
-			<div use:motion use:projLabelInViewAction class="text-left text-4xl font-[300]">Projects</div>
+			<div use:motion use:projLabelInViewAction class="text-left text-4xl font-light">Projects</div>
 		</Motion>
 		<div class="flex flex-col gap-4">
 			{#each projectData.slice(0, 4) as project, i (project.title)}

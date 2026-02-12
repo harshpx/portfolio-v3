@@ -24,7 +24,7 @@
 </svelte:head>
 
 <div class="flex h-screen w-screen flex-col overflow-hidden">
-	<div id="header" class="h-[60px] w-full">
+	<div id="header" class="h-15 w-full">
 		<Header />
 	</div>
 	<div id="content" class="flex h-[calc(100vh-60px)] w-full flex-col">

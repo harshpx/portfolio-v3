@@ -26,7 +26,7 @@
 		let:motion
 	>
 		<div use:aboutInViewAction use:motion class="flex w-full flex-col gap-2 sm:w-5/6 lg:w-2/3 xl:w-1/2">
-			<div class="text-left text-4xl font-[300]">About me</div>
+			<div class="text-left text-4xl font-light">About me</div>
 			<div class="text-justify text-[15px] font-light opacity-75">
 				Currently, I'm a Software Engineer at <a
 					href="https://www.tcs.com/"
@@ -52,7 +52,7 @@
 				animate={$expTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 				transition={{ duration: 0.4, ease: "easeIn" }}
 			>
-				<div use:motion use:expTitleInViewAction class="text-left text-4xl font-[300]">Experience</div>
+				<div use:motion use:expTitleInViewAction class="text-left text-4xl font-light">Experience</div>
 			</Motion>
 			<div class="relative flex flex-col gap-4">
 				<!-- Vertical line -->
@@ -62,8 +62,8 @@
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
-					<div use:motion class="absolute top-5 left-[22px] h-[80%] w-[10px]">
-						<div class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
+					<div use:motion class="absolute top-5 left-5.5 h-[80%] w-2.5">
+						<div class="h-full w-[0.5px] bg-linear-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
 					</div>
 				</Motion>
 
@@ -161,7 +161,7 @@
 				animate={$edTitleInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 200 }}
 				transition={{ duration: 0.4, ease: "easeIn" }}
 			>
-				<div use:motion use:edTitleInViewAction class="text-left text-4xl font-[300]">Education</div>
+				<div use:motion use:edTitleInViewAction class="text-left text-4xl font-light">Education</div>
 			</Motion>
 			<div class="relative flex flex-col gap-4">
 				<!-- Vertical line -->
@@ -171,8 +171,8 @@
 					transition={{ duration: 0.4, ease: "easeIn" }}
 					let:motion
 				>
-					<div use:motion class="absolute top-5 left-[22px] h-[80%] w-[10px]">
-						<div class="h-full w-[0.5px] bg-gradient-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
+					<div use:motion class="absolute top-5 left-5.5 h-[80%] w-2.5">
+						<div class="h-full w-[0.5px] bg-linear-to-b from-neutral-900 to-transparent dark:from-[#d2eefa]"></div>
 					</div>
 				</Motion>
 				<!-- NSUT -->

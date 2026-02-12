@@ -31,9 +31,9 @@
 		let:motion
 	>
 		<div use:motion class="flex flex-col items-center justify-center sm:mb-40 sm:w-[45%] sm:items-start lg:w-[40%]">
-			<div class="text-center font-poppins text-5xl font-[300] sm:-ml-1 sm:text-left sm:text-6xl">Harsh Priye</div>
+			<div class="text-center font-poppins text-5xl font-light sm:-ml-1 sm:text-left sm:text-6xl">Harsh Priye</div>
 			<div class="mt-2 text-center font-poppins text-lg font-extralight sm:text-left sm:text-xl">
-				Full Stack Developer
+				Software Developer
 			</div>
 			<div
 				class="mt-4 text-center font-poppins text-sm font-light text-nowrap text-neutral-600
@@ -45,7 +45,7 @@
 				class="mt-2 text-center font-poppins text-sm font-light text-neutral-600
 				sm:text-left dark:text-[#d2eefab7]"
 			>
-				Based in <span class="font-[400] text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
+				Based in <span class="font-normal text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 			</div>
 			<div class="mt-10 flex items-center justify-center gap-1 sm:mt-10 sm:flex-wrap sm:justify-start sm:gap-2">
 				{#each linksData as linkData (linkData.label)}
@@ -54,12 +54,12 @@
 			</div>
 			{#if !$isMobile}
 				<div
-					class="mt-10 w-full text-center text-[14px] font-light text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
+					class="mt-10 w-full text-center text-[12px] font-light text-neutral-900/70 sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
 				>
 					This website is built with
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span> &
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>, hosted with
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">SvelteKit</span> &
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">Tailwind</span>, hosted with
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
 				</div>
 			{/if}
 		</div>
@@ -74,7 +74,7 @@
 		>
 			<div
 				use:motion
-				class="h-[0.5px] w-9/10 bg-gradient-to-b from-transparent via-neutral-900 to-transparent sm:h-72
+				class="h-[0.5px] w-9/10 bg-linear-to-b from-transparent via-neutral-900 to-transparent sm:h-72
 				sm:w-[0.5px] dark:via-[#d2eefa]"
 			></div>
 		</Motion>
@@ -116,11 +116,11 @@
 				sm:w-2/3 sm:text-left dark:text-[#d2eefa]/70"
 				>
 					This website is built with
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">SvelteKit</span>
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">SvelteKit</span>
 					and
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">Tailwind</span>,
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">Tailwind</span>,
 					<br /> hosted with
-					<span class="font-[400] text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
+					<span class="font-normal text-cyan-700 dark:text-cyan-400">Vercel</span> by yours truly.
 				</div>
 			</div>
 		</Motion>

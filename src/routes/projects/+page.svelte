@@ -41,7 +41,7 @@
 				/>
 				<span> Harsh Priye</span>
 			</button>
-			<div class="text-4xl font-[300] sm:text-5xl lg:text-6xl">All Projects</div>
+			<div class="text-4xl font-light sm:text-5xl lg:text-6xl">All Projects</div>
 			<div class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
 				{#each projectData as project, i (project.title)}
 					<Project key={i} data={project} asListItem />

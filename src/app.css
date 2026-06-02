@@ -15,3 +15,23 @@ div {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
+
+@media print {
+	body * {
+		visibility: hidden;
+	}
+
+	.print-root,
+	.print-root * {
+		visibility: visible;
+	}
+
+	.print-root {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 210mm;
+		margin: 0;
+		padding: 0;
+	}
+}

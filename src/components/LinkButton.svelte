@@ -34,8 +34,7 @@
 		use:useConditionalAction={{ action: buttonHoveredAction, enabled: hover }}
 		href={linkData.url}
 		aria-label={linkData.label}
-		target={linkData.target ?? "_self"}
-		rel="noopener noreferrer"
+		target={linkData.target ?? ""}
 		class={`flex items-center gap-2 rounded-full bg-neutral-900/10 px-2.5 py-1.5 dark:bg-[#d2eefa]/10 ${containerStyles}`}
 	>
 		{#if linkData.iconSvg}

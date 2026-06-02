@@ -4,19 +4,12 @@
 	import { useHover } from "$/reactive-methods/useHover";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { inlineSvg } from "@svelte-put/inline-svg";
-	import { onMount } from "svelte";
 	import { Motion } from "svelte-motion";
 	import { activeSection, navigateToMainAndScroll } from "$/contexts/activeSection";
+	import Resume from "./Resume.svelte";
+	import { printComponentA4 } from "$/utils/commons";
 
-	let showResume = $state(false);
-
-	onMount(() => {
-		let cls = setTimeout(() => {
-			showResume = true;
-		}, 600);
-
-		return () => clearTimeout(cls);
-	});
+	let resumeRef: HTMLDivElement;
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 	const [backButtonHovered, backButtonHoverAction] = useHover();
@@ -30,12 +23,12 @@
 	transition={{ duration: 0.4, ease: "easeInOut" }}
 	let:motion
 >
-	<div use:motion class="flex h-full w-full flex-col px-2 pb-2">
+	<div use:motion class="flex h-full w-full flex-col px-2 pb-0">
 		<div
 			class="
-			flex w-full grow flex-col gap-1
+			flex max-h-full w-full flex-col gap-1
 			p-6 font-poppins
-			text-neutral-900 sm:p-10 lg:p-14 dark:text-[#d2eefa]"
+			text-neutral-900 sm:p-10 sm:pb-4 lg:p-14 lg:pb-4 dark:text-[#d2eefa]"
 		>
 			<button
 				use:backButtonHoverAction
@@ -51,37 +44,23 @@
 				/>
 				<span> Harsh Priye</span>
 			</button>
-			<div class="flex w-full items-end justify-between">
+			<div class="mb-4 flex w-full items-end justify-between">
 				<span class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</span>
-				{#if !$isMobile}
-					<a
-						href="/resume.pdf"
-						download="harsh-resume.pdf"
-						aria-label="download"
-						class="flex items-center gap-2 rounded-full
+				<button
+					onclick={() => printComponentA4(resumeRef)}
+					class="flex items-center gap-2 rounded-full
 						bg-neutral-900/10 px-3 py-2
 						font-extralight dark:bg-[#d2eefa]/10"
-					>
-						<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
+				>
+					<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
+					{#if !$isMobile}
 						<span>Download</span>
-					</a>
-				{:else}
-					<a
-						href="/resume.pdf"
-						aria-label="download"
-						class="flex items-center gap-2 rounded-full
-						bg-neutral-900/10 p-3 font-extralight
-						dark:bg-[#d2eefa]/10"
-					>
-						<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
-					</a>
-				{/if}
+					{/if}
+				</button>
 			</div>
-			{#if showResume}
-				<div class="mt-4 flex w-full grow overflow-hidden rounded-2xl lg:mt-8">
-					<iframe src="/resume.pdf" title="resume" class=" w-full"></iframe>
-				</div>
-			{/if}
+			<div bind:this={resumeRef} class="flex w-full max-w-[210mm] min-w-0 grow overflow-auto rounded-xl">
+				<Resume />
+			</div>
 		</div>
 	</div>
 </Motion>

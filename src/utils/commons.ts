@@ -34,3 +34,24 @@ const getOS = (userAgent: string) => {
 	if (/Mac/i.test(userAgent)) return "macOS";
 	if (/Linux/i.test(userAgent)) return "linux";
 };
+
+export const parseMarkdownText = (text: string): string => {
+	// to be extended
+	return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+};
+
+export const printComponentA4 = (component: HTMLDivElement) => {
+	const clone = component.cloneNode(true) as HTMLDivElement;
+
+	const printRoot = document.createElement("div");
+	printRoot.classList.add("print-root");
+	printRoot.appendChild(clone);
+
+	document.body.appendChild(printRoot);
+
+	window.print();
+
+	setTimeout(() => {
+		printRoot.remove();
+	}, 1000);
+};

@@ -22,15 +22,20 @@ import mailSvg from "$/assets/icons/mail.svg";
 import instagramSvg from "$/assets/icons/instagram.svg";
 
 export const linksData: LinkDataType[] = [
-	{ url: "https://www.github.com/harshpx", label: "Github", iconSvg: githubSvg },
-	{ url: "https://www.linkedin.com/in/harshpx/", label: "LinkedIn", iconSvg: linkedinSvg },
-	{ url: "/resume", label: "Resume", iconSvg: resumeSvg, target: "_self" },
+	{ url: "https://www.github.com/harshpx", label: "Github", iconSvg: githubSvg, target: "_blank" },
+	{ url: "https://www.linkedin.com/in/harshpx/", label: "LinkedIn", iconSvg: linkedinSvg, target: "_blank" },
+	{ url: "/resume", label: "Resume", iconSvg: resumeSvg },
 ];
 
 export const contactLinksData: LinkDataType[] = [
 	{ url: "mailto:harsh.rzf@gmail.com", label: "harsh.rzf@gmail.com", iconSvg: mailSvg },
-	{ url: "https://www.linkedin.com/in/harshpx/", label: "linkedin.com/in/harshpx", iconSvg: linkedinSvg },
-	{ url: "https://www.instagram.com/harshhh.hhhh", label: "@harshhh.hhhh", iconSvg: instagramSvg },
+	{
+		url: "https://www.linkedin.com/in/harshpx/",
+		label: "linkedin.com/in/harshpx",
+		iconSvg: linkedinSvg,
+		target: "_blank",
+	},
+	{ url: "https://www.instagram.com/harshhh.hhhh", label: "@harshhh.hhhh", iconSvg: instagramSvg, target: "_blank" },
 ];
 export const projectData: ProjectDataType[] = [
 	{
@@ -283,3 +288,125 @@ export const techLabels: string[] = [
 	"Github Actions",
 	"Visual Studio Code",
 ];
+
+export const resumeData = {
+	name: "Harsh Priye",
+	role: "Software Developer",
+	contact: {
+		phone: "+91-8745946064",
+		email: "harsh.rzf@gmail.com",
+	},
+	links: {
+		website: {
+			url: "https://www.harshpriye.in",
+			display: "harshpriye.in",
+		},
+		linkedin: {
+			url: "https://www.linkedin.com/in/harshpx",
+			display: "linkedin.com/in/harshpx",
+		},
+		github: {
+			url: "https://www.github.com/harshpx",
+			display: "github.com/harshpx",
+		},
+	},
+	workExperience: [
+		{
+			company: "Tata Consultancy Services (TCS)",
+			duration: "2 years",
+			roles: [
+				{
+					role: "Software Engineer - Full Stack",
+					period: "July 2024 - Present",
+					description: [
+						"Developed & debugged 40+ REST APIs for a trading platform processing with 99.95% transactional accuracy.",
+						"Improved API efficiency by 40% by parallel batch processing, along with query aggregation, pagination, and caching.",
+						"Developed multiple Spring Batch jobs for report generation, scheduling, database cleanup, and large-scale data processing.",
+						"Developed 10+ views (pages) and 30+ UI components for a banking OPS application, with React.js & Lit.",
+						"Developed an internal tool to parse and compare COBOL strings, reducing debugging time by 80%.",
+						"Implemented recursive functions to efficiently modify, visualize and render XML data on UI.",
+					],
+					techStack:
+						"Java, Spring Boot, Spring Batch, Oracle DB, Docker, Git, Azure, JavaScript, React.js, Lit Framework",
+				},
+			],
+		},
+		{
+			company: "Aulacube Technologies",
+			duration: "4 Months",
+			roles: [
+				{
+					role: "Software Development Intern",
+					period: "Mar 2024 - Jun 2024",
+					description: [
+						"Built an admin dashboard for student data, improving readability, management, and client satisfaction by 40%.",
+						"Fixed 30+ irresponsive UI issues on the AulaEdge website for small-screen devices.",
+						"Introduced Tailwind CSS to the existing code base for faster and responsive styling.",
+					],
+					techStack: "Typescript, React.js, Ant Design, Chart.js, Git.",
+				},
+			],
+		},
+	],
+	education: [
+		{
+			degree: "B.Tech - Computer Science (Mathematics and Computing)",
+			institution: "Netaji Subhas University of Technology (NSUT), New Delhi",
+			period: "2020 - 2025",
+			score: "CGPA: 7.63",
+		},
+		{
+			degree: "AISSCE (CBSE Class 12)",
+			institution: "Vishwa Bharati Public School, New Delhi",
+			period: "2019 - 2020",
+			score: "Score: 87%",
+		},
+	],
+	projects: [
+		{
+			name: "Memoize - Productivity Suite - AI, Docs, Events and more",
+			about:
+				"A comprehensive productivity suite that includes AI-powered LLM, Rich text editor, event scheduling, and more.",
+			techStack:
+				"Java, Spring Boot, Spring AI, RAG, LLM, PostgreSQL, PgVector, React.js, Capacitor, Kubernetes, Docker, Github Actions",
+			description: [
+				"Built a Full-stack productivity suite with an **AI-powered LLM (MemoAI)**, Rich text editor and Events scheduling features.",
+				"Developed 25+ RESTful APIs with **Spring Boot**, **PostgreSQL**, and JPA, optimizing db performance by query tuning and pagination.",
+				"Implemented secure **JWT-based authentication** and **RBAC** using **Spring Security**, with **OAuth2** for Google login.",
+				"Integrated Gemini 3.5 Flash via **Spring AI**, using **pgVector** for **RAG-based conversational memory** and **context retention**.",
+				"Developed an efficient **Event propagation** function from scratch for scheduling weekly, monthly and yearly recurring events.",
+				"Implemented **Rich text editor** in **React.js** by leveraging **Tiptap-UI** components, storing content and formatting in JSON format.",
+				"Used **K3s** with 1 node cluster with 2 deployment instances each for Client and Service. Used **Traefik - Ingress** for api gateway routing and load balancing. Automated CI/CD using **github actions**.",
+			],
+			links: {
+				live: ["https://www.memoize.in"],
+				source: ["https://github.com/harshpx/memoize-v3-api", "https://github.com/harshpx/memoize-v3-client"],
+				mobile: ["https://github.com/harshpx/memoize-v3-client/releases"],
+			},
+		},
+		{
+			name: "Codeboxes - Online Code Editor and Compiler",
+			about:
+				"An online code editor and compiler that supports multiple programming languages and provides a seamless coding experience.",
+			techStack:
+				"Java, SpringBoot, Microservices, IPC, MongoDB, Next.js, ShadCN, Tailwind, Kubernetes, Docker, Github Actions",
+			description: [
+				"Developed a full-stack online code editor which can execure codes in 6+ major programming languages.",
+				"Created 15+ REST CRUD APIs using **Spring Boot** (REST Maturity Level 2) and secured them with **JWT-based** Spring Security.",
+				"Built a **Docker-based** code execution service using Bash and **ProcessBuilder** with self-hosted containers. (No 3rd party APIs used)",
+				"Moved to **Microservice** architecture by separating User, Auth and Code services, achieving overall API availability of 99.5%.",
+				"Deployed **1 Kubernetes cluster** node with 2 deployment instances per service. Used **Ingress** for api gateway routing and load balancing. Automated CI/CD using **github actions**.",
+			],
+			links: {
+				live: ["https://www.codeboxes.in"],
+				source: ["https://github.com/harshpx/codeboxes-server", "https://github.com/harshpx/Codeboxes"],
+				mobile: [],
+			},
+		},
+	],
+	skills: [
+		"**Languages:** Java, JavaScript, TypeScript, Bash, SQL, YAML, HTML, CSS",
+		"**Frameworks/Tools:** Spring-Boot, Spring AI, Node.js, Hono, Express.js, Redis, Socket.io, MongoDB, PostgreSQL, Kubernetes, Docker, Github actions, Git, Linux, React.js, Next.js, Svelte, Sveltekit, React-Native, Tailwind CSS",
+		"**Soft Skills:** Problem-Solving, Attention to detail, Collaboration, Communication, Adaptability, Ownership, Time management, Continuous learning",
+	],
+};

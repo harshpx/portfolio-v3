@@ -41,22 +41,42 @@ export const parseMarkdownText = (text: string): string => {
 };
 
 export const printComponentA4 = (component: HTMLDivElement) => {
+	const iframe = document.createElement("iframe");
+	iframe.style.position = "fixed";
+	iframe.style.right = "0";
+	iframe.style.bottom = "0";
+	iframe.style.width = "0";
+	iframe.style.height = "0";
+	iframe.style.border = "0";
+	document.body.appendChild(iframe);
+
+	const iframeWindow = iframe.contentWindow;
+	const iframeDocument = iframe.contentDocument || iframeWindow?.document;
+
+	if (!iframeWindow || !iframeDocument) return;
+
 	const clone = component.cloneNode(true) as HTMLDivElement;
 
-	const printRoot = document.createElement("div");
-	printRoot.classList.add("print-root");
-	printRoot.appendChild(clone);
+	iframeDocument.head.innerHTML = `
+    <style>
+      /* Inject your Tailwind / global CSS links here if needed */
+      @page { size: A4 portrait; margin: 0; }
+      body { margin: 0; padding: 0; background: white; }
+    </style>
+  `;
 
-	document.body.appendChild(printRoot);
+	document.querySelectorAll('style, link[rel="stylesheet"]').forEach((node) => {
+		iframeDocument.head.appendChild(node.cloneNode(true));
+	});
 
-	const handlePrintCleanup = () => {
-		printRoot.remove();
-		window.removeEventListener("afterprint", handlePrintCleanup);
-	};
-
-	window.addEventListener("afterprint", handlePrintCleanup);
+	iframeDocument.body.appendChild(clone);
 
 	setTimeout(() => {
-		window.print();
-	}, 100);
+		iframeWindow.focus();
+		iframeWindow.print();
+
+		setTimeout(() => {
+			iframe.remove();
+		}, 1000);
+	}, 250);
 };

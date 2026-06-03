@@ -17,7 +17,7 @@ div {
 	scrollbar-width: none;
 }
 
-@media print {
+/* @media print {
 	html,
 	body {
 		height: auto !important;
@@ -43,4 +43,4 @@ div {
 		size: A4 portrait;
 		margin: 0;
 	}
-}
+} */

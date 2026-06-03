@@ -56,5 +56,7 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 
 	window.addEventListener("afterprint", handlePrintCleanup);
 
-	window.print();
+	setTimeout(() => {
+		window.print();
+	}, 100);
 };

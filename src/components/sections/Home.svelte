@@ -47,7 +47,7 @@
 			>
 				Based in <span class="font-normal text-cyan-900 dark:text-cyan-400">New Delhi, India</span>
 			</div>
-			<div class="mt-10 flex items-center justify-center gap-1 sm:mt-10 sm:flex-wrap sm:justify-start sm:gap-2">
+			<div class="mt-10 flex flex-wrap items-center justify-center gap-1 sm:mt-10 sm:justify-start sm:gap-2">
 				{#each linksData as linkData (linkData.label)}
 					<LinkButton {linkData} />
 				{/each}

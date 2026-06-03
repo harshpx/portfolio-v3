@@ -4,6 +4,7 @@
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { useInView } from "$/reactive-methods/useInView";
 	import NavigationButton from "../NavigationButton.svelte";
+	import { getStartEndStringFromDates, getDurationInMonthsAndYearsFromDates } from "$/utils/commons";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 
@@ -85,27 +86,35 @@
 								<p class="text-2xl">Software Engineer</p>
 								<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
 									<p class="text-md font-light">Tata Consultancy Services</p>
-									<p class="text-sm font-light">&lpar;July 2024 - Present&rpar;</p>
+									<p class="text-sm font-light">
+										{getDurationInMonthsAndYearsFromDates(
+											new Date(2024, 6, 1),
+											new Date(),
+										)}&nbsp;({getStartEndStringFromDates(new Date(2024, 6, 1), new Date())})
+									</p>
 								</div>
 								<p class="mt-1 text-sm font-extralight italic">Full Time</p>
 							</div>
 							<p class="text-justify text-[13px] font-light opacity-75">
-								Contributing to the development of secure and scalable RESTful APIs for Forex payments app. Developed
-								the frontend of a Forex payment application as part of a 6-member team. Focused on user-centric design
-								and seamless user experience. Optimized frontend performance by lazy loading, caching and efficient
-								state handling.
+								Developing and optimizing enterprise-grade trading and banking applications by building REST APIs,
+								Spring Batch jobs, and modern React-based UIs. Improving system performance through parallel processing,
+								query optimization, caching, and automation, while creating internal tooling and XML visualization
+								features that enhance developer productivity and debugging efficiency.
 							</p>
 							<div class="flex flex-wrap gap-1">
 								<TechLabel name="Java" />
 								<TechLabel name="Spring Boot" />
+								<TechLabel name="Sprint Batch" />
 								<TechLabel name="REST APIs" />
-								<TechLabel name="JPA" />
+								<TechLabel name="Oracle DB" />
 								<TechLabel name="SQL" />
-								<TechLabel name="Microservices" />
+								<TechLabel name="Docker" />
+								<TechLabel name="Git" />
+								<TechLabel name="Azure" />
+								<TechLabel name="Elastic" />
 								<TechLabel name="JavaScript" />
 								<TechLabel name="React.js" />
-								<TechLabel name="Lit-Element" />
-								<TechLabel name="Git" />
+								<TechLabel name="Lit Framework" />
 							</div>
 						</div>
 					</div>
@@ -128,7 +137,12 @@
 								<p class="text-2xl">Frontend Developer</p>
 								<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between">
 									<p class="text-md font-light">Aulacube Technologies</p>
-									<p class="text-sm font-light">&lpar;March 2024 - July 2024&rpar;</p>
+									<p class="text-sm font-light">
+										{getDurationInMonthsAndYearsFromDates(
+											new Date(2024, 2, 1),
+											new Date(2024, 5, 1),
+										)}&nbsp;({getStartEndStringFromDates(new Date(2024, 2, 1), new Date(2024, 5, 1))})
+									</p>
 								</div>
 								<p class="mt-1 text-sm font-extralight italic">Internship</p>
 							</div>

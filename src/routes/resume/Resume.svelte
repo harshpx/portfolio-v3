@@ -7,7 +7,11 @@
 	import webSvg from "$/assets/icons/web.svg";
 	import mobileSvg from "$/assets/icons/mobile.svg";
 	import { resumeData } from "$/utils/contents";
-	import { parseMarkdownText as parseText } from "$/utils/commons";
+	import {
+		parseMarkdownText as parseText,
+		getStartEndStringFromDates,
+		getDurationInMonthsAndYearsFromDates,
+	} from "$/utils/commons";
 </script>
 
 <div
@@ -82,14 +86,19 @@
 				<div class="flex flex-col">
 					<div class="flex items-center justify-between gap-2">
 						<span class="text-base font-semibold">{experience.company}</span>
-						<span class="text-[14px] font-semibold">{experience.duration}</span>
+						<span class="text-[14px] font-semibold"
+							>{getDurationInMonthsAndYearsFromDates(
+								experience.roles?.[0].startDate,
+								experience.roles?.[experience.roles.length - 1].endDate,
+							)}</span
+						>
 					</div>
 					<ul class="ml-4 list-outside list-disc">
 						{#each experience.roles as role, index (index)}
 							<li>
 								<div class="flex items-center justify-between gap-2 text-[14px] italic">
 									<span>{role.role}</span>
-									<span>({role.period})</span>
+									<span>({getStartEndStringFromDates(role.startDate, role.endDate)})</span>
 								</div>
 								<ul class="ml-1 list-outside list-none">
 									{#each role.description as description, index (index)}

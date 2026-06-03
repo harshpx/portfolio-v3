@@ -1,3 +1,5 @@
+import { months } from "./contents";
+
 export const capitalizeFirstLetter = (str: string) => {
 	return str.charAt(0).toUpperCase() + str.slice(1);
 };
@@ -59,7 +61,6 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 
 	iframeDocument.head.innerHTML = `
     <style>
-      /* Inject your Tailwind / global CSS links here if needed */
       @page { size: A4 portrait; margin: 0; }
       body { margin: 0; padding: 0; background: white; }
     </style>
@@ -75,4 +76,43 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 		iframeWindow.focus();
 		iframeWindow.print();
 	}, 500);
+};
+
+export const getStartEndStringFromDates = (start: Date, end: Date) => {
+	const currentDate = new Date();
+	if (start.getTime() > end.getTime()) {
+		return "Invalid dates";
+	} else if (start.getTime() > currentDate.getTime()) {
+		return `Starting from ${months[start.getMonth()]?.substring(0, 3)} ${start.getFullYear()}`;
+	}
+	const startMonth = months[start.getMonth()];
+	const startYear = start.getFullYear();
+	const endMonth = months[end.getMonth()];
+	const endYear = end.getFullYear();
+	const isPresent =
+		end.getDate() === currentDate.getDate() &&
+		end.getMonth() === currentDate.getMonth() &&
+		end.getFullYear() === currentDate.getFullYear();
+	return `${startMonth.substring(0, 3)} ${startYear} - ${isPresent ? "Present" : `${endMonth.substring(0, 3)} ${endYear}`}`;
+};
+
+export const getDurationInMonthsAndYearsFromDates = (start: Date, end: Date) => {
+	const startMonth = start.getMonth();
+	const startYear = start.getFullYear();
+	const endMonth = end.getMonth();
+	const endYear = end.getFullYear();
+
+	const totalMonths = (endYear - startYear) * 12 + (endMonth - startMonth + 1);
+	const years = Math.floor(totalMonths / 12);
+	const months = totalMonths % 12;
+
+	let result = "";
+	if (years > 0) {
+		result += `${years} year${years > 1 ? "s" : ""}`;
+	}
+	if (months > 0) {
+		if (result) result += " ";
+		result += `${months} month${months > 1 ? "s" : ""}`;
+	}
+	return result || "0 months";
 };

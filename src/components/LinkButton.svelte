@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { useConditionalAction } from "$/reactive-methods/useConditionalAction";
 	import { useHover } from "$/reactive-methods/useHover";
+	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { Motion } from "svelte-motion";
 
@@ -21,6 +22,7 @@
 	};
 	const { linkData, containerStyles, labelStyles, iconStyles, hover = true, scale = true }: LinkProps = $props();
 	const [buttonHovered, buttonHoveredAction] = useHover();
+	const isSmallScreen = useMediaQuery("(max-width: 640px)");
 </script>
 
 <Motion
@@ -40,7 +42,7 @@
 		{#if linkData.iconSvg}
 			<svg
 				use:inlineSvg={linkData.iconSvg}
-				class={`h-5 w-5 text-neutral-900 dark:text-[#d2eefa] ${$buttonHovered ? "stroke-2" : "stroke-1"} ${iconStyles}`}
+				class={`h-5 w-5 text-neutral-900 dark:text-[#d2eefa] ${$isSmallScreen ? "stroke-2" : $buttonHovered ? "stroke-2" : "stroke-1"} ${iconStyles}`}
 			></svg>
 		{/if}
 		<span class={`text-sm ${$buttonHovered ? "font-[400]" : "font-light"} ${labelStyles}`}>

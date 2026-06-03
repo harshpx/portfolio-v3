@@ -2,6 +2,7 @@ import type { ProjectDataType } from "$/components/Project.svelte";
 import codeboxesDark from "$/assets/images/codeboxes-dark.png";
 import codeboxesLight from "$/assets/images/codeboxes-light.png";
 import memoizeDark from "$/assets/images/memoize-dark.png";
+import memoizeLight from "$/assets/images/memoize-light.png";
 import tictactoeDark from "$/assets/images/tictactoe-dark.png";
 import weatherDark from "$/assets/images/weather-dark.png";
 import weatherLight from "$/assets/images/weather-light.png";
@@ -18,13 +19,30 @@ import type { LinkDataType } from "$/components/LinkButton.svelte";
 import githubSvg from "$/assets/icons/github.svg";
 import linkedinSvg from "$/assets/icons/linkedin.svg";
 import resumeSvg from "$/assets/icons/file.svg";
+import projectsSvg from "$/assets/icons/projects.svg";
 import mailSvg from "$/assets/icons/mail.svg";
 import instagramSvg from "$/assets/icons/instagram.svg";
+
+export const months: string[] = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+];
 
 export const linksData: LinkDataType[] = [
 	{ url: "https://www.github.com/harshpx", label: "Github", iconSvg: githubSvg, target: "_blank" },
 	{ url: "https://www.linkedin.com/in/harshpx/", label: "LinkedIn", iconSvg: linkedinSvg, target: "_blank" },
 	{ url: "/resume", label: "Resume", iconSvg: resumeSvg },
+	{ url: "/projects", label: "Projects", iconSvg: projectsSvg },
 ];
 
 export const contactLinksData: LinkDataType[] = [
@@ -37,7 +55,46 @@ export const contactLinksData: LinkDataType[] = [
 	},
 	{ url: "https://www.instagram.com/harshhh.hhhh", label: "@harshhh.hhhh", iconSvg: instagramSvg, target: "_blank" },
 ];
+
 export const projectData: ProjectDataType[] = [
+	{
+		title: "Memoize",
+		subtitle: "All-in-one workspace with AI and productivity tools",
+		platforms: ["Web", "Mobile", "AI"],
+		description: `
+				Memoize is a full-stack AI-powered productivity suite that combines 
+				intelligent chat, rich-text note-taking, and event scheduling in a single platform. 
+				It features RAG-based conversational memory, recurring event management, 
+				secure authentication with OAuth2, a cross-platform mobile app built with Capacitor, 
+				and a cloud-native deployment pipeline powered by Kubernetes and GitHub Actions.
+			`,
+		darkImageUrl: memoizeDark,
+		lightImageUrl: memoizeLight,
+		techLabels: [
+			"Java",
+			"Spring Boot",
+			"PostgreSQL",
+			"JPA",
+			"Spring AI",
+			"LLM",
+			"RAG",
+			"PgVector",
+			"Typescript",
+			"React.js",
+			"Capacitor",
+			"Shadcn UI",
+			"Tailwind",
+			"Kubernetes",
+			"K3s",
+			"Ingress",
+			"Traefik",
+			"Docker",
+			"Github Actions",
+		],
+		repoUrls: ["https://github.com/harshpx/memoize-v3-api", "https://github.com/harshpx/memoize-v3-client"],
+		liveUrl: "https://www.memoize.in",
+		downloadUrl: "https://github.com/harshpx/memoize-v3-client/releases",
+	},
 	{
 		title: "Codeboxes",
 		subtitle: "Online code editor",
@@ -55,79 +112,18 @@ export const projectData: ProjectDataType[] = [
 			"Spring-Boot",
 			"JWT",
 			"MongoDB",
-			"Microservices",
-			"Eureka",
-			"API Gateway",
 			"TypeScript",
 			"Next.js",
 			"Shadcn UI",
 			"Tailwind",
 			"Docker",
+			"Microservices",
+			"Consul",
+			"Kubernetes",
 			"Github Actions",
-			"DigitalOcean",
-			"Vercel",
 		],
 		repoUrls: ["https://github.com/harshpx/Codeboxes", "https://github.com/harshpx/codeboxes-server"],
 		liveUrl: "https://codeboxes.in",
-	},
-	{
-		title: "Memoize",
-		subtitle: "Cross-Platform notes & todos app",
-		platforms: ["Web", "Mobile"],
-		description: `
-				Cross-platform notes and reminders app with JWT authentication, 
-				featuring a Node.js + Express backend, Next.js + Tailwind CSS web frontend, 
-				and an Expo + React Native mobile app. Designed with a clean, user-friendly UI, 
-				it supports robust CRUD operations, seamless cross-platform sync, and offline mode on mobile devices.
-			`,
-		darkImageUrl: memoizeDark,
-		techLabels: [
-			"JavaScript",
-			"Next.js",
-			"Shadcn UI",
-			"Expo",
-			"TypeScript",
-			"React Native",
-			"GlueStack UI",
-			"Tailwind",
-			"Node.js",
-			"Express.js",
-			"MongoDB",
-			"JWT",
-			"Vercel",
-		],
-		repoUrls: [
-			"https://github.com/harshpx/memoize-v2",
-			"https://github.com/harshpx/memoize-server",
-			"https://github.com/harshpx/memoize-mobile",
-		],
-		liveUrl: "https://memoize.in",
-		downloadUrl: "https://github.com/harshpx/memoize-mobile/releases",
-	},
-	{
-		title: "Mini Tic-Tac-Toe",
-		subtitle: "Simple online multiplayer Tic Tac Toe game",
-		platforms: ["Web"],
-		description: `
-				Developed a web-based Tic Tac Toe game with a React.js frontend and a Node.js + Socket.io backend. 
-				Implemented low-latency WebSocket connections for real-time gameplay, lobby management, and scoring. 
-				Designed a sleek, modular, and maintainable UI, along with an in-game chat system using parallel socket connections.
-			`,
-		darkImageUrl: tictactoeDark,
-		techLabels: [
-			"JavaScript",
-			"Node.js",
-			"Socket.io",
-			"WebSockets",
-			"React.js",
-			"Tailwind",
-			"Docker",
-			"Github Actions",
-			"DigitalOcean",
-			"Vercel",
-		],
-		repoUrls: ["https://github.com/harshpx/tic-tac-toe-socket"],
-		liveUrl: "https://mini-tic-tac-toe.vercel.app",
 	},
 	{
 		title: "Dog Breed Identifier",
@@ -158,6 +154,30 @@ export const projectData: ProjectDataType[] = [
 		],
 		repoUrls: ["https://github.com/harshpx/dbi-server", "https://github.com/harshpx/dbi-client"],
 		liveUrl: "https://dog-breed-identifier-client.vercel.app",
+	},
+	{
+		title: "Mini Tic-Tac-Toe",
+		subtitle: "Simple online multiplayer Tic Tac Toe game",
+		platforms: ["Web"],
+		description: `
+				Developed a web-based Tic Tac Toe game with a React.js frontend and a Node.js + Socket.io backend. 
+				Implemented low-latency WebSocket connections for real-time gameplay, lobby management, and scoring. 
+				Designed a sleek, modular, and maintainable UI, along with an in-game chat system using parallel socket connections.
+			`,
+		darkImageUrl: tictactoeDark,
+		techLabels: [
+			"JavaScript",
+			"Node.js",
+			"Socket.io",
+			"WebSockets",
+			"React.js",
+			"Tailwind",
+			"Docker",
+			"Github Actions",
+			"DigitalOcean",
+			"Vercel",
+		],
+		repoUrls: ["https://github.com/harshpx/tic-tac-toe-socket"],
 	},
 	{
 		title: "Weather",
@@ -199,7 +219,6 @@ export const projectData: ProjectDataType[] = [
 		lightImageUrl: rentifyLight,
 		techLabels: ["Javascript", "React.js", "Ant Design", "Tailwind", "Node.js", "Express.js", "MongoDB", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/Rentify"],
-		liveUrl: "https://rentify-harshpx.vercel.app",
 	},
 	{
 		title: "Portfolio V3",
@@ -266,11 +285,13 @@ export const techLabels: string[] = [
 	"Bash",
 	"SQL",
 	"Spring Boot",
+	"Sprint AI",
 	"JPA",
-	"MySQL",
+	"PostgreSQL",
 	"MongoDB",
 	"Node.js",
 	"Express.js",
+	"Hono",
 	"React.js",
 	"Next.js",
 	"Svelte",
@@ -278,11 +299,11 @@ export const techLabels: string[] = [
 	"React Native",
 	"Expo",
 	"Tailwind",
-	"Shadcn UI",
-	"Lit-element",
+	"Lit-Framework",
 	"HTML",
 	"CSS",
 	"Git",
+	"Kubernetes",
 	"Docker",
 	"Linux",
 	"Github Actions",
@@ -313,11 +334,11 @@ export const resumeData = {
 	workExperience: [
 		{
 			company: "Tata Consultancy Services (TCS)",
-			duration: "2 years",
 			roles: [
 				{
 					role: "Software Engineer - Full Stack",
-					period: "July 2024 - Present",
+					startDate: new Date(2024, 6, 1),
+					endDate: new Date(),
 					description: [
 						"Developed & debugged 40+ REST APIs for a trading platform processing with 99.95% transactional accuracy.",
 						"Improved API efficiency by 40% by parallel batch processing, along with query aggregation, pagination, and caching.",
@@ -327,17 +348,17 @@ export const resumeData = {
 						"Implemented recursive functions to efficiently modify, visualize and render XML data on UI.",
 					],
 					techStack:
-						"Java, Spring Boot, Spring Batch, Oracle DB, Docker, Git, Azure, JavaScript, React.js, Lit Framework",
+						"Java, Spring Boot, Spring Batch, SQL, Oracle DB, Docker, Git, Azure, JavaScript, React.js, Lit Framework",
 				},
 			],
 		},
 		{
 			company: "Aulacube Technologies",
-			duration: "4 Months",
 			roles: [
 				{
 					role: "Software Development Intern",
-					period: "Mar 2024 - Jun 2024",
+					startDate: new Date(2024, 2, 1),
+					endDate: new Date(2024, 5, 1),
 					description: [
 						"Built an admin dashboard for student data, improving readability, management, and client satisfaction by 40%.",
 						"Fixed 30+ irresponsive UI issues on the AulaEdge website for small-screen devices.",
@@ -376,6 +397,7 @@ export const resumeData = {
 				"Integrated Gemini 3.5 Flash via **Spring AI**, using **pgVector** for **RAG-based conversational memory** and **context retention**.",
 				"Developed an efficient **Event propagation** function from scratch for scheduling weekly, monthly and yearly recurring events.",
 				"Implemented **Rich text editor** in **React.js** by leveraging **Tiptap-UI** components, storing content and formatting in JSON format.",
+				"Used **Capacitor** to create a responsive **cross-platform** mobile app, combining web-view with native interactions.",
 				"Used **K3s** with 1 node cluster with 2 deployment instances each for Client and Service. Used **Traefik - Ingress** for api gateway routing and load balancing. Automated CI/CD using **github actions**.",
 			],
 			links: {

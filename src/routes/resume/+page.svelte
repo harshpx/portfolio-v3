@@ -48,9 +48,9 @@
 				<span class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</span>
 				<button
 					onclick={() => printComponentA4(resumeRef)}
-					class="flex items-center gap-2 rounded-full
-						bg-neutral-900/10 px-3 py-2
-						font-extralight dark:bg-[#d2eefa]/10"
+					class="cusror-pointer flex items-center gap-2
+						rounded-full bg-neutral-900/10 px-3
+						py-2 font-extralight dark:bg-[#d2eefa]/10"
 				>
 					<svg use:inlineSvg={downloadSvg} class="h-4 w-4 stroke-2" />
 					{#if !$isMobile}

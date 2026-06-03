@@ -12,8 +12,8 @@
 
 <div
 	class={`
-    flex h-[297mm] min-w-[210mm] flex-col gap-2
-    rounded-xl border-gray-300 bg-white p-[6mm] font-poppins text-[11px] text-black shadow-xl
+    flex h-[297mm] min-w-[210mm] flex-col gap-2 rounded-xl
+    border-gray-300 bg-white p-[6mm] font-noto text-[11px] text-black shadow-xl
 `}
 >
 	<!-- Header -->

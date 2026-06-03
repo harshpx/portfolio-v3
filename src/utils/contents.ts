@@ -407,6 +407,6 @@ export const resumeData = {
 	skills: [
 		"**Languages:** Java, JavaScript, TypeScript, Bash, SQL, YAML, HTML, CSS",
 		"**Frameworks/Tools:** Spring-Boot, Spring AI, Node.js, Hono, Express.js, Redis, Socket.io, MongoDB, PostgreSQL, Kubernetes, Docker, Github actions, Git, Linux, React.js, Next.js, Svelte, Sveltekit, React-Native, Tailwind CSS",
-		"**Soft Skills:** Problem-Solving, Attention to detail, Collaboration, Communication, Adaptability, Ownership, Time management, Continuous learning",
+		"**Soft Skills:** Problem-Solving, Attention to detail, Collaboration, Communication, Adaptability, Time management, Continuous learning",
 	],
 };

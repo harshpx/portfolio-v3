@@ -17,6 +17,8 @@
 		subtitle?: string;
 		platforms: string[];
 		description: string;
+		live: boolean | "Release";
+		status: "Active" | "Maintained" | "Abandoned";
 		darkImageUrl: string;
 		lightImageUrl?: string;
 		techLabels: string[];
@@ -66,11 +68,11 @@
 		`}
 		>
 			{#if $theme === "dark"}
-				<img src={data.darkImageUrl} alt="Codeboxes" class="h-full w-full object-cover object-left-top" />
+				<img src={data.darkImageUrl} alt={data.title} class="h-full w-full object-cover object-left-top" />
 			{:else}
 				<img
 					src={data.lightImageUrl ?? data.darkImageUrl}
-					alt="Codeboxes"
+					alt={data.title}
 					class="h-full w-full object-cover object-left-top"
 				/>
 			{/if}
@@ -92,35 +94,67 @@
 				<div use:motion use:titleInViewAction class="flex flex-col gap-1">
 					<p class="text-[32px] leading-8 font-light">{data.title}</p>
 					<p class="text-lg leading-6 font-extralight italic">{data.subtitle ?? ""}</p>
-					<div class="mt-1 flex items-center gap-1">
-						{#each data.platforms as platform (platform)}
+					<div class="mt-1 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+						<div class="flex items-center gap-1">
+							{#each data.platforms as platform (platform)}
+								<div
+									class="flex items-center gap-1 rounded-2xl bg-neutral-900/10 px-1.5 py-1 text-[12px] font-extralight dark:bg-[#d2eefa]/10"
+								>
+									{#if platform === "Web"}
+										<svg
+											use:inlineSvg={webSvg}
+											class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+										/>
+									{:else if platform === "Mobile"}
+										<svg
+											use:inlineSvg={mobileSvg}
+											class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+										/>
+									{:else if platform === "Customization"}
+										<svg
+											use:inlineSvg={paletteSvg}
+											class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+										/>
+									{:else if platform === "AI"}
+										<svg
+											use:inlineSvg={aiSvg}
+											class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
+										/>
+									{/if}
+									{platform}
+								</div>
+							{/each}
+						</div>
+						<div class="flex items-center gap-1">
 							<div
-								class="flex items-center gap-1 rounded-2xl bg-neutral-900/10 px-1.5 py-1 text-[12px] font-extralight dark:bg-[#d2eefa]/10"
+								class={`
+									rounded-2xl px-2 py-1 text-[12px] font-light
+									${
+										data.live
+											? "bg-green-500/40 text-green-800 dark:bg-green-500/20 dark:text-green-500"
+											: "bg-orange-500/40 text-orange-800 dark:bg-orange-500/20 dark:text-orange-400"
+									}
+								`}
 							>
-								{#if platform === "Web"}
-									<svg
-										use:inlineSvg={webSvg}
-										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-									/>
-								{:else if platform === "Mobile"}
-									<svg
-										use:inlineSvg={mobileSvg}
-										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-									/>
-								{:else if platform === "Customization"}
-									<svg
-										use:inlineSvg={paletteSvg}
-										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-									/>
-								{:else if platform === "AI"}
-									<svg
-										use:inlineSvg={aiSvg}
-										class="mb-[3px] h-4 w-4 stroke-1 pt-0.5 text-neutral-900 dark:text-[#d2eefa]"
-									/>
-								{/if}
-								{platform}
+								{data.live === "Release" ? "Release" : data.live ? "Live" : "Not Live"}
 							</div>
-						{/each}
+							<div
+								class={`
+									rounded-2xl px-2 py-1 text-[12px] font-light
+									${
+										data.status !== "Abandoned"
+											? "bg-green-500/40 text-green-800 dark:bg-green-500/20 dark:text-green-500"
+											: "bg-orange-500/40 text-orange-800 dark:bg-orange-500/20 dark:text-orange-400"
+									}
+								`}
+							>
+								{data.status === "Active"
+									? "Active Development"
+									: data.status === "Maintained"
+										? "Maintained"
+										: "Not Maintained"}
+							</div>
+						</div>
 					</div>
 				</div>
 			</Motion>

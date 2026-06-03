@@ -68,6 +68,8 @@ export const projectData: ProjectDataType[] = [
 				secure authentication with OAuth2, a cross-platform mobile app built with Capacitor, 
 				and a cloud-native deployment pipeline powered by Kubernetes and GitHub Actions.
 			`,
+		live: true,
+		status: "Active",
 		darkImageUrl: memoizeDark,
 		lightImageUrl: memoizeLight,
 		techLabels: [
@@ -105,6 +107,8 @@ export const projectData: ProjectDataType[] = [
 				Code execution is handled by a Docker-based microservice, 
 				with Eureka providing service discovery and an API Gateway managing routing and load balancing for reliable performance.
 			`,
+		live: true,
+		status: "Maintained",
 		darkImageUrl: codeboxesDark,
 		lightImageUrl: codeboxesLight,
 		techLabels: [
@@ -135,6 +139,8 @@ export const projectData: ProjectDataType[] = [
 			It is then used inside a Java, Spring-Boot server to create a REST API for application.
 			For frontend side, I have used Svelte 5 and Tailwind CSS. 
 		`,
+		live: true,
+		status: "Maintained",
 		darkImageUrl: dbiDark,
 		lightImageUrl: dbiLight,
 		techLabels: [
@@ -165,6 +171,8 @@ export const projectData: ProjectDataType[] = [
 				Designed a sleek, modular, and maintainable UI, along with an in-game chat system using parallel socket connections.
 			`,
 		darkImageUrl: tictactoeDark,
+		live: false,
+		status: "Abandoned",
 		techLabels: [
 			"JavaScript",
 			"Node.js",
@@ -191,6 +199,8 @@ export const projectData: ProjectDataType[] = [
 			`,
 		darkImageUrl: weatherDark,
 		lightImageUrl: weatherLight,
+		live: true,
+		status: "Maintained",
 		techLabels: [
 			"JavaScript",
 			"Vite",
@@ -217,6 +227,8 @@ export const projectData: ProjectDataType[] = [
 			`,
 		darkImageUrl: rentifyDark,
 		lightImageUrl: rentifyLight,
+		live: false,
+		status: "Abandoned",
 		techLabels: ["Javascript", "React.js", "Ant Design", "Tailwind", "Node.js", "Express.js", "MongoDB", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/Rentify"],
 	},
@@ -232,6 +244,8 @@ export const projectData: ProjectDataType[] = [
 		`,
 		darkImageUrl: portfolioV3Dark,
 		lightImageUrl: portfolioV3Light,
+		live: true,
+		status: "Maintained",
 		techLabels: ["Typescript", "Svelte 5", "SvelteKit", "Tailwind", "Svelte-Motion", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/portfolio-v3"],
 		liveUrl: "https://www.harshpriye.in",
@@ -246,6 +260,8 @@ export const projectData: ProjectDataType[] = [
 			It is fully responsive and works well on all devices.
 		`,
 		darkImageUrl: portfolioV2Dark,
+		live: true,
+		status: "Abandoned",
 		techLabels: ["Javascript", "Next.js", "Tailwind", "Vercel"],
 		repoUrls: ["https://github.com/harshpx/portfolio-v2"],
 		liveUrl: "https://v2-harshpx.vercel.app",
@@ -261,6 +277,8 @@ export const projectData: ProjectDataType[] = [
 			It is then used inside a FastAPI server to provide predictions through a REST API.
 		`,
 		darkImageUrl: dfDark,
+		live: false,
+		status: "Abandoned",
 		techLabels: ["Python", "Jupyter Notebook", "TensorFlow", "Keras", "CNN", "OpenCV", "FastAPI"],
 		repoUrls: ["https://github.com/harshpx/deepfake-detection"],
 		otherLinks: ["https://kaggle.com/code/harshpriye/dbi-model"],
@@ -273,6 +291,8 @@ export const projectData: ProjectDataType[] = [
 				A clean and simple Userstyle CSS theme for Firefox, based on teal color palette.
 			`,
 		darkImageUrl: tealfoxDark,
+		live: "Release",
+		status: "Abandoned",
 		techLabels: ["CSS", "Userstyles", "Firefox"],
 		repoUrls: ["https://github.com/harshpx/TealFox"],
 	},

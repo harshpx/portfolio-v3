@@ -74,9 +74,5 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 	setTimeout(() => {
 		iframeWindow.focus();
 		iframeWindow.print();
-
-		setTimeout(() => {
-			iframe.remove();
-		}, 1000);
-	}, 250);
+	}, 500);
 };

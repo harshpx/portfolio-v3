@@ -18,21 +18,29 @@ div {
 }
 
 @media print {
-	body * {
-		visibility: hidden;
+	html,
+	body {
+		height: auto !important;
+		overflow: visible !important;
+		margin: 0 !important;
+		padding: 0 !important;
+		background: white !important;
 	}
 
-	.print-root,
-	.print-root * {
-		visibility: visible;
+	body > * {
+		display: none !important;
 	}
 
-	.print-root {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 210mm;
+	body > .print-root {
+		display: block !important;
+		position: relative !important;
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	@page {
+		size: A4 portrait;
 		margin: 0;
-		padding: 0;
 	}
 }

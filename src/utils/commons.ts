@@ -49,9 +49,12 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 
 	document.body.appendChild(printRoot);
 
-	window.print();
-
-	setTimeout(() => {
+	const handlePrintCleanup = () => {
 		printRoot.remove();
-	}, 1000);
+		window.removeEventListener("afterprint", handlePrintCleanup);
+	};
+
+	window.addEventListener("afterprint", handlePrintCleanup);
+
+	window.print();
 };

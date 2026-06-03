@@ -27,7 +27,7 @@
 		<div
 			class="
 			flex max-h-full w-full flex-col gap-1
-			p-6 font-poppins
+			p-4 font-poppins
 			text-neutral-900 sm:p-10 sm:pb-4 lg:p-14 lg:pb-4 dark:text-[#d2eefa]"
 		>
 			<button

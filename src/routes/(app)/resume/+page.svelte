@@ -1,12 +1,14 @@
 <script lang="ts">
-	import { inlineSvg } from "@svelte-put/inline-svg";
 	import arrowLeft from "$/assets/icons/arrow-left.svg";
 	import { useHover } from "$/reactive-methods/useHover";
-	import Project from "$/components/Project.svelte";
-	import { projectData } from "$/utils/contents";
-	import Footer from "$/components/Footer.svelte";
+	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { Motion } from "svelte-motion";
 	import { activeSection, navigateToMainAndScroll } from "$/contexts/activeSection";
+	import Resume from "$/components/Resume.svelte";
+	import { resumeData_backend as resumeData } from "$/utils/data/resumes";
+	import PrintDownload from "$/components/PrintDownload.svelte";
+
+	let resumeRef: HTMLDivElement;
 
 	const [backButtonHovered, backButtonHoverAction] = useHover();
 
@@ -19,13 +21,12 @@
 	transition={{ duration: 0.4, ease: "easeInOut" }}
 	let:motion
 >
-	<div use:motion class="flex h-full w-full flex-col overflow-x-hidden overflow-y-auto px-2 pb-2">
+	<div use:motion class="flex h-full w-full flex-col px-2 pb-0">
 		<div
 			class="
-				flex w-full flex-col gap-1 p-6
-				font-poppins text-neutral-900
-				sm:p-10 lg:p-14 dark:text-[#d2eefa]
-			"
+			flex max-h-full w-full flex-col gap-1
+			p-4 font-poppins
+			text-neutral-900 sm:p-10 sm:pb-4 lg:p-14 lg:pb-4 dark:text-[#d2eefa]"
 		>
 			<button
 				use:backButtonHoverAction
@@ -41,16 +42,13 @@
 				/>
 				<span> Harsh Priye</span>
 			</button>
-			<div class="text-4xl font-light sm:text-5xl lg:text-6xl">All Projects</div>
-			<div class="mt-8 grid grid-cols-1 gap-4 lg:grid-cols-2">
-				{#each projectData as project, i (project.title)}
-					<Project key={i} data={project} asListItem />
-				{/each}
+			<div class="mb-4 flex w-full items-end justify-between">
+				<span class="text-4xl font-[300] sm:text-5xl lg:text-6xl">Resume</span>
+				<PrintDownload componentRef={resumeRef} />
 			</div>
-			<!-- <div class="mt-10 w-full text-center font-poppins text-base font-extralight italic">
-				This page is under development. More projects will be added soon ... :&rpar;
-			</div> -->
+			<div bind:this={resumeRef} class="flex w-full max-w-[210mm] min-w-0 grow overflow-auto rounded-xl">
+				<Resume {resumeData} />
+			</div>
 		</div>
-		<Footer />
 	</div>
 </Motion>

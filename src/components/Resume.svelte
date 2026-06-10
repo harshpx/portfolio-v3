@@ -2,22 +2,27 @@
 	import Svg from "$/components/Svg.svelte";
 	import mailSvg from "$/assets/icons/mail.svg";
 	import phoneSvg from "$/assets/icons/phone.svg";
-	import linkedinSvg from "$/assets/icons/linkedin.svg";
 	import githubSvg from "$/assets/icons/github.svg";
 	import webSvg from "$/assets/icons/web.svg";
 	import mobileSvg from "$/assets/icons/mobile.svg";
-	import { resumeData } from "$/utils/contents";
 	import {
 		parseMarkdownText as parseText,
 		getStartEndStringFromDates,
 		getDurationInMonthsAndYearsFromDates,
 	} from "$/utils/commons";
+	import type { ResumeDataType } from "$/utils/data/resumes";
+
+	type ResumeProps = {
+		resumeData: ResumeDataType;
+	};
+
+	const { resumeData }: ResumeProps = $props();
 </script>
 
 <div
 	class={`
-    flex h-[297mm] min-w-[210mm] flex-col gap-2 rounded-xl
-    border-gray-300 bg-white p-[6mm] font-noto text-[11px] text-black shadow-xl
+    flex h-[297mm] min-w-[210mm] flex-col gap-1.5 rounded-xl
+    border-gray-300 bg-white px-[6mm] py-[4mm] font-noto text-[11px] text-black shadow-xl
 `}
 >
 	<!-- Header -->
@@ -29,7 +34,7 @@
 		</div>
 		<!-- Contact Information -->
 		<div class="flex flex-col gap-1">
-			<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
+			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
 				<div class="flex items-center gap-1">
 					<Svg svg={phoneSvg} class="h-4 w-4 stroke-2" />
 					<span class="text-nowrap">{resumeData.contact.phone}</span>
@@ -39,40 +44,22 @@
 					<span class="text-nowrap">{resumeData.contact.email}</span>
 				</div>
 			</div>
-			<div class="flex flex-wrap items-center gap-x-4 gap-y-1">
-				<div class="flex items-center gap-1">
-					<Svg svg={webSvg} class="h-4 w-4 stroke-2" />
-					<a
-						href={resumeData.links.website.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-blue-600 underline"
-					>
-						{resumeData.links.website.display}
-					</a>
-				</div>
-				<div class="flex items-center gap-1">
-					<Svg svg={githubSvg} class="h-4 w-4 stroke-2" />
-					<a
-						href={resumeData.links.github.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-blue-600 underline"
-					>
-						{resumeData.links.github.display}
-					</a>
-				</div>
-				<div class="flex items-center gap-1">
-					<Svg svg={linkedinSvg} class="h-4 w-4 stroke-2" />
-					<a
-						href={resumeData.links.linkedin.url}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-blue-600 underline"
-					>
-						{resumeData.links.linkedin.display}
-					</a>
-				</div>
+			<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+				{#each resumeData.links as link (link.url)}
+					<div class="flex items-center gap-1">
+						{#if link.iconSvg}
+							<Svg svg={link.iconSvg} class="h-4 w-4 stroke-2" />
+						{/if}
+						<a
+							href={link.url}
+							target={link.target ?? "_blank"}
+							rel="noopener noreferrer"
+							class="text-blue-600 underline"
+						>
+							{link.label}
+						</a>
+					</div>
+				{/each}
 			</div>
 		</div>
 	</div>
@@ -156,15 +143,20 @@
 						{/each}
 					</ul>
 					<div class="flex flex-wrap gap-x-4">
-						{#if project.links.live.length > 0}
+						{#if project.links.live && project.links.live.length > 0}
 							<div class="flex items-center gap-1">
 								<div class="flex items-center gap-0.5">
 									<Svg svg={webSvg} class="h-3 w-3 stroke-2" />
 									<span class="font-bold">Live:</span>
 								</div>
 								{#each project.links.live as liveLink, index (index)}
-									<a href={liveLink} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
-										{`${liveLink.replace("https://", "")}`}
+									<a
+										href={liveLink.url}
+										target={liveLink.target ?? "_blank"}
+										rel="noopener noreferrer"
+										class="text-blue-600 underline"
+									>
+										{`${liveLink.label}`}
 									</a>
 									{#if index < project.links.live.length - 1}
 										<span>,</span>
@@ -179,8 +171,13 @@
 									<span class="font-bold">Source:</span>
 								</div>
 								{#each project.links.source as sourceLink, index (index)}
-									<a href={sourceLink} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
-										{`${sourceLink.replace("https://", "")}`}
+									<a
+										href={sourceLink.url}
+										target={sourceLink.target ?? "_blank"}
+										rel="noopener noreferrer"
+										class="text-blue-600 underline"
+									>
+										{`${sourceLink.label}`}
 									</a>
 									{#if index < project.links.source.length - 1}
 										<span>,</span>
@@ -188,15 +185,20 @@
 								{/each}
 							</div>
 						{/if}
-						{#if project.links.mobile.length > 0}
+						{#if project.links.mobile && project.links.mobile.length > 0}
 							<div class="flex items-center gap-1">
 								<div class="flex items-center gap-0.5">
 									<Svg svg={mobileSvg} class="h-3 w-3 stroke-2" />
 									<span class="font-bold">Mobile:</span>
 								</div>
 								{#each project.links.mobile as mobileLink, index (index)}
-									<a href={mobileLink} target="_blank" rel="noopener noreferrer" class="text-blue-600 underline">
-										{`${mobileLink.replace("https://", "")}`}
+									<a
+										href={mobileLink.url}
+										target={mobileLink.target ?? "_blank"}
+										rel="noopener noreferrer"
+										class="text-blue-600 underline"
+									>
+										{`${mobileLink.label}`}
 									</a>
 									{#if index < project.links.mobile.length - 1}
 										<span>,</span>

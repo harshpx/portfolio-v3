@@ -7,13 +7,13 @@ export const useHover = () => {
 		const onMouseEnter = () => hovered.set(true);
 		const onMouseLeave = () => hovered.set(false);
 
-		node.addEventListener("mouseenter", onMouseEnter);
-		node.addEventListener("mouseleave", onMouseLeave);
+		node.addEventListener("pointerenter", onMouseEnter);
+		node.addEventListener("pointerleave", onMouseLeave);
 
 		return {
 			destroy() {
-				node.removeEventListener("mouseenter", onMouseEnter);
-				node.removeEventListener("mouseleave", onMouseLeave);
+				node.removeEventListener("pointerenter", onMouseEnter);
+				node.removeEventListener("pointerleave", onMouseLeave);
 			},
 		};
 	};

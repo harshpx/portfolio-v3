@@ -1,9 +1,9 @@
 <script lang="ts">
 	import heartSvg from "$/assets/icons/heart.svg";
-	import LinkButton from "../LinkButton.svelte";
+	import LinkButton from "$/components/LinkButton.svelte";
 	import { inlineSvg } from "@svelte-put/inline-svg";
-	import { contactLinksData } from "$/utils/contents";
-	import NavigationButton from "../NavigationButton.svelte";
+	import { contactLinksData } from "$/utils/data/links";
+	import NavigationButton from "$/components/NavigationButton.svelte";
 	import { onMount } from "svelte";
 	import { browser } from "$app/environment";
 	import { useInView } from "$/reactive-methods/useInView";

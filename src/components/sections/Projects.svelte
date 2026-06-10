@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { useInView } from "$/reactive-methods/useInView";
-	import TechLabel from "../TechLabel.svelte";
-	import Project from "../Project.svelte";
+	import TechLabel from "$/components/TechLabel.svelte";
+	import Project from "$/components/Project.svelte";
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
-	import { projectData, techLabels } from "$/utils/contents";
+	import { projectData } from "$/utils/data/projects";
+	import { techLabels } from "$/utils/data/general";
 	import { Motion } from "svelte-motion";
-	import NavigationButton from "../NavigationButton.svelte";
+	import NavigationButton from "$/components/NavigationButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");
 

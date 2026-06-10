@@ -1,4 +1,4 @@
-import { months } from "./contents";
+import { months } from "$/utils/data/general";
 
 export const capitalizeFirstLetter = (str: string) => {
 	return str.charAt(0).toUpperCase() + str.slice(1);
@@ -42,7 +42,7 @@ export const parseMarkdownText = (text: string): string => {
 	return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
 };
 
-export const printComponentA4 = (component: HTMLDivElement) => {
+export const printComponentA4 = async (component: HTMLDivElement) => {
 	const iframe = document.createElement("iframe");
 	iframe.style.position = "fixed";
 	iframe.style.right = "0";
@@ -58,11 +58,17 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 	if (!iframeWindow || !iframeDocument) return;
 
 	const clone = component.cloneNode(true) as HTMLDivElement;
+	clone.classList.add("print-area");
 
 	iframeDocument.head.innerHTML = `
     <style>
-      @page { size: A4 portrait; margin: 0; }
+      @page { size: A4 portrait; margin: 0; padding: 0; }
       body { margin: 0; padding: 0; background: white; }
+			* {
+				-webkit-print-color-adjust: exact !important;
+				print-color-adjust: exact !important;
+				box-sizing: border-box;
+			}
     </style>
   `;
 
@@ -72,10 +78,18 @@ export const printComponentA4 = (component: HTMLDivElement) => {
 
 	iframeDocument.body.appendChild(clone);
 
-	setTimeout(() => {
+	if ("fonts" in iframeDocument) {
+		await iframeDocument.fonts.ready;
+	}
+
+	requestAnimationFrame(() => {
 		iframeWindow.focus();
 		iframeWindow.print();
-	}, 500);
+	});
+
+	iframeWindow.onafterprint = () => {
+		iframe.remove();
+	};
 };
 
 export const getStartEndStringFromDates = (start: Date, end: Date) => {

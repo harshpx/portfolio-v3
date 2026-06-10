@@ -1,9 +1,12 @@
 <script lang="ts">
+	import "$/app.css";
 	import arrowLeft from "$/assets/icons/arrow-left.svg";
+	import CursorSpotlight from "$/components/CursorSpotlight.svelte";
 	import { useInView } from "$/reactive-methods/useInView";
 	import { goto } from "$app/navigation";
 	import { inlineSvg } from "@svelte-put/inline-svg";
 	import { Motion } from "svelte-motion";
+	import ThemeSwitch from "$/components/ThemeSwitch.svelte";
 
 	const [inView, inViewAction] = useInView({ entry: 0.5, exit: 0.2 });
 
@@ -23,8 +26,10 @@
 			damping: 10,
 			ease: "easeIn",
 		}}
+		style={{ position: "relative" }}
 		let:motion
 	>
+		<div class="absolute top-4 right-4"><ThemeSwitch /></div>
 		<div
 			use:motion
 			class="flex flex-col items-center justify-center gap-1 p-4 text-center font-poppins dark:text-white"
@@ -42,3 +47,4 @@
 		</div>
 	</Motion>
 </div>
+<CursorSpotlight />

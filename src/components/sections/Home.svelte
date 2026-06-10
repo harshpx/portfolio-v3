@@ -2,7 +2,7 @@
 	import { useMediaQuery } from "$/reactive-methods/useMediaQuery";
 	import { Motion } from "svelte-motion";
 	import { useInView } from "$/reactive-methods/useInView";
-	import { linksData } from "$/utils/contents";
+	import { linksData } from "$/utils/data/links";
 	import LinkButton from "$/components/LinkButton.svelte";
 
 	const isMobile = useMediaQuery("(max-width: 640px)");

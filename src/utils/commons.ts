@@ -43,7 +43,7 @@ export const parseMarkdownText = (text: string): string => {
 };
 
 export const printComponentA4 = async (component: HTMLDivElement) => {
-	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	// const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 	// iOS Safari has issues with iframe printing
@@ -78,7 +78,6 @@ export const printComponentA4 = async (component: HTMLDivElement) => {
 	const iframeDocument = iframe.contentDocument || iframeWindow?.document;
 
 	if (!iframeWindow || !iframeDocument) {
-		iframe.remove();
 		return;
 	}
 
@@ -103,17 +102,10 @@ export const printComponentA4 = async (component: HTMLDivElement) => {
 	});
 	iframeDocument.body.appendChild(clone);
 
-	await new Promise((resolve) => setTimeout(resolve, 500));
-
-	iframeWindow.focus();
-	iframeWindow.print();
-
-	const cleanup = () => {
-		setTimeout(() => iframe.remove(), 1000);
-	};
-
-	iframeWindow.onafterprint = cleanup;
-	setTimeout(cleanup, 5000);
+	setTimeout(() => {
+		iframeWindow.focus();
+		iframeWindow.print();
+	}, 500);
 };
 
 export const getStartEndStringFromDates = (start: Date, end: Date) => {

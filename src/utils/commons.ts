@@ -44,11 +44,11 @@ export const parseMarkdownText = (text: string): string => {
 
 export const printComponentA4 = async (component: HTMLDivElement) => {
 	const iframe = document.createElement("iframe");
-	iframe.style.position = "absolute";
-	iframe.style.top = "-10000px";
-	iframe.style.left = "-10000px";
-	iframe.style.width = "1px";
-	iframe.style.height = "1px";
+	iframe.style.position = "fixed";
+	iframe.style.right = "0";
+	iframe.style.bottom = "0";
+	iframe.style.width = "0";
+	iframe.style.height = "0";
 	iframe.style.border = "0";
 	document.body.appendChild(iframe);
 

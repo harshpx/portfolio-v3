@@ -43,7 +43,29 @@ export const parseMarkdownText = (text: string): string => {
 };
 
 export const printComponentA4 = async (component: HTMLDivElement) => {
+	const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+	const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+	// iOS Safari has issues with iframe printing
+	if (isIOS) {
+		const printWindow = window.open("", "_blank");
+		if (printWindow) {
+			printWindow.document.write(`
+				<!DOCTYPE html>
+				<html>
+				<head><title>Print</title></head>
+				<body>${component.outerHTML}</body>
+				</html>
+			`);
+			printWindow.document.close();
+			printWindow.print();
+			printWindow.close();
+		}
+		return;
+	}
+
 	const iframe = document.createElement("iframe");
+
 	iframe.style.position = "fixed";
 	iframe.style.right = "0";
 	iframe.style.bottom = "0";
@@ -55,7 +77,10 @@ export const printComponentA4 = async (component: HTMLDivElement) => {
 	const iframeWindow = iframe.contentWindow;
 	const iframeDocument = iframe.contentDocument || iframeWindow?.document;
 
-	if (!iframeWindow || !iframeDocument) return;
+	if (!iframeWindow || !iframeDocument) {
+		iframe.remove();
+		return;
+	}
 
 	const clone = component.cloneNode(true) as HTMLDivElement;
 	clone.classList.add("print-area");
@@ -72,46 +97,23 @@ export const printComponentA4 = async (component: HTMLDivElement) => {
     </style>
   `;
 
-	const promiseList: Promise<unknown>[] = [];
-
-	document.querySelectorAll('style, link[rel="stylesheet"]').forEach((node) => {
-		const clonedNode = node.cloneNode(true) as HTMLElement;
-
-		if (clonedNode.tagName.toLowerCase() === "link") {
-			promiseList.push(
-				new Promise((resolve) => {
-					clonedNode.onload = () => resolve(true);
-					clonedNode.onerror = () => resolve(false);
-				}),
-			);
-		}
-		iframeDocument.head.appendChild(clonedNode);
+	const styles = document.querySelectorAll("style, link[rel='stylesheet']");
+	styles.forEach((style) => {
+		iframeDocument.head.appendChild(style.cloneNode(true));
 	});
-
 	iframeDocument.body.appendChild(clone);
 
-	if ("fonts" in iframeDocument) {
-		promiseList.push(iframeDocument.fonts.ready);
-	}
+	await new Promise((resolve) => setTimeout(resolve, 500));
 
-	await Promise.all(promiseList);
+	iframeWindow.focus();
+	iframeWindow.print();
 
-	setTimeout(() => {
-		iframeWindow.focus();
-		iframeWindow.print();
+	const cleanup = () => {
+		setTimeout(() => iframe.remove(), 1000);
+	};
 
-		const removeIframe = () => {
-			if (document.body.contains(iframe)) {
-				document.body.removeChild(iframe);
-			}
-		};
-
-		if ("onafterprint" in iframeWindow) {
-			iframeWindow.onafterprint = removeIframe;
-		}
-
-		setTimeout(removeIframe, 1000);
-	}, 500);
+	iframeWindow.onafterprint = cleanup;
+	setTimeout(cleanup, 5000);
 };
 
 export const getStartEndStringFromDates = (start: Date, end: Date) => {

@@ -44,11 +44,11 @@ export const parseMarkdownText = (text: string): string => {
 
 export const printComponentA4 = async (component: HTMLDivElement) => {
 	const iframe = document.createElement("iframe");
-	iframe.style.position = "fixed";
-	iframe.style.right = "0";
-	iframe.style.bottom = "0";
-	iframe.style.width = "0";
-	iframe.style.height = "0";
+	iframe.style.position = "absolute";
+	iframe.style.top = "-10000px";
+	iframe.style.left = "-10000px";
+	iframe.style.width = "1px";
+	iframe.style.height = "1px";
 	iframe.style.border = "0";
 	document.body.appendChild(iframe);
 
@@ -72,24 +72,46 @@ export const printComponentA4 = async (component: HTMLDivElement) => {
     </style>
   `;
 
+	const promiseList: Promise<unknown>[] = [];
+
 	document.querySelectorAll('style, link[rel="stylesheet"]').forEach((node) => {
-		iframeDocument.head.appendChild(node.cloneNode(true));
+		const clonedNode = node.cloneNode(true) as HTMLElement;
+
+		if (clonedNode.tagName.toLowerCase() === "link") {
+			promiseList.push(
+				new Promise((resolve) => {
+					clonedNode.onload = () => resolve(true);
+					clonedNode.onerror = () => resolve(false);
+				}),
+			);
+		}
+		iframeDocument.head.appendChild(clonedNode);
 	});
 
 	iframeDocument.body.appendChild(clone);
 
 	if ("fonts" in iframeDocument) {
-		await iframeDocument.fonts.ready;
+		promiseList.push(iframeDocument.fonts.ready);
 	}
 
-	requestAnimationFrame(() => {
+	await Promise.all(promiseList);
+
+	setTimeout(() => {
 		iframeWindow.focus();
 		iframeWindow.print();
-	});
 
-	iframeWindow.onafterprint = () => {
-		iframe.remove();
-	};
+		const removeIframe = () => {
+			if (document.body.contains(iframe)) {
+				document.body.removeChild(iframe);
+			}
+		};
+
+		if ("onafterprint" in iframeWindow) {
+			iframeWindow.onafterprint = removeIframe;
+		}
+
+		setTimeout(removeIframe, 1000);
+	}, 500);
 };
 
 export const getStartEndStringFromDates = (start: Date, end: Date) => {

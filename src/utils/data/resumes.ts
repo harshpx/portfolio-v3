@@ -224,7 +224,7 @@ export const resumeData_frontend: ResumeDataType = {
 					startDate: new Date(2024, 6, 1),
 					endDate: new Date(),
 					description: [
-						"Developed 20+ pages and 30+ reusable UI components for a banking operations application using Lit and JavaScript.",
+						"Developed 20+ pages and 30+ reusable UI components for a banking operations application using React.js, Lit and JavaScript.",
 						"Created dynamic and data-driven user interfaces by transforming and rendering complex XML data structures using recursive algorithms.",
 						"Built an internal COBOL parsing and comparison tool using React.js and TypeScript, reducing debugging time by 80%.",
 						"Engineered & debugged 40+ REST APIs for an ESOP trading platform, maintaining 99.95% transactional accuracy.",
@@ -314,7 +314,7 @@ export const resumeData_frontend: ResumeDataType = {
 			about:
 				"An online code editor and compiler that supports multiple programming languages and provides a seamless coding experience.",
 			techStack:
-				"Java, SpringBoot, Microservices, IPC, MongoDB, Next.js, ShadCN, Tailwind, Kubernetes, Docker, Github Actions",
+				"Next.js, ShadCN, Tailwind, Java, SpringBoot, Microservices, IPC, MongoDB, Kubernetes, Docker, Github Actions",
 			description: [
 				"Developed a full-stack online code editor which can execure codes in 6+ major programming languages.",
 				"Used Typescript, **Next.js** and ShadCN UI to build a responsive and intuitive frontend, enhancing user experience and engagement.",

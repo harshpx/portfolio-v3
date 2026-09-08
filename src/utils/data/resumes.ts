@@ -71,7 +71,7 @@ export const resumeData_backend: ResumeDataType = {
 			company: "Tata Consultancy Services (TCS)",
 			roles: [
 				{
-					role: "Software Engineer - Full Stack",
+					role: "Software Engineer - Full Stack (Java Backend, React.js)",
 					startDate: new Date(2024, 6, 1),
 					endDate: new Date(),
 					description: [
@@ -220,7 +220,7 @@ export const resumeData_frontend: ResumeDataType = {
 			company: "Tata Consultancy Services (TCS)",
 			roles: [
 				{
-					role: "Software Engineer - Full Stack",
+					role: "Software Engineer - Full Stack (React.js, Java Backend)",
 					startDate: new Date(2024, 6, 1),
 					endDate: new Date(),
 					description: [

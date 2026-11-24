@@ -68,12 +68,12 @@ export const resumeData_backend: ResumeDataType = {
 	],
 	workExperience: [
 		{
-			company: "Tata Consultancy Services (TCS)",
+			company: "Tata Consultancy Services (TCS) [Serving Notice Period]",
 			roles: [
 				{
 					role: "Software Engineer - Full Stack (Java Backend, React.js)",
 					startDate: new Date(2024, 6, 1),
-					endDate: new Date(),
+					endDate: new Date(2027, 0, 8),
 					description: [
 						"Engineered & debugged 40+ REST APIs for an ESOP trading platform, maintaining 99.95% transactional accuracy.",
 						"Improved API efficiency by 40% through parallel batch processing, query aggregation, pagination and caching.",
@@ -218,12 +218,12 @@ export const resumeData_frontend: ResumeDataType = {
 	],
 	workExperience: [
 		{
-			company: "Tata Consultancy Services (TCS)",
+			company: "Tata Consultancy Services (TCS) [Serving Notice Period]",
 			roles: [
 				{
-					role: "Software Engineer - Full Stack (React.js, Java Backend)",
+					role: "Software Engineer - Full Stack (Java Backend, React.js)",
 					startDate: new Date(2024, 6, 1),
-					endDate: new Date(),
+					endDate: new Date(2027, 0, 8),
 					description: [
 						"Developed 20+ pages and 30+ reusable UI components for a banking operations application using React.js, Lit and JavaScript.",
 						"Created dynamic and data-driven user interfaces by transforming and rendering complex XML data structures using recursive algorithms.",
